@@ -1,0 +1,27 @@
+:root {
+  --primary: #0E2A47;
+  --primary-light: #173B61;
+
+  --secondary: #D4A437;
+
+  --background: #F8FAFC;
+
+  --foreground: #111827;
+
+  --card: #FFFFFF;
+
+  --border: #E5E7EB;
+
+  --success: #16A34A;
+
+  --danger: #DC2626;
+}
+
+/* :root {
+  --navy: #0E2A47;
+  --gold: #D4A437;
+  --background: #F8FAFC;
+  --text: #111827;
+  --muted: #64748B;
+  --border: #E2E8F0;
+} */
