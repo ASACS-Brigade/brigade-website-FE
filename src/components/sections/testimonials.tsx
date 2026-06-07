@@ -2,37 +2,59 @@ import Container from "../layout/container";
 
 export default function Testimonials() {
   return (
-    <section className="bg-[#0E2A47] text-white py-28">
+    <section className="pb-6">
 
       <Container>
 
-        <div className="max-w-4xl mx-auto text-center">
+        <div
+          className="
+          rounded-xl
+          bg-primary
+          px-8
+          py-10
+          text-center
+          text-white
+          relative
+          overflow-hidden
+          "
+        >
 
-          <h2 className="text-4xl font-bold">
+          <span
+            className="
+            absolute
+            left-14
+            top-6
+            text-secondary
+            text-4xl
+            "
+          >
+            ❝
+          </span>
 
-            What Members Say
-
-          </h2>
-
-          <p className="mt-8 text-2xl leading-relaxed">
-
-            The Brigade gave me confidence,
-            leadership skills and lifelong
-            friendships.
-
+          <p
+            className="
+            text-lg
+            md:text-xl
+            font-medium
+            max-w-3xl
+            mx-auto
+            "
+          >
+            The Brigade taught me confidence,
+            discipline, and service.
+            Today, I lead because I was trained
+            to serve.
           </p>
 
-          <div className="mt-8">
-
-            <p className="font-semibold">
-              Michael A.
-            </p>
-
-            <p className="text-slate-300">
-              Former Member
-            </p>
-
-          </div>
+          <p
+            className="
+            mt-5
+            text-sm
+            font-semibold
+            "
+          >
+            — Favour Ogada, Brigader 
+          </p>
 
         </div>
 
@@ -41,7 +63,6 @@ export default function Testimonials() {
     </section>
   );
 }
-
 
 
 // import Container from "../layout/container";
@@ -54,17 +75,31 @@ export default function Testimonials() {
 
 //         <div className="max-w-4xl mx-auto text-center">
 
-//           <p className="text-3xl leading-relaxed">
+//           <h2 className="text-4xl font-bold">
 
-//             “The Brigade taught me discipline,
-//             leadership and service. It shaped who
-//             I am today.”
+//             What Members Say
+
+//           </h2>
+
+//           <p className="mt-8 text-2xl leading-relaxed">
+
+//             The Brigade gave me confidence,
+//             leadership skills and lifelong
+//             friendships.
 
 //           </p>
 
-//           <h4 className="mt-8 font-bold">
-//             — Former Brigade Member
-//           </h4>
+//           <div className="mt-8">
+
+//             <p className="font-semibold">
+//               Michael A.
+//             </p>
+
+//             <p className="text-slate-300">
+//               Former Member
+//             </p>
+
+//           </div>
 
 //         </div>
 
@@ -73,3 +108,6 @@ export default function Testimonials() {
 //     </section>
 //   );
 // }
+
+
+

@@ -1,4 +1,25 @@
-:root {
+@theme {
+  --color-primary: #0E2A47;
+  --color-primary-light: #173B61;
+
+  --color-secondary: #D4A437;
+
+  --color-background: #F8FAFC;
+
+  --color-foreground: #111827;
+
+  --color-card: #FFFFFF;
+
+  --color-border: #E5E7EB;
+
+  --color-success: #16A34A;
+
+  --color-danger: #DC2626;
+  --color-muted: #64748B;
+}
+
+
+/* :root {
   --primary: #0E2A47;
   --primary-light: #173B61;
 
@@ -15,7 +36,7 @@
   --success: #16A34A;
 
   --danger: #DC2626;
-}
+} */
 
 /* :root {
   --navy: #0E2A47;

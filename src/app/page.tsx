@@ -16,14 +16,14 @@ export default function HomePage() {
       <FeatureCards />
       <AboutPreview />
       <Programs />
-      <EventsPreview />
+      {/* <EventsPreview /> */}
 
       <ArticlesPreview />
 
       <GalleryPreview />
 
       <Testimonials />
-      <Newsletter />
+      {/* <Newsletter /> */}
       <CtaBanner />
     </main>
   );

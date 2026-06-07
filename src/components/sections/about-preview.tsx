@@ -17,11 +17,11 @@ export default function AboutPreview() {
               lead with integrity and impact their world.
             </p>
 
-            <Link href="/about" className="btn-primary">
+            {/* <Link href="/about" className="btn-primary">
               Learn More
-            </Link>
+            </Link> */}
 
-            {/* <Link
+            <Link
               href="/about"
               className="
               inline-flex
@@ -30,7 +30,7 @@ export default function AboutPreview() {
               items-center
               justify-center
               rounded-lg
-              bg-(--primary-light)
+              bg-primary-light
               px-6
               py-3
               text-center
@@ -40,24 +40,24 @@ export default function AboutPreview() {
               shadow-lg
               shadow-black/20
               transition
-              hover:bg-(--primary-dark)
+              hover:bg-primary-dark
               focus:outline-none
               focus:ring-2
-              focus:ring-(--primary)
+              focus:ring-primary
               focus:ring-offset-2
-              focus:ring-offset-(--background)
+              focus:ring-offset-background
               sm:w-auto
               md:text-base
               mt-7
               "
             >
               Learn About Us
-            </Link> */}
+            </Link>
           </div>
 
           <div className="relative h-100">
             <Image
-              src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846"
+              src="/events/pic2.png"
               alt="About"
               fill
               className="rounded-2xl object-cover"

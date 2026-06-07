@@ -60,6 +60,9 @@ h6 {
 .section{
   padding-bottom: 3rem;
 }
+.section-top{
+  padding: 3rem 0;
+}
 
 .btn-primary {
   display: inline-flex;
