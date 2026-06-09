@@ -33,11 +33,13 @@ export default function Navbar() {
         z-[999]
         border-b
         border-slate-200
-        bg-white
+        bg-[white]
         dark:border-slate-800
         dark:bg-slate-950
+        dark:text-white
         "
       >
+    
         <Container>
           <div className="flex h-20 items-center justify-between">
             <Link

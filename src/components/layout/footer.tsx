@@ -1,11 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 
-// import {
-//   FaFacebookF,
-//   FaInstagram,
-//   FaXTwitter,
-// } from "react-icons/fa6";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaXTwitter,
+} from "react-icons/fa6";
 
 import Container from "./container";
 
@@ -78,7 +78,7 @@ export default function Footer() {
                 transition
                 "
               >
-                {/* <Facebook size={14} /> */}
+                <FaFacebookF size={14} />
               </a>
 
               <a
@@ -97,7 +97,7 @@ export default function Footer() {
                 transition
                 "
               >
-                {/* <Instagram size={14} /> */}
+                <FaInstagram size={14} /> 
               </a>
 
               <a
@@ -116,7 +116,7 @@ export default function Footer() {
                 transition
                 "
               >
-                {/* <Twitter size={14} /> */}
+                <FaXTwitter size={14} />
               </a>
 
             </div>

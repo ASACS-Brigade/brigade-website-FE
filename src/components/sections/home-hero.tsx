@@ -7,7 +7,7 @@ import Container from "../layout/container";
 export default function HomeHero() {
   return (
       
-    <section className="relative min-h-[580px] overflow-hidden md:min-h-[640px]">
+    <section className="relative min-h-145 overflow-hidden md:min-h-160">
       <Image
         src="/images/hero.jpeg"
         alt="Hero"
@@ -33,21 +33,21 @@ export default function HomeHero() {
         relative
         z-10
         flex
-        min-h-[560px]
+        min-h-140
         items-center
         py-16
-        sm:min-h-[500px]
+        sm:min-h-125
         sm:py-20
-        lg:min-h-[560px]
+        lg:min-h-140
         lg:py-24
       "
       >
         <div className="max-w-3xl text-white">
           <h1 className="max-w-3xl text-4xl font-bold leading sm:text-5xl md:text-6xl lg:text-7xl">
             Building{" "}
-            <span className="text-[#D4A437]">Faith</span>,{" "}
-            <span className="text-[#D4A437]">Leadership</span> &{" "}
-            <span className="text-[#D4A437]">Service</span> in the Next
+            <span className="text-secondary">Faith</span>,{" "}
+            <span className="text-secondary">Leadership</span> &{" "}
+            <span className="text-secondary">Service</span> in the Next
             Generation
           </h1>
 
@@ -68,7 +68,7 @@ export default function HomeHero() {
               items-center
               justify-center
               rounded-lg
-              bg-[#D4A437]
+              bg-secondary
               px-6
               py-3
               text-center
@@ -81,9 +81,9 @@ export default function HomeHero() {
               hover:bg-[#b98c22]
               focus:outline-none
               focus:ring-2
-              focus:ring-[#D4A437]
+              focus:ring-secondary
               focus:ring-offset-2
-              focus:ring-offset-[#0E2A47]
+              focus:ring-offset-primary
               sm:w-auto
               md:text-base
               "
@@ -109,14 +109,14 @@ export default function HomeHero() {
               font-semibold
               text-white
               transition
-              hover:border-[#D4A437]
+              hover:border-secondary
               hover:bg-white
-              hover:text-[#0E2A47]
+              hover:text-primary
               focus:outline-none
               focus:ring-2
               focus:ring-white
               focus:ring-offset-2
-              focus:ring-offset-[#0E2A47]
+              focus:ring-offset-primary
               sm:w-auto
               md:text-base
               "

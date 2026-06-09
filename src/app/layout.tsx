@@ -10,7 +10,7 @@ import { Inter, Montserrat } from "next/font/google";
 
 export const metadata: Metadata = {
   title:
-    "Boys & Girls Brigade Surulere | 5th & 9th Surulere Companies, Lagos Nigeria",
+    "5th & 9th Surulere Companies | Boys & Girls Brigade Surulere, Lagos Nigeria",
 
   description:
     "Official website of the 5th & 9th Surulere Companies of The Boys' Brigade Nigeria and Girls' Brigade Nigeria, All Saints Anglican Church Surulere, Lagos. Building faith, leadership, discipline and service through Christian youth development.",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
 
   openGraph: {
     title:
-      "Boys & Girls Brigade Surulere",
+      "5th & 9th Surulere Companies | Boys & Girls Brigade Surulere",
 
     description:
       "Faith. Leadership. Service.",

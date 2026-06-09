@@ -3,17 +3,22 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 body {
-  background: #f8fafc;
-  color: #111827;
+ background: var(--color-background);
+  color: var(--color-foreground);
   font-family: var(--font-inter);
 }
 
-.dark body {
+html.dark body {
   background: #020617;
-  color: white;
+  color: #ffffff;
 }
 
 h1,
