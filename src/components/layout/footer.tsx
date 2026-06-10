@@ -2,16 +2,16 @@ import Link from "next/link";
 import Image from "next/image";
 
 import {
-  FaFacebookF,
   FaInstagram,
-  FaXTwitter,
+  FaLinkedinIn,
+  FaYoutube,
 } from "react-icons/fa6";
 
 import Container from "./container";
 
 export default function Footer() {
   return (
-    <footer className="bg-primary text-white mt-20">
+    <footer className="bg-primary text-white">
 
       <Container>
 
@@ -78,7 +78,7 @@ export default function Footer() {
                 transition
                 "
               >
-                <FaFacebookF size={14} />
+                <FaLinkedinIn size={14} />
               </a>
 
               <a
@@ -116,7 +116,7 @@ export default function Footer() {
                 transition
                 "
               >
-                <FaXTwitter size={14} />
+                <FaYoutube size={14} />
               </a>
 
             </div>

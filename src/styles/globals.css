@@ -119,6 +119,39 @@ h6 {
     font-size: 1rem;
   }
 }
+/* About page  dashed snake like lines */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.hover-card:hover .hover-card-icon,
+.hover-card:hover .hover-card-title,
+.hover-card:hover .hover-card-text {
+  color: white !important;
+}
+
+.hover-card {
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.hover-card:hover {
+  background: var(--color-secondary);
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgb(0 0 0 / 12%);
+}
 
 
 /* @import "tailwindcss";
