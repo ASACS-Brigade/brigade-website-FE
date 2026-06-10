@@ -136,7 +136,10 @@ h6 {
 
 .hover-card:hover .hover-card-icon,
 .hover-card:hover .hover-card-title,
-.hover-card:hover .hover-card-text {
+.hover-card:hover .hover-card-text,
+.hover-card:hover h3,
+.hover-card:hover p,
+.hover-card:hover span {
   color: white !important;
 }
 
