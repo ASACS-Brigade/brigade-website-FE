@@ -6,6 +6,7 @@ import AboutValues from "../../components/sections/about/about-values";
 import Programs from "../../components/sections/about/about-program";
 import LeadershipTeam from "../../components/sections/about/leadership-team";
 import CtaBanner from "../../components/sections/about/about-cta";
+import AboutStats from "../../components/sections/about/about-stats";
 
 export default function AboutPage() {
   return (
@@ -20,6 +21,9 @@ export default function AboutPage() {
       <AboutValues />
 
       <Programs />
+
+<AboutStats />
+
       <LeadershipTeam />
       <CtaBanner />
     </>

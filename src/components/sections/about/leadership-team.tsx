@@ -34,12 +34,12 @@ const leaders = [
 ];
 
 const activeLeaders = [
-    {
+  {
     image: "/images/team/captain.jpg",
     name: "Lt. Prince D.",
     role: "Officer",
   },
-   {
+  {
     image: "/images/team/deputy.jpg",
     name: "Lt. Victor N.",
     role: "Battalion Asst. Secretary",
@@ -52,7 +52,7 @@ const activeLeaders = [
   {
     image: "/images/team/training.jpg",
     name: "Lt. Joy H.",
-    role: "Store Keeper",
+    role: "Inventory",
   },
   {
     image: "/images/team/treasurer.jpg",
@@ -74,7 +74,7 @@ const activeLeaders = [
     name: "NCO. Michelle U.",
     role: "Asst. Company Secretary",
   },
-   {
+  {
     image: "/images/team/treasurer.jpg",
     name: "WO. Emeka A.",
     role: "Program Coord.",
@@ -106,9 +106,9 @@ const activeMembers = [
 
 export default function LeadershipTeam() {
   return (
-    <section className="pb-16">
+    <section className="pb-16 pt-8">
       <Container>
-        <h2 className="text-3xl font-bold text-primary">Leadership Team</h2>
+        <h2 className="md:text-3xl text-xl text-center md:text-left font-bold text-primary">Leadership Team</h2>
         <div
           className="
           mt-8
@@ -167,7 +167,7 @@ export default function LeadershipTeam() {
           ))}
         </div>
 
-        <h2 className="pt-8 text-3xl font-bold text-primary">
+        <h2 className="pt-8 md:text-3xl text-xl text-center md:text-left font-bold text-primary">
           Active Leaders Of The Company
         </h2>
         <div
@@ -228,7 +228,7 @@ export default function LeadershipTeam() {
           ))}
         </div>
 
-        <h2 className="pt-8 text-3xl font-bold text-primary">
+        <h2 className="pt-8 md:text-3xl text-xl text-center md:text-left font-bold text-primary">
           Active Members of The Company
         </h2>
         <div

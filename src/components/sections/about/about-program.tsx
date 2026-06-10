@@ -1,20 +1,20 @@
 "use client";
 
 import Image from "next/image";
-
+import Link from "next/link";
 import FadeIn from "../../layout/fade-in";
 import Container from "../../layout/container";
 
 const programs = [
   {
-    image: "/images/programs/program-1.jpg",
+    image: "/about/biblestud.jpeg",
     title: "Weekly Meetings",
     description:
       "Spiritual growth, learning and fellowship.",
   },
   {
     image: "/images/programs/program-2.jpg",
-    title: "Community Outreach",
+    title: "Medical and Charity Outreach",
     description:
       "Reaching out and making a positive impact.",
   },
@@ -109,7 +109,7 @@ export default function AboutPrograms() {
 
         <div className="mt-8 text-center">
 
-          <button
+          <Link href="/events"
             className="
             rounded-md
             bg-primary
@@ -123,7 +123,7 @@ export default function AboutPrograms() {
             "
           >
             Join A Program
-          </button>
+          </Link>
 
         </div>
 

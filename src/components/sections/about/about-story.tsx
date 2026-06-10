@@ -589,7 +589,7 @@ export default function AboutStory() {
   useSnake(girlsColRef, girlsSvgRef);
 
   return (
-    <section className="py-16">
+    <section className="py-10">
       <Container>
         <FadeIn>
           <div className="text-center mb-16">

@@ -243,8 +243,8 @@ export default function Footer() {
                 <li>Weekly Meetings</li>
                 <li>Outreach</li>
                 <li>Camps</li>
-                <li>Mentorship</li>
-                <li>Training</li>
+               <Link href="/about#members">Members</Link>
+                {/* <li>Training</li> */}
 
               </ul>
 
