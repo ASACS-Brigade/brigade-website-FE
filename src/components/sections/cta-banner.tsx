@@ -3,9 +3,9 @@ import Image from "next/image";
 
 export default function CtaBanner() {
   return (
-    <section className="pt-3 mb-10">
+    <section className="pt-3">
 
-      <div
+      {/* <div
         className="
         bg-primary
         px-5
@@ -21,6 +21,38 @@ export default function CtaBanner() {
         "
       >
 
+        <div
+          className="
+          flex
+          flex-col
+          md:flex-row
+          items-center
+          text-center
+          md:text-left
+          gap-6
+          "
+        > */}
+
+         <div
+        className="
+      bg-primary
+          px-5
+          py-10
+          lg:px-12
+          lg:py-24
+          flex
+          flex-col
+          lg:flex-row
+          items-center
+          justify-center
+          text-white
+          md:gap-8
+          gap-3
+          "
+        style={{
+          clipPath: "polygon(0 0, 100% 0, 100% 85%, 0 100%)",
+        }}
+      >
         {/* Left Content */}
 
         <div
