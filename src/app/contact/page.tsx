@@ -10,7 +10,7 @@ import Container from "../../components/layout/container";
 export const metadata = {
   title: "Contact | Boys & Girls Brigade Surulere",
   description:
-    "Get in touch with the Boys & Girls Brigade, Surulere Chapter. We'd love to hear from you.",
+    "Get in touch with the Boys & Girls Brigade, Surulere Company. We'd love to hear from you.",
 };
 
 export default function ContactPage() {
@@ -49,56 +49,3 @@ export default function ContactPage() {
   );
 }
 
-
-
-// import PageHero from "../../components/layout/page-hero";
-
-// export default function ContactPage() {
-//   return (
-//     <>
-//       <PageHero
-//         title="Contact"
-//         subtitle="Get in touch with our team."
-//       />
-
-//       <section className="section">
-
-//         <div className="container max-w-3xl">
-
-//           <form className="space-y-4">
-
-//             <input
-//               placeholder="Name"
-//               className="w-full border p-4 rounded-xl"
-//             />
-
-//             <input
-//               placeholder="Email"
-//               className="w-full border p-4 rounded-xl"
-//             />
-
-//             <textarea
-//               placeholder="Message"
-//               className="w-full border p-4 rounded-xl h-40"
-//             />
-
-//             <button
-//               className="
-//               bg-[#0E2A47]
-//               text-white
-//               px-6
-//               py-3
-//               rounded-xl
-//               "
-//             >
-//               Send Message
-//             </button>
-
-//           </form>
-
-//         </div>
-
-//       </section>
-//     </>
-//   );
-// }

@@ -6,11 +6,11 @@ import FadeIn from "../../layout/fade-in";
 const faqs = [
   {
     q: "How do I join the Brigade?",
-    a: "You can join by visiting our hall during any meeting session — Mondays 10 AM–12:30 PM or Fridays 5–7 PM — or by contacting us through this form.",
+    a: "You can join by visiting our weekly meeting session — Saturdays 4 PM–6 PM — or by contacting us through this form.",
   },
   {
     q: "What age groups are accepted?",
-    a: "We accept members from age 5 through young adulthood. Boys' Brigade and Girls' Brigade each have age-specific sections with tailored programmes.",
+    a: "We accept members from age 3 through young adulthood. Boys' Brigade and Girls' Brigade each have age-specific sections with tailored programmes.",
   },
   {
     q: "Are parents involved?",
@@ -18,11 +18,11 @@ const faqs = [
   },
   {
     q: "Is there a membership fee?",
-    a: "There is a nominal annual subscription fee that helps cover uniforms, training materials, and activities. Contact us for current rates.",
+    a: "There is NO annual subscription fee.",
   },
   {
     q: "Do you run holiday programmes?",
-    a: "Yes — we run camps, outreach programmes, and skill-building workshops during school holidays. Follow our events page to stay updated.",
+    a: "Yes — we run camps, music classes, outreach programmes, and skill-building workshops during school holidays. Follow our events page to stay updated.",
   },
 ];
 
@@ -49,7 +49,7 @@ export default function Faq() {
                 </span>
                 <ChevronDown
                   size={16}
-                  className="flex-shrink-0 text-muted transition-transform duration-200"
+                  className="shrink-0 text-muted transition-transform duration-200"
                   style={{
                     transform: open === i ? "rotate(180deg)" : "rotate(0deg)",
                     color: open === i ? "#D4A017" : undefined,
