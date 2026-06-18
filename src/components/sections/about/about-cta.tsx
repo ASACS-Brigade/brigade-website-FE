@@ -5,20 +5,20 @@ export default function CtaBanner() {
     <section className="relative overflow-hidden">
       <div
         className="
-    bg-primary
-    px-5
-    py-10
-    lg:px-12
-    lg:py-32
-    flex
-    flex-col
-    lg:flex-row
-    items-center
-    justify-center
-    text-white
-    md:gap-8
-    gap-3
-    "
+      bg-primary
+          px-5
+          py-10
+          lg:px-12
+          lg:py-32
+          flex
+          flex-col
+          lg:flex-row
+          items-center
+          justify-center
+          text-white
+          md:gap-8
+          gap-3
+          "
         style={{
           clipPath: "polygon(0 0, 100% 0, 100% 85%, 0 100%)",
         }}

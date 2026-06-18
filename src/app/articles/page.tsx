@@ -1,12 +1,11 @@
-import PageHero from "../../components/layout/page-hero";
+// import PageHero from "../../components/layout/page-hero";
 
 export default function ArticlesPage() {
   return (
     <>
-      <PageHero
-        title="Articles"
-        subtitle="Leadership insights and devotionals."
-      />
+    <section>
+<h1>Article page</h1>
+    </section>
     </>
   );
 }

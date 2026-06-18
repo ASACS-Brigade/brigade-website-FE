@@ -224,7 +224,7 @@ export default function AboutStats() {
                 text-secondary
                 "
               >
-                <Counter target={15} />
+                <Counter target={20} />
               </h3>
 
               <p

@@ -15,14 +15,17 @@ export default function AboutPage() {
 
       <AboutStory />
 
-
       <AboutVision />
 
       <AboutValues />
 
       <Programs />
 
-<AboutStats />
+      <AboutStats />
+      {/* Founder spotlight.
+        Chapter achievements.
+        Testimonies from members.
+      */}
 
       <LeadershipTeam />
       <CtaBanner />
