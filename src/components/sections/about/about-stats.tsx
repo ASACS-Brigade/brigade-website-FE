@@ -182,7 +182,7 @@ export default function AboutStats() {
                 text-secondary
                 "
               >
-                <Counter target={15} />
+                <Counter target={20} />
               </h3>
 
               <p
@@ -224,7 +224,7 @@ export default function AboutStats() {
                 text-secondary
                 "
               >
-                <Counter target={20} />
+                <Counter target={15} />
               </h3>
 
               <p
@@ -236,7 +236,7 @@ export default function AboutStats() {
                 text-foreground
                 "
               >
-                Boys & Girls Officers
+                Active Boys' & Girls' Officers
               </p>
 
             </div>

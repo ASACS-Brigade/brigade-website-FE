@@ -41,7 +41,7 @@ export default function EventsPreview() {
               className="
               text-2xl
               font-bold
-              text-[#0E2A47]
+              text-primary
               "
             >
               Upcoming Events
@@ -64,8 +64,8 @@ export default function EventsPreview() {
             hidden lg:block
             text-sm
             font-medium
-            text-[#0E2A47]
-            hover:text-[#D4A437]
+            text-primary
+            hoverLink
             "
           >
             View All
@@ -77,8 +77,8 @@ export default function EventsPreview() {
             block lg:hidden
             text-xs
             font-medium
-            text-[#0E2A47]
-            hover:text-[#D4A437]
+            text-primary
+            hoverLink
             "
           >
             <FaArrowRight />
