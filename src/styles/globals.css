@@ -156,3 +156,6 @@ h6 {
   box-shadow: 0 15px 30px rgb(0 0 0 / 12%);
 }
 
+.hoverLink:hover {
+  color: #d4a437;
+}

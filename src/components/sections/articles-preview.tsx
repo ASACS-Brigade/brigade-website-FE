@@ -3,6 +3,7 @@ import Link from "next/link";
 import Container from "../layout/container";
 import ArticleCard from "../cards/article-card";
 import FadeIn from "../layout/fade-in";
+import { FaArrowRight } from "react-icons/fa6";
 
 const articles = [
   {
@@ -30,7 +31,7 @@ const articles = [
 
 export default function ArticlesPreview() {
   return (
-    <section className="pb-10 bg-white">
+    <section className="py-10 bg-white">
 
       <Container>
 
@@ -65,13 +66,27 @@ export default function ArticlesPreview() {
           <Link
             href="/articles"
             className="
+            hidden lg:block
             text-sm
             font-medium
             text-primary
-            hover:text-secondary
+            hoverLink
             "
           >
-            Read More Articles
+            View All
+          </Link>
+
+          <Link
+            href="/articles"
+            className="
+            block lg:hidden
+            text-xs
+            font-medium
+            text-primary
+            hoverLink
+            "
+          >
+            <FaArrowRight />
           </Link>
 
         </div>

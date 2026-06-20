@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import Container from "../layout/container";
 import FadeIn from "../layout/fade-in";
+import { FaArrowRight } from "react-icons/fa6";
 
 const images = [
   "/gallery/gallery1.png",
@@ -13,7 +14,7 @@ const images = [
 
 export default function GalleryPreview() {
   return (
-    <section className="py-14">
+    <section className="py-8">
 
       <Container>
 
@@ -31,16 +32,30 @@ export default function GalleryPreview() {
 
           </div>
 
-          <Link
+         <Link
             href="/gallery"
             className="
+            hidden lg:block
             text-sm
             font-medium
             text-primary
-            hover:text-secondary
+            hoverLink
             "
           >
-            View Full Gallery
+            View All
+          </Link>
+
+          <Link
+            href="/gallery"
+            className="
+            block lg:hidden
+            text-xs
+            font-medium
+            text-primary
+            hoverLink
+            "
+          >
+            <FaArrowRight />
           </Link>
 
         </div>
