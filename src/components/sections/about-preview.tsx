@@ -75,7 +75,7 @@ export default function AboutPreview() {
                 bg-secondary/10
                 px-4
                 py-2
-                text-xs
+                md:text-xs text-[9px]
                 font-semibold
                 uppercase
                 tracking-[0.2em]
@@ -88,7 +88,7 @@ export default function AboutPreview() {
               <h2
                 className="
                 mt-5
-                text-4xl
+                text-xl
                 font-bold
                 text-primary
                 md:text-5xl
@@ -104,6 +104,7 @@ export default function AboutPreview() {
                 max-w-xl
                 text-muted
                 leading-8
+                md:text-base text-sm
                 "
               >
                 The Boys & Girls Brigade,
@@ -203,7 +204,7 @@ export default function AboutPreview() {
                   px-6
                   py-3
                   font-semibold
-                  text-white
+                  text-white text-xs md:text-base
                   transition
                   hover:bg-primary-light
                   "
@@ -223,7 +224,7 @@ export default function AboutPreview() {
                   px-6
                   py-3
                   font-semibold
-                  text-secondary
+                  text-secondary text-xs md:text-base
                   transition
                   hover:bg-secondary
                   hover:text-white

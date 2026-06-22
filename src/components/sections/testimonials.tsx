@@ -26,22 +26,20 @@ type Testimonial = {
   };
 };
 
-/* ─────────────────────────────────────────────
-   Data
-───────────────────────────────────────────── */
+/* - Data -*/
 const testimonials: Testimonial[] = [
   {
     id: 1,
     name: "Amaka Okonkwo",
     role: "Brigade Member · Lagos Chapter",
-    image: "/images/p1.jpg",
+    image: "/images/avatar2.jpg",
     rating: 5,
     text: "Joining the brigade changed my perspective on community. Having a clear vision board inside the app keeps me accountable to my goals and to the people I serve every day.",
     manifestations: {
       title: "Manifestations",
       tags: [
-        { label: "Community", color: "#06BF37", bg: "#E6F8EA", icon: "/icons/travel1.svg" },
-        { label: "Career", color: "#3C6BF6", bg: "#EEF1FF", icon: "/icons/career1.svg" },
+        { label: "Community", color: "#06BF37", bg: "#E6F8EA", icon: "/images/gb-logo.png" },
+        { label: "Physique", color: "#3C6BF6", bg: "#EEF1FF", icon: "/images/bb-Logo.png" },
       ],
     },
   },
@@ -49,14 +47,14 @@ const testimonials: Testimonial[] = [
     id: 2,
     name: "Chukwuemeka Eze",
     role: "Parent & Brigade Volunteer",
-    image: "/images/p2.jpg",
+    image: "/images/avatar2.jpg",
     rating: 5,
     text: "As a parent, I want to model intentional living for my children. This app gives me a space to set goals that align with my family values and track them with purpose.",
     manifestations: {
       title: "Manifestations",
       tags: [
         { label: "Family", color: "#06BF37", bg: "#E6F8EA", icon: "/icons/travel1.svg" },
-        { label: "Career", color: "#3C6BF6", bg: "#EEF1FF", icon: "/icons/career1.svg" },
+        { label: "Leadership", color: "#3C6BF6", bg: "#EEF1FF", icon: "/icons/career1.svg" },
         { label: "Physique", color: "#800080", bg: "#F3E8F8", icon: "/icons/physique1.svg" },
       ],
     },
@@ -65,7 +63,7 @@ const testimonials: Testimonial[] = [
     id: 3,
     name: "Ngozi Adeleke",
     role: "Youth Mentor · Brigade Lead",
-    image: "/images/p3.jpg",
+    image: "/images/avatar2.jpg",
     rating: 5,
     text: "Manifesti brought our brigade members closer to their dreams. The shared accountability it fosters is unlike anything we had before — our team is more motivated than ever.",
     manifestations: {
@@ -81,7 +79,7 @@ const testimonials: Testimonial[] = [
     id: 4,
     name: "Tunde Fashola",
     role: "Community Organiser",
-    image: "/images/p4.jpg",
+    image: "/images/avatar2.jpg",
     rating: 5,
     text: "I can literally see my community's future on my screen. The vision boards keep our brigade grounded in purpose and remind us daily of the impact we are building together.",
     manifestations: {
@@ -96,7 +94,7 @@ const testimonials: Testimonial[] = [
     id: 5,
     name: "Ifeoma Nwosu",
     role: "Wellness Coach · Brigade Member",
-    image: "/images/p5.jpg",
+    image: "/images/avatar2.jpg",
     rating: 5,
     text: "I use this with my wellness clients and brigade groups alike. Seeing a future version of yourself makes the hard days easier — it is the daily nudge everyone needs.",
     manifestations: {
@@ -111,7 +109,7 @@ const testimonials: Testimonial[] = [
     id: 6,
     name: "Bello Abubakar",
     role: "Entrepreneur & Brigade Patron",
-    image: "/images/p6.jpg",
+    image: "/images/avatar2.jpg",
     rating: 5,
     text: "Every entrepreneur needs a system for clarity. Manifesti gives my team and I a visual anchor for our business goals — it is part of our weekly brigade check-ins now.",
     manifestations: {
@@ -126,7 +124,7 @@ const testimonials: Testimonial[] = [
     id: 7,
     name: "Chidinma Okafor",
     role: "Student · Brigade Youth Wing",
-    image: "/images/p7.jpg",
+    image: "/images/avatar2.jpg",
     rating: 5,
     text: "I joined the brigade as a student with no clear direction. Manifesti helped me map out my academic and life goals visually — I feel confident and driven for the first time.",
     manifestations: {
@@ -154,9 +152,6 @@ function getGap(isMobile: boolean) {
   return isMobile ? CARD_GAP_MOBILE : CARD_GAP_DESKTOP;
 }
 
-/* ─────────────────────────────────────────────
-   Component
-───────────────────────────────────────────── */
 export default function Testimonials() {
   const [activeIndex, setActiveIndex] = useState<number>(1); // 0-based
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -219,7 +214,7 @@ export default function Testimonials() {
       overflow-x-hidden on section — kills any horizontal scroll at page level.
       No overflow-x-scroll anywhere; the carousel is driven by CSS transform only.
     */
-    <section className="flex flex-col items-center py-8 md:py-16 gap-8 w-full max-w-[1440px] mx-auto min-h-[500px] md:min-h-[630px] overflow-x-hidden">
+    <section className="flex flex-col items-center py-8 md:py-16 gap-8 w-full max-w-360 mx-auto min-h-125 md:min-h-157.5 overflow-x-hidden">
 
       {/* ── Header ── */}
       <div className="text-center mb-4 px-4 w-full">
@@ -252,7 +247,7 @@ export default function Testimonials() {
                 alt={testimonial.name}
                 className="object-cover rounded-full w-12 h-12 md:w-16 md:h-16 border-2 transition-all"
                 style={{
-                  borderColor: activeIndex === idx ? "#800080" : "transparent",
+                  borderColor: activeIndex === idx ? "#173B61" : "transparent",
                 }}
               />
             </div>
@@ -266,7 +261,7 @@ export default function Testimonials() {
           Viewport window — overflow-x-hidden so the off-screen cards are clipped
           but the track itself is wider than the screen (no scrollbar).
         */}
-        <div className="w-full overflow-x-hidden relative h-[400px] md:h-[480px]">
+        <div className="w-full overflow-x-hidden relative h-100 md:h-120">
           {/*
             Track — absolutely positioned, full natural width, no overflow.
             transform: translateX(...) slides it; transition gives the animation.
@@ -289,8 +284,8 @@ export default function Testimonials() {
                   key={testimonial.id}
                   className={`
                     flex flex-col items-start
-                    bg-gradient-to-br from-[#F9F9F9] to-white
-                    border border-primary-ultra
+                    bg-linear-to-br from-[#F9F9F9] to-white
+                    border border-primary
                     rounded-2xl
                     transition-all duration-500 ease-in-out
                     cursor-pointer
@@ -321,7 +316,7 @@ export default function Testimonials() {
                   {/* Manifestations header */}
                   <div className="w-full">
                     <div className="flex items-center gap-2 mb-3 md:mb-4">
-                      <div className="relative w-5 h-5 md:w-6 md:h-6 shrink-0">
+                      {/* <div className="relative w-5 h-5 md:w-6 md:h-6 shrink-0">
                         <Image
                           src="/icons/star-purple.svg"
                           alt=""
@@ -336,14 +331,14 @@ export default function Testimonials() {
                           height={isActive ? 10 : 8}
                           className="absolute -right-1 -top-1 opacity-95"
                         />
-                      </div>
-                      <span
+                      </div> */}
+                      {/* <span
                         className={`font-medium duration-700 transition-all text-base-dark ${
                           isActive ? "text-lg md:text-base" : "text-[10px] md:text-sm"
                         }`}
                       >
                         Manifestations
-                      </span>
+                      </span> */}
                     </div>
 
                     <div className="flex flex-wrap gap-1.5 md:gap-2">
@@ -423,7 +418,7 @@ export default function Testimonials() {
                 className={`rounded-full transition-all duration-300 cursor-pointer ${
                   isActive
                     ? "w-6 h-3 bg-primary"
-                    : "w-2.5 h-2.5 bg-gray-400 hover:bg-gray-500"
+                    : "w-2.5 h-2.5 bg-primary-light hover:bg-primary-light"
                 }`}
                 aria-label={`Go to testimonial ${idx + 1}`}
               />
@@ -465,338 +460,3 @@ function Tag({
     </div>
   );
 }
-
-
-
-// "use client";
-
-// import Image from "next/image";
-// import { useState, useRef, useEffect } from "react";
-// import { testimonials } from "../../constants/testimonials";
-
-// type TagProps = {
-//   label: string;
-//   color: string;
-//   bg: string;
-//   icon: string;
-// };
-
-// export default function Testimonials() {
-//   const [activeCard, setActiveCard] = useState<number>(2);
-//   const scrollContainerRef = useRef<HTMLDivElement>(null);
-//   const avatarContainerRef = useRef<HTMLDivElement>(null);
-//   const autoScrollInterval = useRef<NodeJS.Timeout | null>(null);
-
-//   useEffect(() => {
-//     const startAutoScroll = () => {
-//       autoScrollInterval.current = setInterval(() => {
-//         setActiveCard((prev) => {
-//           const currentIndex = testimonials.findIndex((t) => t.id === prev);
-//           const nextIndex = (currentIndex + 1) % testimonials.length;
-//           return testimonials[nextIndex].id;
-//         });
-//       }, 3000);
-//     };
-
-//     startAutoScroll();
-
-//     return () => {
-//       if (autoScrollInterval.current) {
-//         clearInterval(autoScrollInterval.current);
-//       }
-//     };
-//   }, []);
-
-//   useEffect(() => {
-//     const scrollContainer = scrollContainerRef.current;
-//     const avatarContainer = avatarContainerRef.current;
-
-//     if (!scrollContainer || !avatarContainer) return;
-
-//     const activeCardElement = scrollContainer.querySelector(
-//       `[data-card-id="${activeCard}"]`
-//     ) as HTMLElement;
-//     if (activeCardElement) {
-//       const containerWidth = scrollContainer.clientWidth;
-//       const cardWidth = activeCardElement.offsetWidth;
-//       const cardLeft = activeCardElement.offsetLeft;
-
-//       const scrollPosition = cardLeft - containerWidth / 2 + cardWidth / 2;
-
-//       scrollContainer.scrollTo({
-//         left: scrollPosition,
-//         behavior: "smooth",
-//       });
-//     }
-
-//     const activeIndex = testimonials.findIndex((t) => t.id === activeCard);
-//     const avatarElement = avatarContainer.children[activeIndex] as HTMLElement;
-//     if (avatarElement) {
-//       const avatarContainerWidth = avatarContainer.clientWidth;
-//       const avatarWidth = avatarElement.offsetWidth;
-//       const avatarLeft = avatarElement.offsetLeft;
-
-//       const avatarScrollPosition =
-//         avatarLeft - avatarContainerWidth / 2 + avatarWidth / 2;
-
-//       avatarContainer.scrollTo({
-//         left: avatarScrollPosition,
-//         behavior: "smooth",
-//       });
-//     }
-//   }, [activeCard]);
-
-//   const handleCardClick = (cardId: number) => {
-//     if (autoScrollInterval.current) {
-//       clearInterval(autoScrollInterval.current);
-//     }
-//     setActiveCard(cardId);
-
-//     setTimeout(() => {
-//       if (autoScrollInterval.current) {
-//         clearInterval(autoScrollInterval.current);
-//       }
-//       autoScrollInterval.current = setInterval(() => {
-//         setActiveCard((prev) => {
-//           const currentIndex = testimonials.findIndex((t) => t.id === prev);
-//           const nextIndex = (currentIndex + 1) % testimonials.length;
-//           return testimonials[nextIndex].id;
-//         });
-//       }, 3000);
-//     }, 5000);
-//   };
-
-//   const handleAvatarClick = (cardId: number) => {
-//     handleCardClick(cardId);
-//   };
-
-//   return (
-//     <section className="flex flex-col items-center py-8 md:py-16 gap-8 w-full max-w-[1440px] mx-auto min-h-[500px] md:min-h-[630px]">
-//       {/* Header */}
-//       <div className="text-center mb-4 px-4">
-//         <h2 className="font-semibold text-2xl md:text-4xl leading-[113%] tracking-[-0.02em] text-base-dark">
-//           What early users are saying
-//         </h2>
-
-//         <p className="mt-2 mx-auto max-w-[420px]   text-base-secondary tracking-[-0.5px] leading-[120%]">
-//           We&#39;re rolling out soon. Join the waitlist to get early access and
-//           exclusive perks.
-//         </p>
-
-//         <div
-//           ref={avatarContainerRef}
-//           className="flex overflow-x-scroll md:overflow-x-auto no-scrollbar gap-4 mt-10 px-4 py-2 snap-x snap-mandatory scroll-smooth"
-//         >
-//           {testimonials.map((testimonial) => (
-//             <div
-//               key={testimonial.id}
-//               className={`shrink-0 snap-center transition-all duration-300 cursor-pointer ${
-//                 activeCard === testimonial.id
-//                   ? "scale-110"
-//                   : "scale-100 opacity-70"
-//               }`}
-//               onClick={() => handleAvatarClick(testimonial.id)}
-//             >
-//               <Image
-//                 src={testimonial.image}
-//                 width={64}
-//                 height={64}
-//                 alt={testimonial.name}
-//                 className="object-cover rounded-full w-12 h-12 md:w-16 md:h-16 border-2 transition-all"
-//                 style={{
-//                   borderColor:
-//                     activeCard === testimonial.id ? "#800080" : "transparent",
-//                 }}
-//               />
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-
-//       <div className="w-full flex flex-col items-center overflow-hidden gap-6">
-//         <div className="w-full relative h-[400px] md:h-[480px]">
-//           <div
-//             ref={scrollContainerRef}
-//             className="flex overflow-x-scroll md:overflow-x-auto no-scrollbar gap-3 md:gap-6 px-4 md:px-8 snap-x snap-mandatory scroll-smooth items-center h-full"
-//           >
-//             {testimonials.map((testimonial) => {
-//               const isActive = activeCard === testimonial.id;
-
-//               return (
-//                 <div
-//                   key={testimonial.id}
-//                   data-card-id={testimonial.id}
-//                   className={`
-//                     flex flex-col items-start
-//                     bg-linear-to-br from-[#F9F9F9] to-white
-//                     border border-primary-ultra
-//                     rounded-2xl
-//                     transition-all duration-500 ease-in-out
-//                     cursor-pointer
-//                     shrink-0 snap-center
-//                     ${
-//                       isActive
-//                         ? "w-[260px] md:w-[570px] p-4 md:p-[26.46px] gap-3 md:gap-[35.28px] scale-100 md:scale-100 shadow-lg z-10"
-//                         : "w-[220px] md:w-[450px] p-3 md:p-[20.89px] gap-2 md:gap-[27.85px] scale-90 md:scale-95 opacity-70 md:opacity-85 z-0 md:mt-8 z-0"
-//                     }
-//                   `}
-//                   style={{
-//                     height: isActive ? "360px" : "340px",
-//                     transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-//                   }}
-//                   onClick={() => handleCardClick(testimonial.id)}
-//                 >
-//                   <div className="w-full">
-//                     <div className="flex items-center gap-2 mb-3 md:mb-4">
-//                       <div className="relative w-5 h-5 md:w-6 md:h-6 shrink-0">
-//                         <Image
-//                           src="/icons/star-purple.svg"
-//                           alt=""
-//                           width={isActive ? 20 : 16}
-//                           height={isActive ? 20 : 16}
-//                           className="absolute top-0 left-0"
-//                         />
-//                         <Image
-//                           src="/icons/star-purple.svg"
-//                           alt=""
-//                           width={isActive ? 10 : 8}
-//                           height={isActive ? 10 : 8}
-//                           className="absolute -right-1 -top-1 opacity-95"
-//                         />
-//                       </div>
-//                       <span
-//                         className={`font-medium duration-700 transition-all  text-base-dark ${
-//                           isActive
-//                             ? "text-lg md:text-base"
-//                             : "text-[10px] md:text-sm"
-//                         }`}
-//                       >
-//                         Manifestations
-//                       </span>
-//                     </div>
-
-//                     <div className="flex flex-wrap gap-1.5 md:gap-2">
-//                       {testimonial.manifestations.tags.map((tag, tagIndex) => (
-//                         <Tag key={tagIndex} {...tag} isActive={isActive} />
-//                       ))}
-//                     </div>
-//                   </div>
-
-//                   <div className="w-full">
-//                     <div className="bg-white rounded-xl md:rounded-2xl p-3 md:p-4">
-//                       <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
-//                         <Image
-//                           src={testimonial.image}
-//                           width={isActive ? 36 : 32}
-//                           height={isActive ? 36 : 32}
-//                           className="rounded-full  object-cover shrink-0"
-//                           alt={testimonial.name}
-//                         />
-//                         <div className="min-w-0">
-//                           <h3
-//                             className={`font-semibold text-base-dark truncate ${
-//                               isActive
-//                                 ? "text-sm md:text-base"
-//                                 : "text-[10px] md:text-sm"
-//                             }`}
-//                           >
-//                             {testimonial.name}
-//                           </h3>
-//                           <p
-//                             className={`text-base-secondary truncate ${
-//                               isActive
-//                                 ? "text-xs md:text-sm"
-//                                 : "text-[8px] md:text-xs"
-//                             }`}
-//                           >
-//                             {testimonial.role}
-//                           </p>
-//                         </div>
-//                       </div>
-
-//                       <div className="flex mb-2 md:mb-3">
-//                         {Array.from({ length: testimonial.rating }).map(
-//                           (_, i) => (
-//                             <span
-//                               key={i}
-//                               className={`text-accent-yellow ${
-//                                 isActive
-//                                   ? "text-sm md:text-xl"
-//                                   : "text-xs md:text-lg"
-//                               }`}
-//                             >
-//                               ★
-//                             </span>
-//                           )
-//                         )}
-//                       </div>
-
-//                       <p
-//                         className={`text-base-secondary leading-[140%] md:leading-[150%] ${
-//                           isActive
-//                             ? "text-[10px] md:text-sm line-clamp-4 md:line-clamp-5"
-//                             : "text-[9px] md:text-xs line-clamp-3 md:line-clamp-4"
-//                         }`}
-//                       >
-//                         {testimonial.text}
-//                       </p>
-//                     </div>
-//                   </div>
-//                 </div>
-//               );
-//             })}
-//           </div>
-//         </div>
-
-//         <div className="flex items-center gap-2 justify-center">
-//           {testimonials.map((testimonial) => {
-//             const isActive = activeCard === testimonial.id;
-//             return (
-//               <button
-//                 key={testimonial.id}
-//                 onClick={() => handleCardClick(testimonial.id)}
-//                 className={`rounded-full transition-all opacity-50 duration-300 ${
-//                   isActive
-//                     ? "w-3 h-3 bg-primary"
-//                     : "w-2 h-2 bg-primary-ultra hover:bg-base-secondary cursor-pointer"
-//                 }`}
-//                 aria-label={`Go to testimonial ${testimonial.id}`}
-//               />
-//             );
-//           })}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-// function Tag({
-//   label,
-//   color,
-//   bg,
-//   icon,
-//   isActive = true,
-// }: TagProps & { isActive?: boolean }) {
-//   return (
-//     <div
-//       className={`flex items-center gap-1 md:gap-1.5 rounded-full font-medium whitespace-nowrap ${
-//         isActive
-//           ? "px-2 md:px-4 py-1 md:py-2 text-[9px] md:text-sm"
-//           : "px-1.5 md:px-3 py-0.5 md:py-1.5 text-[8px] md:text-xs"
-//       }`}
-//       style={{
-//         backgroundColor: bg,
-//         color: color,
-//       }}
-//     >
-//       <Image
-//         src={icon}
-//         width={isActive ? 12 : 10}
-//         height={isActive ? 12 : 10}
-//         alt={label}
-//         className="shrink-0"
-//       />
-//       {label}
-//     </div>
-//   );
-// }

@@ -22,7 +22,7 @@ const features = [
 
 export default function FeatureCards() {
   return (
-    <section className="relative z-20 mt-8 pb-10 md:-mt-10 md:pb-14">
+    <section className="relative z-20 mt-8 pb-7 md:-mt-10 md:pb-7">
       <Container>
         <div
           className="

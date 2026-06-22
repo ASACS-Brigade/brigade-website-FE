@@ -1,13 +1,15 @@
-// import PageHero from "../../components/layout/page-hero";
+import ExpandableGallery from "../../components/sections/gallery/expandable-gallery";
 
 export default function GalleryPage() {
   return (
-    <>
-      {/* <PageHero
-        title="Gallery"
-        subtitle="Moments from the Brigade."
-      /> */}
-      <h1>Gallery</h1>
-    </>
+    <main>
+
+      <section className="py-20">
+
+        <ExpandableGallery />
+
+      </section>
+
+    </main>
   );
 }
