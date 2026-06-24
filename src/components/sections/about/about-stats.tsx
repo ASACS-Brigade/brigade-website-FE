@@ -49,7 +49,7 @@ export default function AboutStats() {
       id="members"
       className="
       relative
-      py-5
+      pt-5 pb-10
       "
     >
       <Container>
