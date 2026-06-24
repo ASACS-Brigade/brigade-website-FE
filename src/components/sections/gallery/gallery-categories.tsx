@@ -193,7 +193,7 @@ export default function GalleryCategories() {
               <Link
                 key={category.slug}
                 href={`/gallery/${category.slug}`}
-                className="gallery-category-card flex-shrink-0 w-[260px] sm:w-[280px] md:w-[300px] lg:w-[320px] group/card"
+                className="gallery-category-card shrink-0 w-65 sm:w-[280px] md:w-[300px] lg:w-[320px] group/card"
                 style={{ scrollSnapAlign: "start" }}
               >
                 {/* Card Container */}
