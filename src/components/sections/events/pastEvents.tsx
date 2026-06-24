@@ -5,12 +5,12 @@ import FadeIn from "../../layout/fade-in";
 import Container from "../../layout/container";
 
 const pastEvents = [
-  { src: "/events/past-1.jpg", alt: "Past event 1" },
-  { src: "/events/past-2.jpg", alt: "Past event 2" },
-  { src: "/events/past-3.jpg", alt: "Past event 3" },
-  { src: "/events/past-4.jpg", alt: "Past event 4" },
-  { src: "/events/past-5.jpg", alt: "Past event 5" },
-  { src: "/events/past-6.jpg", alt: "Past event 6" },
+  { src: "/events/pic1.png", alt: "Past event 1" },
+  { src: "/events/pic1.png", alt: "Past event 2" },
+  { src: "/events/pic1.png", alt: "Past event 3" },
+  { src: "/events/pic1.png", alt: "Past event 4" },
+  { src: "/events/pic1.png", alt: "Past event 5" },
+  { src: "/events/pic1.png", alt: "Past event 6" },
 ];
 
 export default function PastEvents() {
