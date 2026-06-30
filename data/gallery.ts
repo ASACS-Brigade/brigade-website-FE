@@ -66,11 +66,11 @@ export const galleryCategories = {
     title: "Awards & Promotions",
     description:
       "Recognising excellence and commitment.",
-    heroImage: "/gallery/awards-cover.jpg",
+    heroImage: "/gallery/gallery1.png",
 
     images: [
-      "/gallery/awards/1.jpg",
-      "/gallery/awards/2.jpg",
+      "/gallery/gallery1.png",
+      "/events/pic1.png",
     ],
   },
 };

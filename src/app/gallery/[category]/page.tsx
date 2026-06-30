@@ -1,61 +1,50 @@
-// import { notFound } from "next/navigation";
+import { notFound } from "next/navigation";
 
-// import { galleryCategories } from "../../../../data/gallery";
+import { galleryCategories } from "../../../../data/gallery";
 
-// import CategoryHero from "../../../components/sections/gallery/category-hero";
+import CategoryHero from "../../../components/sections/gallery/category-hero";
 
-// import CategoryGallery from "../../../components/sections/gallery/category-gallery";
+import CategoryGallery from "../../../components/sections/gallery/category-gallery";
 
-// import CategoryBreadcrumb from "../../../components/sections/gallery/category-breadcrumb";
+import CategoryBreadcrumb from "../../../components/sections/gallery/category-breadcrumb";
 
-// import Container from "../../../components/layout/container";
+import Container from "../../../components/layout/container";
 
-// export default async function CategoryPage({
-//   params,
-// }: {
-//   params: Promise<{
-//     category: string;
-//   }>;
-// }) {
-//   const { category } = await params;
+export default async function CategoryPage({
+  params,
+}: {
+  params: Promise<{
+    category: string;
+  }>;
+}) {
+  const { category } = await params;
 
-//   const data =
-//     galleryCategories[
-//       category as keyof typeof galleryCategories
-//     ];
+  const data =
+    galleryCategories[
+      category as keyof typeof galleryCategories
+    ];
 
-//   if (!data) {
-//     notFound();
-//   }
+  if (!data) {
+    notFound();
+  }
 
-//   return (
-//     <>
-//       <CategoryHero
-//         title={data.title}
-//         description={data.description}
-//         image={data.heroImage}
-//       />
-
-//       <section className="pt-10">
-//         <Container>
-//           <CategoryBreadcrumb />
-//         </Container>
-//       </section>
-
-//       <CategoryGallery
-//         images={data.images}
-//       />
-//     </>
-//   );
-// }
-
-
-import React from 'react'
-
-const page = () => {
   return (
-    <div>category page</div>
-  )
-}
+    <>
+      <CategoryHero
+        title={data.title}
+        description={data.description}
+        image={data.heroImage}
+      />
 
-export default page
+      <section className="pt-10">
+        <Container>
+          <CategoryBreadcrumb />
+        </Container>
+      </section>
+
+      <CategoryGallery
+        images={data.images}
+      />
+    </>
+  );
+}
