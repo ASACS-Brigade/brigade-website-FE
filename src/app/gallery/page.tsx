@@ -1,5 +1,7 @@
 import Container from "../../components/layout/container";
+import ArtGallery from "../../components/sections/gallery/art-gallery";
 import GalleryCategories from "../../components/sections/gallery/gallery-categories";
+import GallerySlider from "../../components/sections/gallery/gallery-slider";
 // import GalleryFeaturedSlider from "../../components/sections/gallery/expandable-gallery";
 // import ExpandableGallery from "../../components/sections/gallery/expandable-gallery";
 // import GalleryCategories from "../../components/sections/gallery/gallery-categories";
@@ -9,8 +11,14 @@ import GalleryCategories from "../../components/sections/gallery/gallery-categor
 export default function GalleryPage() {
   return (
     <main>
-      <h1> Gallery page</h1>
+      <Container>
+  <GallerySlider />
+      </Container>
+
+
      <GalleryCategories />
+
+     <ArtGallery />
         {/* <ExpandableGallery />
         <GalleryCategories />
         <GalleryTimeline />  
