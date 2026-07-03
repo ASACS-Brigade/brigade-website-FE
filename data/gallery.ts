@@ -3,13 +3,13 @@ export const galleryCategories = {
     title: "Enrolment & Rededication Service",
     description:
       "Welcoming members into the Brigade family.",
-    heroImage: "/gallery/enrolment-cover.jpg",
+    heroImage: "/gallery/gallery1.png",
 
     images: [
-      "/gallery/enrolment/1.jpg",
-      "/gallery/enrolment/2.jpg",
-      "/gallery/enrolment/3.jpg",
-      "/gallery/enrolment/4.jpg",
+      "/gallery/gallery1.png",
+      "/about/biblestud.jpeg",
+      "/images/hero.jpeg",
+      "/events/pic1.png",
     ],
   },
 
@@ -17,12 +17,12 @@ export const galleryCategories = {
     title: "Parade & Drill",
     description:
       "Discipline, inspection and excellence.",
-    heroImage: "/gallery/parade-cover.jpg",
+    heroImage: "/gallery/gallery1.png",
 
     images: [
-      "/gallery/parade/1.jpg",
-      "/gallery/parade/2.jpg",
-      "/gallery/parade/3.jpg",
+      "/gallery/gallery1.png",
+      "/images/hero.jpeg",
+      "/events/pic2.png",
     ],
   },
 
@@ -30,11 +30,11 @@ export const galleryCategories = {
     title: "Medical & Charity Outreach",
     description:
       "Serving communities through compassion.",
-    heroImage: "/gallery/outreach-cover.jpg",
+    heroImage: "/events/pic1.png",
 
     images: [
-      "/gallery/outreach/1.jpg",
-      "/gallery/outreach/2.jpg",
+      "/events/pic1.png",
+      "/events/pic2.png",
     ],
   },
 
@@ -42,11 +42,11 @@ export const galleryCategories = {
     title: "Band & Orchestra",
     description:
       "Music ministry and talent development.",
-    heroImage: "/gallery/band-cover.jpg",
+    heroImage: "/images/hero.jpeg",
 
     images: [
-      "/gallery/band/1.jpg",
-      "/gallery/band/2.jpg",
+      "/images/hero.jpeg",
+      "/gallery/gallery1.png",
     ],
   },
 
@@ -54,11 +54,11 @@ export const galleryCategories = {
     title: "Leadership Camp",
     description:
       "Faith, discipline and leadership.",
-    heroImage: "/gallery/camp-cover.jpg",
+    heroImage: "/about/biblestud.jpeg",
 
     images: [
-      "/gallery/camp/1.jpg",
-      "/gallery/camp/2.jpg",
+      "/about/biblestud.jpeg",
+      "/events/pic3.png",
     ],
   },
 

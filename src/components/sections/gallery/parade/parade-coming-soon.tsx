@@ -12,7 +12,7 @@ import Container from "../../../layout/container";
 
 export default function ParadeComingSoon() {
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative overflow-hidden py-20">
 
       {/* Background */}
 
@@ -50,7 +50,7 @@ export default function ParadeComingSoon() {
         "
         style={{
           background:
-            "linear-gradient(to bottom,transparent,#F8FAFC)",
+            "linear-gradient(to bottom,transparent,var(--color-background))",
         }}
       />
 
@@ -74,7 +74,7 @@ export default function ParadeComingSoon() {
           className="
           relative
           overflow-hidden
-          rounded-[42px]
+          rounded-[32px]
           border
           border-white/10
           bg-white/5
@@ -112,7 +112,7 @@ export default function ParadeComingSoon() {
             grid
             gap-12
             lg:grid-cols-[1.2fr_.8fr]
-            p-8
+            p-6
             md:p-12
             lg:p-16
             "
@@ -146,7 +146,7 @@ export default function ParadeComingSoon() {
                 text-4xl
                 font-black
                 text-white
-                md:text-6xl
+                md:text-5xl
                 "
               >
                 Coming Soon

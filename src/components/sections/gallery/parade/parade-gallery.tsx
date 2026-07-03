@@ -28,16 +28,14 @@ export default function ParadeGallery({ year, images }: ParadeGalleryProps) {
 
   // Heights for Pinterest layout
   const heights = [
-    "h-[520px]",
-    "h-[330px]",
-    "h-[430px]",
+    "h-[420px]",
+    "h-[300px]",
+    "h-[360px]",
     "h-[280px]",
-    "h-[470px]",
-    "h-[350px]",
-    "h-[500px]",
-    "h-[310px]",
     "h-[390px]",
-    "h-[460px]",
+    "h-[320px]",
+    "h-[410px]",
+    "h-[300px]",
   ];
 
   // Lightbox handlers
@@ -69,9 +67,9 @@ export default function ParadeGallery({ year, images }: ParadeGalleryProps) {
 
   if (images.length === 0) {
     return (
-      <section id="gallery" className="py-24">
+      <section id="gallery" className="py-20">
         <Container>
-          <div className="rounded-[40px] border border-dashed border-secondary/40 bg-primary p-12 md:p-20 text-center overflow-hidden relative">
+          <div className="relative overflow-hidden rounded-[32px] border border-dashed border-secondary/40 bg-primary p-8 text-center md:p-16">
             <div className="absolute -top-20 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-secondary/20 blur-[120px]" />
 
             <motion.div
@@ -90,7 +88,7 @@ export default function ParadeGallery({ year, images }: ParadeGalleryProps) {
             >
               <CalendarDays size={70} className="mx-auto text-secondary" />
 
-              <h2 className="mt-8 text-5xl font-black text-white">
+              <h2 className="mt-8 text-4xl font-black text-white md:text-5xl">
                 {year} Gallery
               </h2>
 
@@ -115,7 +113,7 @@ export default function ParadeGallery({ year, images }: ParadeGalleryProps) {
    */
 
   return (
-    <section id="gallery" className="py-24">
+      <section id="gallery" className="py-20">
       <Container>
         <motion.div
           key={year}
@@ -142,7 +140,7 @@ export default function ParadeGallery({ year, images }: ParadeGalleryProps) {
               Parade Gallery
             </span>
 
-            <h2 className="mt-6 text-4xl md:text-6xl font-black text-primary">
+            <h2 className="mt-6 text-3xl font-black text-primary md:text-5xl">
               {year} Parade Gallery
             </h2>
 
@@ -165,7 +163,7 @@ export default function ParadeGallery({ year, images }: ParadeGalleryProps) {
               duration: 0.45,
               delay: 0.1,
             }}
-            className="mt-16 columns-1 sm:columns-2 xl:columns-3 gap-6"
+            className="mt-12 columns-1 gap-6 sm:columns-2 xl:columns-3"
           >
             {images.map((image, index) => (
               <motion.div
@@ -189,7 +187,7 @@ export default function ParadeGallery({ year, images }: ParadeGalleryProps) {
               >
                 {/* Image Container */}
                 <div
-                  className={`${heights[index % heights.length]} relative overflow-hidden rounded-[34px] cursor-pointer`}
+                  className={`${heights[index % heights.length]} relative cursor-pointer overflow-hidden rounded-3xl`}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >

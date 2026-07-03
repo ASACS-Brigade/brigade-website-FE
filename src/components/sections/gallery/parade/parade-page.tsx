@@ -19,24 +19,24 @@ import CtaBanner from "../../../shared/ctaBanner";
 const paradeImages = {
   "2026": [],
   "2025": [
-    "/gallery/parade/2025/1.jpg",
-    "/gallery/parade/2025/2.jpg",
-    "/gallery/parade/2025/3.jpg",
-    "/gallery/parade/2025/4.jpg",
-    "/gallery/parade/2025/5.jpg",
-    "/gallery/parade/2025/6.jpg",
+    "/gallery/gallery1.png",
+    "/images/hero.jpeg",
+    "/events/pic1.png",
+    "/events/pic2.png",
+    "/events/pic3.png",
+    "/about/biblestud.jpeg",
   ],
   "2024": [
-    "/gallery/parade/2024/1.jpg",
-    "/gallery/parade/2024/2.jpg",
-    "/gallery/parade/2024/3.jpg",
-    "/gallery/parade/2024/4.jpg",
+    "/images/hero.jpeg",
+    "/gallery/gallery1.png",
+    "/events/pic2.png",
+    "/about/william-A-Smith.jpg",
   ],
   "2023": [
-     "/images/hero.jpeg",
-   "/images/hero.jpeg",
-      "/images/hero.jpeg",
-   "/gallery/gallery1.png",
+    "/events/pic1.png",
+    "/events/pic3.png",
+    "/images/hero.jpeg",
+    "/gallery/gallery1.png",
   ],
 } satisfies Record<string, string[]>;
 

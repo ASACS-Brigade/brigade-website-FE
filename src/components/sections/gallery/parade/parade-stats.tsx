@@ -1,6 +1,5 @@
 "use client";
 
-import CountUp from "react-countup";
 import { motion } from "framer-motion";
 import {
   Shield,
@@ -52,7 +51,7 @@ const stats = [
 
 export default function ParadeStats() {
   return (
-    <section className="relative -mt-24 z-30 pb-24">
+    <section className="relative -mt-20 z-30 pb-20">
       <Container>
 
         <motion.div
@@ -110,6 +109,8 @@ export default function ParadeStats() {
                 border
                 border-slate-200
                 shadow-xl
+                dark:border-border
+                dark:bg-card
                 "
               >
 
@@ -162,13 +163,7 @@ export default function ParadeStats() {
                     group-hover:text-secondary
                     "
                   >
-                    <CountUp
-                      end={stat.value}
-                      duration={2.5}
-                      enableScrollSpy
-                      scrollSpyOnce
-                    />
-
+                    {stat.value.toLocaleString()}
                     {stat.suffix}
                   </h3>
 
@@ -192,7 +187,7 @@ export default function ParadeStats() {
                     text-muted
                     transition
                     duration-300
-                    group-hover:text-slate-700
+                    group-hover:text-foreground
                     "
                   >
                     {stat.description}

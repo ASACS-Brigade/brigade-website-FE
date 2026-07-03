@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 
 interface CtaBannerProps {
+  icon?: ReactNode;
   heading: string;
   subheading: string;
   buttonLabel: string;
@@ -14,6 +15,7 @@ interface CtaBannerProps {
 }
 
 export default function CtaBanner({
+  icon,
   heading,
   subheading,
   buttonLabel,
@@ -51,6 +53,12 @@ export default function CtaBanner({
       >
         {/* Left Content */}
         <div className="flex flex-col md:flex-row items-center text-center md:text-left gap-6 flex-1">
+          {icon ? (
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/10">
+              {icon}
+            </div>
+          ) : null}
+
           {/* Text */}
           <div>
             <h3 className={`${headingSizeMap[headingSize]} font-bold`}>

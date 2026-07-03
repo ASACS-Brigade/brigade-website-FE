@@ -9,12 +9,12 @@ import Container from "../../../layout/container";
 
 export default function ParadeHero() {
   return (
-    <section className="relative min-h-[90vh] overflow-hidden bg-primary">
+    <section className="relative min-h-[560px] overflow-hidden bg-primary md:min-h-[620px]">
 
       {/* Background */}
 
       <Image
-        src="/gallery/parade-cover.jpg"
+        src="/gallery/gallery1.png"
         alt="Parade Hero"
         fill
         priority
@@ -42,9 +42,10 @@ export default function ParadeHero() {
         relative
         z-10
         flex
-        min-h-[90vh]
+        min-h-[560px]
         items-center
-        py-24
+        py-20
+        md:min-h-[620px]
         "
       >
         <div className="max-w-3xl">
@@ -110,11 +111,12 @@ export default function ParadeHero() {
             }}
             className="
             mt-6
-            text-5xl
+            text-4xl
             font-black
             leading-tight
             text-white
-            md:text-7xl
+            sm:text-5xl
+            md:text-6xl
             "
           >
             Parade &
@@ -141,9 +143,10 @@ export default function ParadeHero() {
             className="
             mt-7
             max-w-2xl
-            text-lg
+            text-base
             leading-8
             text-white/80
+            md:text-lg
             "
           >
             Every parade tells a story of discipline,
@@ -224,7 +227,7 @@ export default function ParadeHero() {
         "
         style={{
           background:
-            "linear-gradient(to bottom,transparent,#F8FAFC)"
+            "linear-gradient(to bottom,transparent,var(--color-background))"
         }}
       />
     </section>

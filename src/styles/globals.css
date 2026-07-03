@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 @import "../styles/theme.css";
 
 html {
@@ -11,14 +12,18 @@ html.dark {
 }
 
 body {
- background: var(--color-background);
+  min-height: 100vh;
+  background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-inter);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 html.dark body {
-  background: #020617;
-  color: #ffffff;
+  background: var(--color-background);
+  color: var(--color-foreground);
 }
 
 h1,
@@ -158,6 +163,49 @@ h6 {
 
 .hoverLink:hover {
   color: #d4a437;
+}
+
+html.dark .text-primary {
+  color: var(--color-foreground);
+}
+
+html.dark .text-muted,
+html.dark .text-slate-500,
+html.dark .text-slate-600,
+html.dark .text-gray-500,
+html.dark .text-gray-600,
+html.dark .text-gray-700 {
+  color: var(--color-muted);
+}
+
+html.dark .text-slate-700,
+html.dark .text-slate-900,
+html.dark .text-gray-900 {
+  color: var(--color-foreground);
+}
+
+html.dark .bg-white,
+html.dark .bg-\[white\] {
+  background-color: var(--color-card);
+}
+
+html.dark .border-slate-200,
+html.dark .border-gray-100 {
+  border-color: var(--color-border);
+}
+
+html.dark :where(.bg-white\/90, .bg-white\/95, .bg-white\/80) :where(.text-gray-900, .text-slate-900, .text-primary) {
+  color: #111827;
+}
+
+html.dark .gallery-card-wrapper,
+html.dark .gallery-card-wrapper .bg-white {
+  background: var(--color-card);
+}
+
+html.dark .gallery-nav-button {
+  background: var(--color-card);
+  border-color: var(--color-border);
 }
 
 

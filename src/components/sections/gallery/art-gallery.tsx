@@ -32,7 +32,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "7",
-    image: "/gallery/outreach.jpg",
+    image: "/events/pic1.png",
     title: "Service",
     rotation: 13,
     position: { top: "63%", left: "33%" },
@@ -54,7 +54,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "6",
-    image: "/gallery/parade.jpg",
+    image: "/images/hero.jpeg",
     title: "Excellence",
     rotation: 10,
     position: { top: "18%", left: "34%" },
@@ -64,7 +64,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "9",
-    image: "/gallery/enrolment.jpg",
+    image: "/gallery/gallery1.png",
     title: "Together",
     rotation: -5,
     position: { top: "55%", left: "38%" },
@@ -76,7 +76,7 @@ const galleryItems: GalleryItem[] = [
   // COLUMN 3 (Right Area)
   {
     id: "3",
-    image: "/gallery/outreach.jpg",
+    image: "/events/pic2.png",
     title: "Community",
     rotation: -6,
     position: { top: "-5%", left: "51%" },
@@ -96,7 +96,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "5",
-    image: "/gallery/enrolment.jpg",
+    image: "/about/biblestud.jpeg",
     title: "Moment",
     rotation: 9,
     position: { top: "47%", left: "82%" },
@@ -106,7 +106,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "8",
-    image: "/gallery/orchestra.jpg",
+    image: "/events/pic3.png",
     title: "Harmony",
     rotation: 6,
     position: { top: "90%", left: "40%" },
@@ -116,7 +116,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "10",
-    image: "/gallery/parade.jpg",
+    image: "/about/william-A-Smith.jpg",
     title: "Legacy",
     rotation: 5,
     position: { top: "80%", left: "88%" },

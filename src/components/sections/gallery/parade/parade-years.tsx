@@ -22,7 +22,7 @@ const paradeYears = [
     title: "Parade Season",
     description:
       "Preparations have begun for another remarkable parade season.",
-    cover: "/gallery/parade-cover.jpg",
+    cover: "/gallery/gallery1.png",
     photos: 0,
   },
   {
@@ -31,7 +31,7 @@ const paradeYears = [
     title: "Inspection & Parade Night",
     description:
       "Inspection parade, ceremonial march, awards and presentation.",
-    cover: "/gallery/parade/1.jpg",
+    cover: "/gallery/gallery1.png",
     photos: 48,
   },
   {
@@ -40,7 +40,7 @@ const paradeYears = [
     title: "Founder's Day Parade",
     description:
       "Celebrating our heritage through precision and discipline.",
-    cover: "/gallery/parade/2.jpg",
+    cover: "/images/hero.jpeg",
     photos: 37,
   },
   {
@@ -49,7 +49,7 @@ const paradeYears = [
     title: "Church Anniversary Parade",
     description:
       "A memorable display of service and excellence.",
-    cover: "/gallery/parade/3.jpg",
+    cover: "/events/pic1.png",
     photos: 31,
   },
 ];
@@ -66,7 +66,7 @@ export default function ParadeYears({
   return (
     <section
       id="years"
-      className="py-24 bg-background"
+      className="bg-background py-20"
     >
       <Container>
         <motion.div
@@ -105,7 +105,7 @@ export default function ParadeYears({
           <h2
             className="
             mt-6
-            text-4xl
+            text-3xl
             md:text-6xl
             font-black
             text-primary
@@ -130,7 +130,7 @@ export default function ParadeYears({
 
         <div
           className="
-          mt-16
+          mt-12
 
           grid
 
@@ -160,9 +160,9 @@ export default function ParadeYears({
                   }
                   className={`
                     w-full
-                    rounded-3xl
+                    rounded-2xl
                     border
-                    p-6
+                    p-5
                     text-left
                     transition-all
 
@@ -268,9 +268,9 @@ export default function ParadeYears({
             className="
             relative
             overflow-hidden
-            rounded-[40px]
+            rounded-[32px]
             bg-primary
-            min-h-[580px]
+            min-h-[480px]
             "
           >
             <div
@@ -306,8 +306,8 @@ export default function ParadeYears({
 
               justify-end
 
-              p-10
-              md:p-16
+              p-8
+              md:p-12
               "
             >
               {selected.status ===
@@ -330,9 +330,10 @@ export default function ParadeYears({
 
               <h2
                 className="
-                text-6xl
+                text-5xl
                 font-black
                 text-white
+                md:text-6xl
                 "
               >
                 {selected.year}
