@@ -7,7 +7,7 @@ const info = [
     icon: MapPin,
     label: "Visit Us",
     lines: [
-      "37, North Thomas Street,",
+      "All Saints Anglican Church,",
       "Surulere, Lagos, Nigeria.",
     ],
   },
@@ -19,14 +19,14 @@ const info = [
   {
     icon: Mail,
     label: "Email Us",
-    lines: ["info@brigadesurlere.org"],
+    lines: ["bbgb.asacs@gmail.com"],
   },
   {
     icon: Clock,
-    label: "Office Hours",
+    label: "Weekly Meetings",
     lines: [
-      "Mondays 10:00 AM – 12:30 PM",
-      "Fridays 5:00 PM – 7:00 PM",
+      "Saturday 4:00 PM – 6:00 PM",
+      // "Fridays 5:00 PM – 7:00 PM",
     ],
   },
 ];

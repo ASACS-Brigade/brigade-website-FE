@@ -17,7 +17,7 @@ export default function GalleryPage() {
 
       <ArtGallery />
       <CtaBanner
-        heading="Get Involved Today"
+        heading="Get Involved Today By Donating"
         subheading="Join our community and make an impact."
         buttonLabel="Register Interest"
         buttonHref="/register"

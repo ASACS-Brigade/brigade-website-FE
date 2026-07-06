@@ -45,14 +45,14 @@ export default function CtaBanner({
       <div
         className={`${
           isBgColor ? bgColor : ""
-        } px-5 py-10 lg:px-12 lg:py-32 flex flex-col lg:flex-row items-center justify-between text-white md:gap-8 gap-3`}
+        } flex flex-col items-center justify-center gap-5 px-5 py-10 text-white md:gap-0 lg:flex-row lg:px-40 lg:py-32`}
         style={{
           ...(isBgColor ? {} : { backgroundColor: bgColor }),
-          clipPath: "polygon(0 0, 100% 0, 100% 85%, 0 100%)",
+          clipPath: "polygon(0 0, 100% 0, 100% 88%, 0 100%)",
         }}
       >
         {/* Left Content */}
-        <div className="flex flex-col md:flex-row items-center text-center md:text-left gap-6 flex-1">
+        <div className="flex flex-1 flex-col items-center gap-6 text-center md:flex-row md:text-left">
           {icon ? (
             <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/10">
               {icon}
@@ -76,7 +76,7 @@ export default function CtaBanner({
           href={buttonHref}
           className={`${
             isButtonColor ? buttonColor : ""
-          } px-6 md:px-8 py-3 rounded-md font-semibold text-white whitespace-nowrap hover:opacity-90 transition md:w-auto md:text-base text-xs flex-shrink-0`}
+          } w-full shrink-0 whitespace-nowrap rounded-md px-6 py-3 text-center text-sm font-semibold text-white transition hover:opacity-90 sm:w-auto md:px-8 md:text-base`}
           style={isButtonColor ? {} : { backgroundColor: buttonColor }}
         >
           {buttonLabel}

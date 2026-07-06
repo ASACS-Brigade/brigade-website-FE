@@ -7,7 +7,7 @@ import ParadeStats from "./parade-stats";
 import ParadeComingSoon from "./parade-coming-soon";
 import ParadeYears from "./parade-years";
 import ParadeGallery from "./parade-gallery";
-import ParadeCTA from "./parade-cta";
+
 import CtaBanner from "../../../shared/ctaBanner";
 // import GalleryTestPage from "./gallery-test";
 
@@ -67,14 +67,13 @@ export default function ParadePage() {
           paradeImages[selectedYear] ?? []
         }
       />
-      <CtaBanner 
+      <CtaBanner
         heading="Become Part of Our Next Parade Story"
         subheading="Every parade tells a story of discipline, leadership and Christian service. Join the Boys' & Girls' Brigade and become part of the next chapter of our history."
         buttonLabel="Join The Brigade"
         buttonHref="/register"
       />
-      {/* <ParadeCTA /> */}
-      {/* <GalleryTestPage /> */}
+
     </>
   );
 }

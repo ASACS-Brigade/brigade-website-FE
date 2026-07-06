@@ -2,13 +2,8 @@ import { notFound } from "next/navigation";
 
 import { galleryCategories } from "../../../../data/gallery";
 
-import CategoryHero from "../../../components/sections/gallery/category-hero";
-import CategoryGallery from "../../../components/sections/gallery/category-gallery";
-import CategoryBreadcrumb from "../../../components/sections/gallery/category-breadcrumb";
-
 import ParadePage from "../../../components/sections/gallery/parade/parade-page";
-
-import Container from "../../../components/layout/container";
+import AlbumPage from "../../../components/sections/gallery/category-album/album-page";
 
 export default async function CategoryPage({
   params,
@@ -36,79 +31,5 @@ export default async function CategoryPage({
     return <ParadePage />;
   }
 
-  /**
-   * Default Gallery Categories
-   */
-
-  return (
-    <>
-      <CategoryHero
-        title={data.title}
-        description={data.description}
-        image={data.heroImage}
-      />
-
-      <section className="pt-8">
-        <Container>
-          <CategoryBreadcrumb />
-        </Container>
-      </section>
-
-      <CategoryGallery
-        images={data.images}
-      />
-    </>
-  );
+  return <AlbumPage album={data} />;
 }
-
-
-// import { notFound } from "next/navigation";
-
-// import { galleryCategories } from "../../../../data/gallery";
-
-// import CategoryHero from "../../../components/sections/gallery/category-hero";
-
-// import CategoryGallery from "../../../components/sections/gallery/category-gallery";
-
-// import CategoryBreadcrumb from "../../../components/sections/gallery/category-breadcrumb";
-
-// import Container from "../../../components/layout/container";
-
-// export default async function CategoryPage({
-//   params,
-// }: {
-//   params: Promise<{
-//     category: string;
-//   }>;
-// }) {
-//   const { category } = await params;
-
-//   const data =
-//     galleryCategories[
-//       category as keyof typeof galleryCategories
-//     ];
-
-//   if (!data) {
-//     notFound();
-//   }
-
-//   return (
-//     <>
-//       <CategoryHero
-//         title={data.title}
-//         description={data.description}
-//         image={data.heroImage}
-//       />
-
-//       <section className="pt-8">
-//         <Container>
-//           <CategoryBreadcrumb />
-//         </Container>
-//       </section>
-
-//       <CategoryGallery
-//         images={data.images}
-//       />
-//     </>
-//   );
-// }

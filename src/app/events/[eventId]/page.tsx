@@ -1,0 +1,198 @@
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ArrowLeft, CalendarDays, Clock3, MapPin } from "lucide-react";
+import Container from "../../../components/layout/container";
+import {
+  brigadeEvents,
+  eventFullDate,
+  getEventById,
+} from "../../../constants/events";
+
+export function generateStaticParams() {
+  return brigadeEvents.map((event) => ({
+    eventId: event.id,
+  }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ eventId: string }>;
+}) {
+  const { eventId } = await params;
+  const event = getEventById(eventId);
+
+  if (!event) {
+    return {
+      title: "Event Not Found | Boys & Girls Brigade Surulere",
+    };
+  }
+
+  return {
+    title: `${event.title} | Boys & Girls Brigade Surulere`,
+    description: event.description,
+  };
+}
+
+export default async function EventDetailPage({
+  params,
+}: {
+  params: Promise<{ eventId: string }>;
+}) {
+  const { eventId } = await params;
+  const event = getEventById(eventId);
+
+  if (!event) {
+    notFound();
+  }
+
+  return (
+    <main className="bg-background text-foreground">
+      <section className="relative overflow-hidden bg-primary py-16 text-white sm:py-20">
+        <Image
+          src={event.image}
+          alt={event.title}
+          fill
+          priority
+          className="pointer-events-none object-cover opacity-35"
+        />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(14, 42, 71, 0.98) 0%, rgba(14, 42, 71, 0.88) 48%, rgba(14, 42, 71, 0.35) 100%)",
+          }}
+        />
+
+        <Container className="relative z-10">
+          <Link
+            href="/events"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-white/75 transition hover:text-secondary"
+          >
+            <ArrowLeft size={16} />
+            Back To Events
+          </Link>
+
+          <div className="mt-8 max-w-4xl">
+            <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-secondary">
+              Event Story
+            </span>
+
+            <h1 className="mt-5 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+              {event.title}
+            </h1>
+
+            <p className="mt-5 max-w-3xl text-base leading-8 text-white/85 sm:text-lg">
+              {event.description}
+            </p>
+
+            <div className="mt-8 grid gap-3 sm:grid-cols-3">
+              <div className="rounded-lg border border-white/15 bg-white/10 p-4 backdrop-blur">
+                <CalendarDays size={18} className="text-secondary" />
+                <p className="mt-2 text-sm font-semibold">
+                  {eventFullDate(event)}
+                </p>
+              </div>
+              <div className="rounded-lg border border-white/15 bg-white/10 p-4 backdrop-blur">
+                <Clock3 size={18} className="text-secondary" />
+                <p className="mt-2 text-sm font-semibold">{event.time}</p>
+              </div>
+              <div className="rounded-lg border border-white/15 bg-white/10 p-4 backdrop-blur">
+                <MapPin size={18} className="text-secondary" />
+                <p className="mt-2 text-sm font-semibold">{event.location}</p>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-14 sm:py-18 lg:py-20">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(300px,0.35fr)]">
+            <article className="rounded-lg border border-border bg-card p-6 shadow-sm sm:p-8">
+              <h2 className="text-2xl font-bold text-primary">
+                About The Event
+              </h2>
+
+              <div className="mt-5 space-y-5 text-base leading-8 text-muted">
+                {event.writeup.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+
+              <div className="mt-8 rounded-lg border border-secondary/30 bg-secondary/10 p-5">
+                <h3 className="text-lg font-bold text-primary">Outcome</h3>
+                <p className="mt-3 text-sm leading-7 text-muted">
+                  {event.outcome}
+                </p>
+              </div>
+            </article>
+
+            <aside className="rounded-lg border border-border bg-card p-6 shadow-sm">
+              <h2 className="text-xl font-bold text-primary">Quick Details</h2>
+              <dl className="mt-5 space-y-4 text-sm">
+                <div>
+                  <dt className="font-bold text-foreground">Date</dt>
+                  <dd className="mt-1 text-muted">{eventFullDate(event)}</dd>
+                </div>
+                <div>
+                  <dt className="font-bold text-foreground">Time</dt>
+                  <dd className="mt-1 text-muted">{event.time}</dd>
+                </div>
+                <div>
+                  <dt className="font-bold text-foreground">Venue</dt>
+                  <dd className="mt-1 text-muted">{event.location}</dd>
+                </div>
+              </dl>
+
+              <Link
+                href="/gallery"
+                className="mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-secondary px-5 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#b98c22] focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-background"
+              >
+                See More In Gallery
+              </Link>
+            </aside>
+          </div>
+        </Container>
+      </section>
+
+      <section className="pb-16 sm:pb-20">
+        <Container>
+          <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h2 className="text-2xl font-bold text-primary">
+                Event Pictures
+              </h2>
+              <p className="mt-1 text-sm text-muted">
+                A few moments from the event.
+              </p>
+            </div>
+            <Link
+              href="/gallery"
+              className="text-sm font-bold text-secondary transition hover:text-primary"
+            >
+              View Full Gallery
+            </Link>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-3">
+            {event.galleryImages.map((image, index) => (
+              <div
+                key={`${image}-${index}`}
+                className="group relative aspect-[4/3] overflow-hidden rounded-lg bg-primary/10 shadow-sm ring-1 ring-border"
+              >
+                <Image
+                  src={image}
+                  alt={`${event.title} photo ${index + 1}`}
+                  fill
+                  className="object-cover transition duration-700 group-hover:scale-110"
+                />
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+    </main>
+  );
+}

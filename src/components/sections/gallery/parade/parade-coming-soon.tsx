@@ -40,20 +40,6 @@ export default function ParadeComingSoon() {
         "
       />
 
-      <div
-        className="
-        absolute
-        bottom-0
-        left-0
-        h-56
-        w-full
-        "
-        style={{
-          background:
-            "linear-gradient(to bottom,transparent,var(--color-background))",
-        }}
-      />
-
       <Container className="relative z-20">
 
         <motion.div

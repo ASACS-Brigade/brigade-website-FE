@@ -23,19 +23,9 @@ export default function ParadeHero() {
 
       {/* Overlay */}
 
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(90deg,rgba(14,42,71,.97) 0%,rgba(14,42,71,.88) 42%,rgba(14,42,71,.45) 72%,rgba(14,42,71,.15) 100%)",
-        }}
-      />
+      <div className="absolute inset-0 bg-primary/78" />
 
       {/* Decorative */}
-
-      <div className="absolute -left-20 top-20 h-80 w-80 rounded-full bg-secondary/20 blur-[120px]" />
-
-      <div className="absolute right-0 bottom-0 h-72 w-72 rounded-full bg-white/10 blur-[120px]" />
 
       <Container
         className="
@@ -86,8 +76,8 @@ export default function ParadeHero() {
             inline-flex
             items-center
             gap-2
-            rounded-full
-            bg-secondary/20
+
+
             px-4
             py-2
             text-secondary
@@ -175,7 +165,7 @@ export default function ParadeHero() {
             "
           >
 
-            <Link
+            {/* <Link
               href="#years"
               className="
               rounded-xl
@@ -208,28 +198,13 @@ export default function ParadeHero() {
               "
             >
               Explore Gallery
-            </Link>
+            </Link> */}
 
           </motion.div>
 
         </div>
       </Container>
 
-      {/* Bottom Fade */}
-
-      <div
-        className="
-        absolute
-        bottom-0
-        left-0
-        h-48
-        w-full
-        "
-        style={{
-          background:
-            "linear-gradient(to bottom,transparent,var(--color-background))"
-        }}
-      />
     </section>
   );
 }
