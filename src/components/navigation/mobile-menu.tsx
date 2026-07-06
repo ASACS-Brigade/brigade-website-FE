@@ -75,8 +75,8 @@ export default function MobileMenu({
         h-screen
         w-[85%]
         max-w-[350px]
-        bg-white
-        dark:bg-slate-950
+        bg-card
+        text-foreground
         shadow-2xl
         transition-transform
         duration-300
@@ -87,13 +87,12 @@ export default function MobileMenu({
         }
         `}
       >
-        <div className="flex items-center justify-between border-b p-5">
+        <div className="flex items-center justify-between border-b border-border p-5">
           <h2
             className="
             text-lg
             font-bold
-            text-[#0E2A47]
-            dark:text-white
+            text-foreground
             "
           >
             Menu
@@ -106,11 +105,11 @@ export default function MobileMenu({
             className="
             rounded-lg
             p-2
-            hover:bg-gray-100
-            dark:hover:bg-slate-800
+            text-foreground
+            hover:bg-background
             "
           >
-            <X className="dark:text-white" />
+            <X />
           </button>
         </div>
 
@@ -127,11 +126,9 @@ export default function MobileMenu({
               py-4
               text-lg
               font-medium
-              text-gray-700
-              dark:text-gray-200
+              text-foreground
               border-b
-              border-gray-100
-              dark:border-slate-800
+              border-border
               hover:text-[#D4A437]
               transition-colors
               "
@@ -161,91 +158,4 @@ export default function MobileMenu({
 }
 
 
-// "use client";
 
-// import Link from "next/link";
-// import { X } from "lucide-react";
-
-// interface MobileMenuProps {
-//   open: boolean;
-//   onClose: () => void;
-// }
-
-// const links = [
-//   {
-//     label: "Home",
-//     href: "/",
-//   },
-//   {
-//     label: "About",
-//     href: "/about",
-//   },
-//   {
-//     label: "Articles",
-//     href: "/articles",
-//   },
-//   {
-//     label: "Events",
-//     href: "/events",
-//   },
-//   {
-//     label: "Gallery",
-//     href: "/gallery",
-//   },
-//   {
-//     label: "Contact",
-//     href: "/contact",
-//   },
-// ];
-
-// export default function MobileMenu({
-//   open,
-//   onClose,
-// }: MobileMenuProps) {
-//   if (!open) return null;
-
-//   return (
-//     <div
-//       className="
-//       fixed
-//       inset-0
-//       z-[100]
-//       bg-black/50
-//       "
-//     >
-//       <div
-//         className="
-//         ml-auto
-//         h-full
-//         w-[300px]
-//         bg-white
-//         p-6
-//         "
-//       >
-//         <div className="flex justify-end">
-
-//           <button title="Close menu" onClick={onClose}>
-//             <X />
-//           </button>
-
-//         </div>
-
-//         <nav className="mt-10 flex flex-col gap-6">
-
-//           {links.map((link) => (
-//             <Link
-//               key={link.label}
-//               href={link.href}
-//               onClick={onClose}
-//               className="text-lg font-medium"
-//             >
-//               {link.label}
-//             </Link>
-//           ))}
-
-//         </nav>
-
-//       </div>
-//     </div>
-//   );
-// }

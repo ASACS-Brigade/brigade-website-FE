@@ -3,10 +3,10 @@ import { notFound } from "next/navigation";
 import { galleryCategories } from "../../../../data/gallery";
 
 import CategoryHero from "../../../components/sections/gallery/category-hero";
-
 import CategoryGallery from "../../../components/sections/gallery/category-gallery";
-
 import CategoryBreadcrumb from "../../../components/sections/gallery/category-breadcrumb";
+
+import ParadePage from "../../../components/sections/gallery/parade/parade-page";
 
 import Container from "../../../components/layout/container";
 
@@ -28,6 +28,18 @@ export default async function CategoryPage({
     notFound();
   }
 
+  /**
+   * Special Parade Experience
+   */
+
+  if (category === "parade") {
+    return <ParadePage />;
+  }
+
+  /**
+   * Default Gallery Categories
+   */
+
   return (
     <>
       <CategoryHero
@@ -36,7 +48,7 @@ export default async function CategoryPage({
         image={data.heroImage}
       />
 
-      <section className="pt-10">
+      <section className="pt-8">
         <Container>
           <CategoryBreadcrumb />
         </Container>
@@ -48,3 +60,55 @@ export default async function CategoryPage({
     </>
   );
 }
+
+
+// import { notFound } from "next/navigation";
+
+// import { galleryCategories } from "../../../../data/gallery";
+
+// import CategoryHero from "../../../components/sections/gallery/category-hero";
+
+// import CategoryGallery from "../../../components/sections/gallery/category-gallery";
+
+// import CategoryBreadcrumb from "../../../components/sections/gallery/category-breadcrumb";
+
+// import Container from "../../../components/layout/container";
+
+// export default async function CategoryPage({
+//   params,
+// }: {
+//   params: Promise<{
+//     category: string;
+//   }>;
+// }) {
+//   const { category } = await params;
+
+//   const data =
+//     galleryCategories[
+//       category as keyof typeof galleryCategories
+//     ];
+
+//   if (!data) {
+//     notFound();
+//   }
+
+//   return (
+//     <>
+//       <CategoryHero
+//         title={data.title}
+//         description={data.description}
+//         image={data.heroImage}
+//       />
+
+//       <section className="pt-8">
+//         <Container>
+//           <CategoryBreadcrumb />
+//         </Container>
+//       </section>
+
+//       <CategoryGallery
+//         images={data.images}
+//       />
+//     </>
+//   );
+// }

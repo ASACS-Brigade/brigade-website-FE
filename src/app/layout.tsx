@@ -5,9 +5,6 @@ import Navbar from "../components/navigation/navbar";
 import Footer from "../components/layout/footer";
 import { Providers } from "../components/layout/theme-provider";
 
-import { Inter, Montserrat } from "next/font/google";
-
-
 export const metadata: Metadata = {
   title:
     "5th & 9th Surulere Companies | Boys & Girls Brigade Surulere, Lagos Nigeria",
@@ -96,17 +93,6 @@ export const metadata: Metadata = {
 
 
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-montserrat",
-});
-
-
 export default function RootLayout({
   children,
 }: {
@@ -115,7 +101,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
 
-      <body className={`${inter.variable} ${montserrat.variable}`}>
+      <body>
 
         <Providers>
 

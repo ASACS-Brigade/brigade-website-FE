@@ -32,11 +32,11 @@ export default function Navbar() {
         top-0
         z-[999]
         border-b
-        border-slate-200
-        bg-[white]
-        dark:border-slate-800
-        dark:bg-slate-950
-        dark:text-white
+        border-border
+        bg-card
+        text-foreground
+        shadow-sm
+        shadow-black/5
         "
       >
     
@@ -50,8 +50,7 @@ export default function Navbar() {
               min-w-0
               items-center
               gap-2
-              text-[#0E2A47]
-              dark:text-white
+              text-primary
               sm:gap-3
               "
             >
@@ -97,7 +96,7 @@ export default function Navbar() {
                     href={item.href}
                     aria-current={isActive ? "page" : undefined}
                     className={cn(
-                      "navHover text-slate-700 transition dark:text-slate-200",
+                      "navHover text-foreground transition",
                       isActive && "is-active"
                     )}
                   >
@@ -125,14 +124,11 @@ export default function Navbar() {
                 justify-center
                 rounded-lg
                 border
-                border-slate-300
-                text-slate-900
+                border-border
+                text-foreground
                 transition
-                hover:bg-slate-100
+                hover:bg-background
                 lg:hidden
-                dark:border-slate-700
-                dark:text-white
-                dark:hover:bg-slate-800
                 "
               >
                 <Menu size={22} />

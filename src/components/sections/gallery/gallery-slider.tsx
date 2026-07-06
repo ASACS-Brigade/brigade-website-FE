@@ -340,21 +340,21 @@ const slides = [
     title: "Parade Night",
     subtitle:
       "Discipline, excellence and inspection.",
-    image: "/gallery/parade.jpg",
+    image: "/images/hero.jpeg",
     icon: Shield,
   },
   {
     title: "Medical Outreach",
     subtitle:
       "Serving communities with compassion.",
-    image: "/gallery/outreach.jpg",
+    image: "/events/pic1.png",
     icon: Heart,
   },
   {
     title: "Band & Orchestra",
     subtitle:
       "Training talents through music.",
-    image: "/gallery/orchestra.jpg",
+    image: "/events/pic3.png",
     icon: Music,
   },
 ];

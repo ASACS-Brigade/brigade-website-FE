@@ -139,7 +139,7 @@ export default function CtaBanner() {
           transition
           w-full
           md:w-auto
-          "
+          " 
         >
           Register Interest
         </button>
