@@ -1,11 +1,19 @@
-// import PageHero from "../../components/layout/page-hero";
+import type { Metadata } from "next";
 
-export default function ArticlesPage() {
-  return (
-    <>
-    <section>
-<h1>Article page</h1>
-    </section>
-    </>
-  );
+import ArticlesPageContent from "../../components/sections/articles/articles-page-content";
+
+export const metadata: Metadata = {
+  title: "Articles | Boys & Girls Brigade Surulere",
+  description:
+    "Read Brigade news, history, devotions, leadership guides, event reports and Golden Jubilee stories from Boys & Girls Brigade Surulere.",
+};
+
+export default async function ArticlesPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ page?: string | string[] }>;
+}) {
+  const resolvedSearchParams = await searchParams;
+
+  return <ArticlesPageContent page={resolvedSearchParams?.page} />;
 }
