@@ -1,89 +1,111 @@
 "use client";
+
 import Link from "next/link";
-import { MapPin } from "lucide-react";
+import { ArrowRight, CalendarDays, Clock3, MapPin, X } from "lucide-react";
 import FadeIn from "../../layout/fade-in";
 import Container from "../../layout/container";
+import {
+  BrigadeEvent,
+  eventDay,
+  eventFullDate,
+  eventMonth,
+  eventsForDate,
+} from "../../../constants/events";
 
-const upcomingEvents = [
-  {
-    month: "JUN",
-    day: "15",
-    title: "Monthly Fellowship & Devotion",
-    location: "Brigade Hall, Surulere",
-    time: "10:00 AM",
-    href: "/events/monthly-fellowship",
-  },
-  {
-    month: "JUN",
-    day: "06",
-    title: "Leadership Training",
-    location: "Kings Group, Lagos",
-    time: "9:00 AM",
-    href: "/events/leadership-training",
-  },
-  {
-    month: "JUN",
-    day: "25",
-    title: "Parents & Leaders Forum",
-    location: "Brigade Hall, Surulere",
-    time: "11:00 AM",
-    href: "/events/parents-leaders-forum",
-  },
-];
+type UpcomingEventsProps = {
+  events: BrigadeEvent[];
+  selectedDate: string | null;
+  onClearSelected: () => void;
+};
 
-export default function UpcomingEvents() {
+export default function UpcomingEvents({
+  events,
+  selectedDate,
+  onClearSelected,
+}: UpcomingEventsProps) {
+  const selectedEvents = eventsForDate(events, selectedDate);
+  const visibleEvents = selectedEvents.length > 0 ? selectedEvents : events;
+  const isFiltered = selectedEvents.length > 0;
+
   return (
-    <section className="pb-12">
+    <section id="upcoming-events" className="pb-16 sm:pb-20">
       <Container>
         <FadeIn>
-          <h2 className="text-xl font-bold text-primary mb-6">
-            Upcoming Events
-          </h2>
+          <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h2 className="text-xl font-bold text-primary sm:text-2xl">
+                {isFiltered ? "Events On Selected Date" : "Upcoming Events"}
+              </h2>
+              <p className="mt-1 text-sm text-muted">
+                {isFiltered
+                  ? eventFullDate(selectedEvents[0])
+                  : "Choose a date from the calendar or browse what is coming next."}
+              </p>
+            </div>
+
+            {isFiltered && (
+              <button
+                type="button"
+                onClick={onClearSelected}
+                className="inline-flex min-h-10 items-center justify-center gap-2 self-start rounded-lg border border-border bg-card px-4 py-2 text-sm font-semibold text-primary transition hover:border-secondary hover:text-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-background sm:self-auto"
+              >
+                <X size={15} />
+                Show All
+              </button>
+            )}
+          </div>
         </FadeIn>
 
-        <div className="flex flex-col gap-4">
-          {upcomingEvents.map((event, i) => (
-            <FadeIn key={event.title}>
-              <div
-                className="flex items-center gap-4 p-4 sm:p-5 rounded-xl border border-border bg-background
-                  transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm hover:border-border-secondary"
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {visibleEvents.map((event, i) => (
+            <FadeIn key={event.id}>
+              <article
+                className="group flex h-full flex-col rounded-lg border border-border bg-card p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-secondary/70 hover:shadow-lg"
                 style={{ animationDelay: `${i * 80}ms` }}
               >
-                {/* Date badge */}
-                <div
-                  className="flex flex-col items-center justify-center w-12 h-14 rounded-lg flex-shrink-0 text-white"
-                  style={{ background: "#173B61" }}
-                >
-                  <span
-                    className="text-[9px] font-bold uppercase tracking-widest"
-                    style={{ color: "#D4A017" }}
-                  >
-                    {event.month}
-                  </span>
-                  <span className="text-xl font-bold leading-tight">{event.day}</span>
+                <div className="mb-4 flex items-start justify-between gap-4">
+                  <div className="flex h-16 w-14 flex-shrink-0 flex-col items-center justify-center rounded-lg bg-primary-light text-white transition group-hover:bg-primary">
+                    <span className="text-[9px] font-bold uppercase tracking-widest text-secondary">
+                      {eventMonth(event)}
+                    </span>
+                    <span className="text-xl font-bold leading-tight">
+                      {eventDay(event)}
+                    </span>
+                  </div>
+
+                  <CalendarDays
+                    size={18}
+                    className="mt-1 text-secondary opacity-70 transition group-hover:opacity-100"
+                  />
                 </div>
 
-                {/* Info */}
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-sm font-semibold text-foreground truncate">
-                    {event.title}
-                  </h3>
-                  <div className="flex items-center gap-1 mt-1 text-xs text-muted">
-                    <MapPin size={11} />
-                    <span className="truncate">{event.location}</span>
-                    <span className="ml-1 text-muted/60">· {event.time}</span>
+                <h3 className="text-base font-bold leading-tight text-foreground">
+                  {event.title}
+                </h3>
+
+                <p className="mt-3 line-clamp-3 text-sm leading-6 text-muted">
+                  {event.description}
+                </p>
+
+                <div className="mt-5 flex flex-col gap-2 text-xs text-muted">
+                  <div className="flex items-center gap-2">
+                    <Clock3 size={13} className="text-secondary" />
+                    <span>{event.time}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MapPin size={13} className="text-secondary" />
+                    <span>{event.location}</span>
                   </div>
                 </div>
 
-                {/* CTA */}
                 <Link
                   href={event.href}
-                  className="flex-shrink-0 inline-flex items-center justify-center rounded-lg px-4 py-2 text-xs font-semibold text-white transition hover:opacity-90"
-                  style={{ background: "#D4A017" }}
+                  className="mt-5 inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-secondary px-4 py-2 text-sm font-semibold text-white transition duration-300 hover:bg-[#b98c22] focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-background"
                 >
                   Register
+                  <ArrowRight size={15} />
                 </Link>
-              </div>
+              </article>
             </FadeIn>
           ))}
         </div>

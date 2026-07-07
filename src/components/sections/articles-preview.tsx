@@ -1,108 +1,65 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 import Container from "../layout/container";
 import ArticleCard from "../cards/article-card";
 import FadeIn from "../layout/fade-in";
-import { FaArrowRight } from "react-icons/fa6";
+import {
+  brigadeArticles,
+  formatArticleDate,
+} from "../../constants/articles";
 
-const articles = [
-  {
-    image: "/images/hero.jpeg",
-    category: "Leadership",
-    title: "Leading with Purpose and Integrity",
-    excerpt:
-      "Discover how young leaders can lead with values that inspire and transform.",
-  },
-  {
-    image: "/events/pic2.png",
-    category: "Faith",
-    title: "Lessons from Service: A Heart Like Christ",
-    excerpt:
-      "Serving others brings us closer to God and builds lasting character.",
-  },
-  {
-    image: "/events/pic3.png",
-    category: "Devotion",
-    title: "Growing Through Fellowship",
-    excerpt:
-      "The power of community in spiritual growth, communion and development. The power of community in spiritual growth.",
-  },
-];
+const previewArticles = brigadeArticles.slice(0, 3);
 
 export default function ArticlesPreview() {
   return (
-    <section className="py-10 bg-white">
-
+    <section className="bg-background py-12 sm:py-14">
       <Container>
-
-        {/* Header */}
-
-        <div className="flex items-center justify-between">
-
+        <div className="flex items-end justify-between gap-4">
           <div>
-
-            <h2
-              className="
-              text-2xl
-              font-bold
-              text-primary
-              "
-            >
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">
+              Brigade Journal
+            </p>
+            <h2 className="mt-2 text-3xl font-black text-foreground">
               Latest Articles
             </h2>
-
-            <p
-              className="
-              mt-1
-              text-sm
-              text-slate-500
-              "
-            >
-              Insights, stories, and teachings.
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+              Stories, teachings, reports and history from the Brigade archive.
             </p>
-
           </div>
 
           <Link
             href="/articles"
-            className="
-            hidden lg:block
-            text-sm
-            font-medium
-            text-primary
-            hoverLink
-            "
+            className="hidden items-center gap-2 text-sm font-bold text-secondary transition hover:text-primary sm:inline-flex"
           >
             View All
+            <ArrowRight size={16} />
           </Link>
-
-          <Link
-            href="/articles"
-            className="
-            block lg:hidden
-            text-xs
-            font-medium
-            text-primary
-            hoverLink
-            "
-          >
-            <FaArrowRight />
-          </Link>
-
         </div>
-
-        {/* Cards */}
 
         <div className="mt-8 grid gap-6 md:grid-cols-3">
-
-          {articles.map((article) => (
-            <FadeIn key={article.title}>
-              <ArticleCard {...article} />
+          {previewArticles.map((article) => (
+            <FadeIn key={article.slug}>
+              <ArticleCard
+                image={article.image}
+                category={article.category}
+                title={article.title}
+                excerpt={article.excerpt}
+                href={`/articles/${article.slug}`}
+                date={formatArticleDate(article.date)}
+                readTime={article.readTime}
+              />
             </FadeIn>
           ))}
-
         </div>
 
+        <Link
+          href="/articles"
+          className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-secondary transition hover:text-primary sm:hidden"
+        >
+          View All
+          <ArrowRight size={16} />
+        </Link>
       </Container>
     </section>
   );

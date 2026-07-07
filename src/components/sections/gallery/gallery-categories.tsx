@@ -3,10 +3,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { galleryCategories } from "../../../../data/gallery";
 import Container from "../../layout/container";
 
-const categories = [
+// Adjust this class to increase or reduce the bottom spacing of this section.
+const SECTION_BOTTOM_SPACE_CLASS = "pb-24 sm:pb-28 lg:pb-32";
+
+const categoryCards = [
   {
     title: "Parade & Drill",
     count: "120+ Photos",
@@ -29,43 +33,31 @@ const categories = [
     description: "Music Ministry",
   },
   {
-    title: "Awards & Promotions",
-    count: "40+ Photos",
-    slug: "awards",
-    image: "/gallery/gallery1.png",
-    description: "Excellence Recognized",
-  },
-  {
-    title: "Camp Meetings",
-    count: "90+ Photos",
-    slug: "camp",
-    image: "/gallery/gallery1.png",
-    description: "Fellowship & Growth",
-  },
-  {
     title: "Enrolment Service",
     count: "110+ Photos",
     slug: "enrolment",
     image: "/gallery/gallery1.png",
     description: "New Beginnings",
   },
-  {
-    title: "Leadership Events",
-    count: "75+ Photos",
-    slug: "leadership",
-    image: "/gallery/gallery1.png",
-    description: "Inspiring Tomorrow's Leaders",
-  },
 ];
+
+const seeAllPreviewImages = Object.values(galleryCategories)
+  .flatMap((category) => [
+    category.heroImage,
+    ...category.images,
+    ...category.years.flatMap((year) => year.images),
+  ])
+  .filter((image, index, images) => images.indexOf(image) === index)
+  .slice(0, 3);
 
 export default function GalleryCategories() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [favorites, setFavorites] = useState<Set<string>>(new Set());
+  const seeAllCardRef = useRef<HTMLAnchorElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [screenSize, setScreenSize] = useState<"sm" | "md" | "lg">("lg");
+  const [isSeeAllVisible, setIsSeeAllVisible] = useState(false);
 
-  // Detect screen size on mount and window resize
   useEffect(() => {
     const updateScreenSize = () => {
       if (window.innerWidth < 640) {
@@ -82,30 +74,41 @@ export default function GalleryCategories() {
     return () => window.removeEventListener("resize", updateScreenSize);
   }, []);
 
-  const toggleFavorite = (e: React.MouseEvent, slug: string) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const newFavorites = new Set(favorites);
-    if (newFavorites.has(slug)) {
-      newFavorites.delete(slug);
-    } else {
-      newFavorites.add(slug);
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+    const seeAllCard = seeAllCardRef.current;
+
+    if (!scrollContainer || !seeAllCard || !("IntersectionObserver" in window)) {
+      setIsSeeAllVisible(true);
+      return;
     }
-    setFavorites(newFavorites);
-  };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSeeAllVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        root: scrollContainer,
+        threshold: 0.45,
+      }
+    );
+
+    observer.observe(seeAllCard);
+
+    return () => observer.disconnect();
+  }, []);
 
   const getScrollAmount = () => {
-    // Card width + gap
-    // sm: 260px + 16px (gap-4) = 276px
-    // md: 280px + 24px (gap-6) = 304px
-    // lg: 320px + 24px (gap-6) = 344px
     switch (screenSize) {
       case "sm":
-        return 276; // One card on mobile
+        return 276;
       case "md":
-        return 304; // One card on tablet
+        return 304;
       default:
-        return 344; // One card on desktop
+        return 344;
     }
   };
 
@@ -122,7 +125,6 @@ export default function GalleryCategories() {
       behavior: "smooth",
     });
 
-    // Update button states
     setTimeout(() => {
       if (scrollContainerRef.current) {
         setCanScrollLeft(scrollContainerRef.current.scrollLeft > 0);
@@ -148,8 +150,7 @@ export default function GalleryCategories() {
   };
 
   return (
-    <section className="py-12 sm:py-16 bg-white">
-      {/* Header - Inside Container */}
+    <section className={`pt-12 sm:pt-16 ${SECTION_BOTTOM_SPACE_CLASS} bg-white`}>
       <Container>
         <div className="mb-10 sm:mb-12">
           <span className="text-secondary uppercase tracking-[0.25em] text-xs sm:text-sm font-semibold">
@@ -170,11 +171,8 @@ export default function GalleryCategories() {
         </div>
       </Container>
 
-      {/* Carousel Wrapper - Full Width with Overflow Hidden */}
       <div className="relative w-full overflow-hidden">
-        {/* Carousel Container */}
         <div className="relative group">
-          {/* Scroll Container with Snap */}
           <div
             ref={scrollContainerRef}
             onScroll={handleScroll}
@@ -186,19 +184,16 @@ export default function GalleryCategories() {
               scrollPaddingLeft: "1rem",
             }}
           >
-            {/* Left Padding */}
             <div className="flex-shrink-0 w-4 sm:w-6 md:w-8 lg:w-12" />
 
-            {categories.map((category) => (
+            {categoryCards.map((category) => (
               <Link
                 key={category.slug}
                 href={`/gallery/${category.slug}`}
                 className="gallery-category-card shrink-0 w-65 sm:w-[280px] md:w-[300px] lg:w-[320px] group/card"
                 style={{ scrollSnapAlign: "start" }}
               >
-                {/* Card Container */}
-                <div className="gallery-card-wrapper overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl h-full flex flex-col bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
-                  {/* Image Container */}
+                <div className="gallery-card-wrapper overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl h-full flex flex-col bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300">
                   <div className="gallery-card-image-container relative w-full h-[180px] sm:h-[220px] md:h-[240px] lg:h-[260px] overflow-hidden bg-gray-200 flex-shrink-0">
                     <Image
                       src={category.image}
@@ -207,37 +202,13 @@ export default function GalleryCategories() {
                       className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110"
                     />
 
-                    {/* Overlay */}
                     <div className="gallery-card-overlay absolute inset-0 bg-black/0 group-hover/card:bg-black/20 transition-colors duration-300" />
 
-                    {/* Favorite Button */}
-                    <button
-                      type="button"
-                      onClick={(e) => toggleFavorite(e, category.slug)}
-                      aria-label={
-                        favorites.has(category.slug)
-                          ? `Remove ${category.title} from favorites`
-                          : `Add ${category.title} to favorites`
-                      }
-                      className="gallery-favorite-btn absolute top-2 sm:top-3 right-2 sm:right-3 w-9 sm:w-10 h-9 sm:h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover/card:opacity-100 transition-all duration-300 hover:bg-white active:scale-95"
-                    >
-                      <Heart
-                        size={18}
-                        className={
-                          favorites.has(category.slug)
-                            ? "fill-rose-500 text-rose-500"
-                            : "text-gray-900"
-                        }
-                      />
-                    </button>
-
-                    {/* Featured Badge */}
                     <div className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-white/95 backdrop-blur-sm rounded-full px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-semibold text-gray-900 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300">
                       Featured
                     </div>
                   </div>
 
-                  {/* Card Info - Improved spacing */}
                   <div className="flex-1 p-3 sm:p-4 md:p-5 flex flex-col justify-between bg-white">
                     <div className="min-h-[60px] sm:min-h-[70px] flex flex-col justify-between mb-2">
                       <div>
@@ -260,16 +231,44 @@ export default function GalleryCategories() {
               </Link>
             ))}
 
-            {/* See All Card */}
             <Link
-              href="/gallery"
+              ref={seeAllCardRef}
+              href="/gallery/all"
               className="gallery-category-card flex-shrink-0 w-[260px] sm:w-[280px] md:w-[300px] lg:w-[320px] group/card"
               style={{ scrollSnapAlign: "start" }}
             >
-              <div className="gallery-card-wrapper overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl h-full flex flex-col items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-200 transition-all duration-300 shadow-sm hover:shadow-md">
+              <div className="gallery-card-wrapper overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl h-full min-h-[300px] sm:min-h-[350px] md:min-h-[380px] lg:min-h-[420px] flex flex-col items-center justify-center bg-white border border-gray-200 transition-all duration-300 shadow-sm hover:shadow-md">
                 <div className="text-center px-4 sm:px-6">
-                  <div className="text-3xl sm:text-4xl mb-2 sm:mb-3 opacity-60 group-hover/card:opacity-100 transition-opacity">
-                    →
+                  <div className="relative mx-auto mb-5 h-24 w-36 sm:h-28 sm:w-40">
+                    {seeAllPreviewImages.map((image, index) => {
+                      const imageStyles = [
+                        "left-8 -top-4 z-10 h-16 w-20 -rotate-6 sm:h-20 sm:w-24",
+                        "-left-5 top-9 z-20 h-16 w-20 -rotate-7 sm:h-20 sm:w-24",
+                        "right-2 top-6 z-30 h-16 w-20 rotate-6 sm:h-20 sm:w-24",
+                      ];
+
+                      return (
+                        <span
+                          key={`${image}-${index}`}
+                          className={`absolute transition-transform duration-300 group-hover/card:-translate-y-1 ${imageStyles[index]}`}
+                        >
+                          <span
+                            className={`gallery-see-all-preview relative block h-full w-full overflow-hidden rounded-lg border-4 border-white bg-gray-100 shadow-lg ${
+                              isSeeAllVisible ? "is-visible" : ""
+                            }`}
+                            style={{ transitionDelay: `${index * 140}ms` }}
+                          >
+                            <Image
+                              src={image}
+                              alt=""
+                              fill
+                              className="object-cover"
+                              sizes="96px"
+                            />
+                          </span>
+                        </span>
+                      );
+                    })}
                   </div>
                   <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1">
                     See All
@@ -281,11 +280,9 @@ export default function GalleryCategories() {
               </div>
             </Link>
 
-            {/* Right Padding */}
             <div className="flex-shrink-0 w-4 sm:w-6 md:w-8 lg:w-12" />
           </div>
 
-          {/* Left Arrow - Overlay */}
           <button
             onClick={() => scroll("left")}
             disabled={!canScrollLeft}
@@ -321,7 +318,6 @@ export default function GalleryCategories() {
             <ChevronLeft size={18} className="text-gray-900 sm:w-5 sm:h-5" />
           </button>
 
-          {/* Right Arrow - Overlay */}
           <button
             onClick={() => scroll("right")}
             disabled={!canScrollRight}

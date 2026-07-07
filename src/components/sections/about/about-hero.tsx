@@ -50,7 +50,7 @@ export default function AboutHero() {
 
           <div className="mt-8 flex w-full flex-col gap-4 sm:w-auto sm:flex-row md:mt-10">
             <Link
-              href="/about/about-story"
+              href="/articles/history-of-the-brigade"
               className="
               inline-flex
               min-h-12

@@ -208,7 +208,7 @@ export default function ParadeGallery({ year, images }: ParadeGalleryProps) {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"
+                      className="absolute inset-0 bg-black/60"
                     />
                   )}
 

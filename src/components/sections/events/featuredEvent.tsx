@@ -1,86 +1,83 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, Clock, MapPin } from "lucide-react";
+import { ArrowRight, Calendar, Clock, MapPin } from "lucide-react";
 import FadeIn from "../../layout/fade-in";
-import Container from "../../layout/container";
+import {
+  BrigadeEvent,
+  eventDay,
+  eventFullDate,
+  eventMonth,
+} from "../../../constants/events";
 
-// Replace with your actual featured event data / CMS fetch
-const featuredEvent = {
-  title: "Community Outreach Program",
-  date: "Saturday, 28 June 2024",
-  time: "9:00 AM",
-  location: "Surulere Community Hall",
-  description:
-    "Join us as we reach out to the community this June, sharing hope and making a difference in the lives of those around us.",
-  image: "/events/pic1.png",
-  href: "/events/community-outreach-program",
-};
-
-export default function FeaturedEvent() {
+export default function FeaturedEvent({ event }: { event: BrigadeEvent }) {
   return (
-    <section className="py-12">
-      <Container>
-        <FadeIn>
-          <h2 className="text-xl font-bold text-primary mb-6">
-            Featured Event
-          </h2>
-        </FadeIn>
+    <section>
+      <FadeIn>
+        <h2 className="mb-6 text-xl font-bold text-primary sm:text-2xl">
+          Featured Event
+        </h2>
+      </FadeIn>
 
-        <FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-xl overflow-hidden border border-border shadow-sm">
-            {/* Image */}
-            <div className="relative min-h-[220px] md:min-h-[280px] bg-primary/10">
-              <Image
-                src={featuredEvent.image}
-                alt={featuredEvent.title}
-                fill
-                className="object-cover"
-              />
-              {/* Date badge */}
-              <div
-                className="absolute top-4 left-4 flex flex-col items-center justify-center w-14 h-14 rounded-xl text-white font-bold shadow-lg"
-                style={{ background: "#173B61" }}
-              >
-                <span className="text-[10px] uppercase tracking-widest leading-none" style={{ color: "#D4A017" }}>
-                  JUN
-                </span>
-                <span className="text-2xl leading-tight">28</span>
-              </div>
-            </div>
-
-            {/* Details */}
-            <div className="p-6 sm:p-8 flex flex-col justify-center bg-background">
-              <h3 className="text-lg font-bold text-foreground mb-3">
-                {featuredEvent.title}
-              </h3>
-
-              <div className="flex flex-col gap-2 mb-4">
-                <div className="flex items-center gap-2 text-sm text-muted">
-                  <Calendar size={14} style={{ color: "#D4A017" }} />
-                  <span>{featuredEvent.date} &nbsp;|&nbsp; {featuredEvent.time}</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-muted">
-                  <MapPin size={14} style={{ color: "#D4A017" }} />
-                  <span>{featuredEvent.location}</span>
-                </div>
-              </div>
-
-              <p className="text-sm text-muted leading-relaxed mb-6">
-                {featuredEvent.description}
-              </p>
-
-              <Link
-                href={featuredEvent.href}
-                className="inline-flex items-center justify-center self-start rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
-                style={{ background: "#D4A017" }}
-              >
-                Register a Spot
-              </Link>
+      <FadeIn>
+        <article className="group grid overflow-hidden rounded-lg border border-border bg-card shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl md:grid-cols-2">
+          <div className="relative min-h-[260px] bg-primary/10 md:min-h-[360px]">
+            <Image
+              src={event.image}
+              alt={event.title}
+              fill
+              className="object-cover transition duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-70" />
+            <div className="absolute left-4 top-4 flex h-16 w-16 flex-col items-center justify-center rounded-lg bg-primary-light text-white shadow-lg ring-1 ring-white/20">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-secondary">
+                {eventMonth(event)}
+              </span>
+              <span className="text-2xl font-bold leading-tight">
+                {eventDay(event)}
+              </span>
             </div>
           </div>
-        </FadeIn>
-      </Container>
+
+          <div className="flex flex-col justify-center bg-card p-6 sm:p-8">
+            <span className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-secondary">
+              Next Highlight
+            </span>
+
+            <h3 className="text-2xl font-bold leading-tight text-foreground sm:text-3xl">
+              {event.title}
+            </h3>
+
+            <div className="my-5 flex flex-col gap-3">
+              <div className="flex items-center gap-2 text-sm text-muted">
+                <Calendar size={16} className="text-secondary" />
+                <span>{eventFullDate(event)}</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-muted">
+                <Clock size={16} className="text-secondary" />
+                <span>{event.time}</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-muted">
+                <MapPin size={16} className="text-secondary" />
+                <span>{event.location}</span>
+              </div>
+            </div>
+
+            <p className="mb-6 text-sm leading-7 text-muted sm:text-base">
+              {event.description}
+            </p>
+
+            <Link
+              href={event.href}
+              className="inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-lg bg-secondary px-5 py-2.5 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#b98c22] focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-background"
+            >
+              Register a Spot
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+        </article>
+      </FadeIn>
     </section>
   );
 }

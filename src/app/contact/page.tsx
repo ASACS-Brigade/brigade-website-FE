@@ -8,7 +8,7 @@ import Faq from "../../components/sections/contract/faq";
 import Container from "../../components/layout/container";
 
 export const metadata = {
-  title: "Contact | Boys & Girls Brigade Surulere",
+  title: "Contact | 5th & 9th surulere companies",
   description:
     "Get in touch with the Boys & Girls Brigade, Surulere Company. We'd love to hear from you.",
 };
