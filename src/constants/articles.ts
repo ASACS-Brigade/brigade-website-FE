@@ -1,10 +1,4 @@
-export type ArticleCategory =
-  | "Latest News"
-  | "Brigade History"
-  | "Faith & Devotion"
-  | "Leadership & Training"
-  | "Events & Reports"
-  | "Golden Jubilee";
+export type ArticleCategory = string;
 
 export type ArticleSection = {
   heading: string;

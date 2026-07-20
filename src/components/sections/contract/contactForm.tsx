@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Send, CheckCircle } from "lucide-react";
 import FadeIn from "../../layout/fade-in";
+import { submitContactMessage } from "../../../lib/api";
 
 type FormState = {
   fullName: string;
@@ -29,6 +30,7 @@ export default function ContactForm() {
     message: "",
   });
   const [errors, setErrors] = useState<Errors>({});
+  const [submitError, setSubmitError] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -37,6 +39,7 @@ export default function ContactForm() {
   ) {
     setForm(f => ({ ...f, [e.target.name]: e.target.value }));
     setErrors(err => ({ ...err, [e.target.name]: undefined }));
+    setSubmitError("");
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -44,10 +47,22 @@ export default function ContactForm() {
     const errs = validate(form);
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setLoading(true);
-    // Replace with your actual API call / email service
-    await new Promise(r => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
+    setSubmitError("");
+
+    try {
+      await submitContactMessage({
+        name: form.fullName,
+        email: form.email,
+        phone: form.phone || undefined,
+        subject: "Website contact message",
+        message: form.message,
+      });
+      setSubmitted(true);
+    } catch {
+      setSubmitError("We couldn't send your message right now. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -167,6 +182,10 @@ export default function ContactForm() {
               </>
             )}
           </button>
+
+          {submitError && (
+            <p className="text-sm font-medium text-red-500">{submitError}</p>
+          )}
         </form>
       </div>
     </FadeIn>

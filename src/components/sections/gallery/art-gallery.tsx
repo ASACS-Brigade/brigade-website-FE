@@ -237,8 +237,12 @@ function GalleryPhotoFrame({
   );
 }
 
-export default function ArtGallery() {
+export default function ArtGallery({ images = [] }: { images?: string[] }) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const displayItems = galleryItems.map((item, index) => ({
+    ...item,
+    image: images[index] ?? item.image,
+  }));
 
   return (
     <section
@@ -291,7 +295,7 @@ export default function ArtGallery() {
             />
           ))}
 
-          {galleryItems.map((item) => (
+          {displayItems.map((item) => (
             <GalleryPhotoFrame
               key={item.id}
               item={item}
@@ -314,7 +318,7 @@ export default function ArtGallery() {
         </div>
 
         <div className="grid gap-10 sm:grid-cols-2 lg:hidden">
-          {galleryItems.map((item) => (
+          {displayItems.map((item) => (
             <GalleryPhotoFrame
               key={item.id}
               item={item}

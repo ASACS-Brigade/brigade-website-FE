@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Calendar, Clock, MapPin } from "lucide-react";
+import { ArrowRight, Calendar, Clock, ImageOff, MapPin } from "lucide-react";
 import FadeIn from "../../layout/fade-in";
 import {
   BrigadeEvent,
@@ -23,12 +23,21 @@ export default function FeaturedEvent({ event }: { event: BrigadeEvent }) {
       <FadeIn>
         <article className="group grid overflow-hidden rounded-lg border border-border bg-card shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl md:grid-cols-2">
           <div className="relative min-h-[260px] bg-primary/10 md:min-h-[360px]">
-            <Image
-              src={event.image}
-              alt={event.title}
-              fill
-              className="object-cover transition duration-700 group-hover:scale-105"
-            />
+            {event.image ? (
+              <Image
+                src={event.image}
+                alt={event.title}
+                fill
+                className="object-cover transition duration-700 group-hover:scale-105"
+              />
+            ) : (
+              <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-primary/10 text-muted">
+                <ImageOff size={36} />
+                <span className="text-xs font-black uppercase tracking-[0.14em]">
+                  No cover
+                </span>
+              </div>
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-70" />
             <div className="absolute left-4 top-4 flex h-16 w-16 flex-col items-center justify-center rounded-lg bg-primary-light text-white shadow-lg ring-1 ring-white/20">
               <span className="text-[10px] font-bold uppercase tracking-widest text-secondary">

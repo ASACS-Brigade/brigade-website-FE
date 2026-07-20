@@ -4,7 +4,10 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import { ArrowLeft, ImageIcon } from "lucide-react";
 import Link from "next/link";
-import { galleryCategories } from "../../../../data/gallery";
+import {
+  galleryCategories,
+  type GalleryCategory,
+} from "../../../../data/gallery";
 import Container from "../../layout/container";
 import AlbumLightbox from "./category-album/album-lightbox";
 
@@ -17,10 +20,14 @@ type CompleteGalleryItem = {
   year?: string;
 };
 
-const categoryEntries = Object.entries(galleryCategories);
+const fallbackCategoryEntries = Object.entries(galleryCategories).map(
+  ([slug, category]) => ({ slug, category }),
+);
 
-const completeGalleryItems = categoryEntries.flatMap(
-  ([categorySlug, category]) => {
+function buildCompleteGalleryItems(
+  categoryEntries: { slug: string; category: GalleryCategory }[],
+) {
+  return categoryEntries.flatMap(({ slug: categorySlug, category }) => {
     const seenImages = new Set<string>();
     const items: CompleteGalleryItem[] = [];
 
@@ -51,19 +58,27 @@ const completeGalleryItems = categoryEntries.flatMap(
     });
 
     return items;
-  }
-);
+  });
+}
 
-export default function CompleteGallery() {
+export default function CompleteGallery({
+  categories = fallbackCategoryEntries,
+}: {
+  categories?: { slug: string; category: GalleryCategory }[];
+}) {
   const [activeCategory, setActiveCategory] = useState("all");
   const [activeItemId, setActiveItemId] = useState<string | null>(null);
+  const completeGalleryItems = useMemo(
+    () => buildCompleteGalleryItems(categories),
+    [categories],
+  );
 
   const filteredItems = useMemo(() => {
     if (activeCategory === "all") return completeGalleryItems;
     return completeGalleryItems.filter(
       (item) => item.categorySlug === activeCategory
     );
-  }, [activeCategory]);
+  }, [activeCategory, completeGalleryItems]);
 
   const activeIndex = activeItemId
     ? filteredItems.findIndex((item) => item.id === activeItemId)
@@ -131,7 +146,7 @@ export default function CompleteGallery() {
             All
           </button>
 
-          {categoryEntries.map(([slug, category]) => (
+          {categories.map(({ slug, category }) => (
             <button
               key={slug}
               type="button"

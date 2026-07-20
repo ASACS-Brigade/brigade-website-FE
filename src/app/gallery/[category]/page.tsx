@@ -1,9 +1,17 @@
 import { notFound } from "next/navigation";
 
-import { galleryCategories } from "../../../../data/gallery";
-
 import ParadePage from "../../../components/sections/gallery/parade/parade-page";
 import AlbumPage from "../../../components/sections/gallery/category-album/album-page";
+import {
+  getGalleryCategoryData,
+  getGalleryCategorySlugs,
+} from "../../../lib/content-api";
+
+export const dynamicParams = true;
+
+export function generateStaticParams() {
+  return getGalleryCategorySlugs().map((category) => ({ category }));
+}
 
 export default async function CategoryPage({
   params,
@@ -14,10 +22,7 @@ export default async function CategoryPage({
 }) {
   const { category } = await params;
 
-  const data =
-    galleryCategories[
-      category as keyof typeof galleryCategories
-    ];
+  const data = await getGalleryCategoryData(category);
 
   if (!data) {
     notFound();
@@ -28,7 +33,7 @@ export default async function CategoryPage({
    */
 
   if (category === "parade") {
-    return <ParadePage />;
+    return <ParadePage album={data} />;
   }
 
   return <AlbumPage album={data} />;

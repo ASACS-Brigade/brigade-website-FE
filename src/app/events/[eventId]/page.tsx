@@ -1,13 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, CalendarDays, Clock3, MapPin } from "lucide-react";
+import { ArrowLeft, CalendarDays, Clock3, ImageOff, MapPin } from "lucide-react";
 import Container from "../../../components/layout/container";
 import {
   brigadeEvents,
   eventFullDate,
-  getEventById,
 } from "../../../constants/events";
+import { getEventDetailData } from "../../../lib/content-api";
+
+export const dynamicParams = true;
 
 export function generateStaticParams() {
   return brigadeEvents.map((event) => ({
@@ -21,7 +23,7 @@ export async function generateMetadata({
   params: Promise<{ eventId: string }>;
 }) {
   const { eventId } = await params;
-  const event = getEventById(eventId);
+  const event = await getEventDetailData(eventId);
 
   if (!event) {
     return {
@@ -41,7 +43,7 @@ export default async function EventDetailPage({
   params: Promise<{ eventId: string }>;
 }) {
   const { eventId } = await params;
-  const event = getEventById(eventId);
+  const event = await getEventDetailData(eventId);
 
   if (!event) {
     notFound();
@@ -50,13 +52,19 @@ export default async function EventDetailPage({
   return (
     <main className="bg-background text-foreground">
       <section className="relative overflow-hidden bg-primary py-16 text-white sm:py-20">
-        <Image
-          src={event.image}
-          alt={event.title}
-          fill
-          priority
-          className="pointer-events-none object-cover opacity-35"
-        />
+        {event.image ? (
+          <Image
+            src={event.image}
+            alt={event.title}
+            fill
+            priority
+            className="pointer-events-none object-cover opacity-35"
+          />
+        ) : (
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-primary-light/20 text-white/25">
+            <ImageOff size={96} />
+          </div>
+        )}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -176,21 +184,27 @@ export default async function EventDetailPage({
             </Link>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-3">
-            {event.galleryImages.map((image, index) => (
-              <div
-                key={`${image}-${index}`}
-                className="group relative aspect-[4/3] overflow-hidden rounded-lg bg-primary/10 shadow-sm ring-1 ring-border"
-              >
-                <Image
-                  src={image}
-                  alt={`${event.title} photo ${index + 1}`}
-                  fill
-                  className="object-cover transition duration-700 group-hover:scale-110"
-                />
-              </div>
-            ))}
-          </div>
+          {event.galleryImages.length > 0 ? (
+            <div className="grid gap-4 sm:grid-cols-3">
+              {event.galleryImages.map((image, index) => (
+                <div
+                  key={`${image}-${index}`}
+                  className="group relative aspect-[4/3] overflow-hidden rounded-lg bg-primary/10 shadow-sm ring-1 ring-border"
+                >
+                  <Image
+                    src={image}
+                    alt={`${event.title} photo ${index + 1}`}
+                    fill
+                    className="object-cover transition duration-700 group-hover:scale-110"
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="rounded-lg border border-dashed border-border p-8 text-center text-sm font-semibold text-muted">
+              No event pictures have been added yet.
+            </div>
+          )}
         </Container>
       </section>
     </main>

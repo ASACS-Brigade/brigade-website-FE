@@ -5,12 +5,13 @@ import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { galleryCategories } from "../../../../data/gallery";
+import type { GalleryCategoryCard } from "../../../lib/content-api";
 import Container from "../../layout/container";
 
 // Adjust this class to increase or reduce the bottom spacing of this section.
 const SECTION_BOTTOM_SPACE_CLASS = "pb-24 sm:pb-28 lg:pb-32";
 
-const categoryCards = [
+const fallbackCategoryCards: GalleryCategoryCard[] = [
   {
     title: "Parade & Drill",
     count: "120+ Photos",
@@ -50,7 +51,11 @@ const seeAllPreviewImages = Object.values(galleryCategories)
   .filter((image, index, images) => images.indexOf(image) === index)
   .slice(0, 3);
 
-export default function GalleryCategories() {
+export default function GalleryCategories({
+  categories = fallbackCategoryCards,
+}: {
+  categories?: GalleryCategoryCard[];
+}) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const seeAllCardRef = useRef<HTMLAnchorElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -186,7 +191,7 @@ export default function GalleryCategories() {
           >
             <div className="flex-shrink-0 w-4 sm:w-6 md:w-8 lg:w-12" />
 
-            {categoryCards.map((category) => (
+            {categories.map((category) => (
               <Link
                 key={category.slug}
                 href={`/gallery/${category.slug}`}

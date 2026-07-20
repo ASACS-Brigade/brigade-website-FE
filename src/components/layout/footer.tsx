@@ -2,6 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 import {
+  FaFacebook,
+  FaFacebookF,
+  
   FaInstagram,
   FaLinkedinIn,
   FaYoutube,
@@ -26,8 +29,8 @@ export default function Footer() {
               <Image
                 src="/images/bb-Logo.png"
                 alt="BGB Logo"
-                width={60}
-                height={60}
+                width={40}
+                height={40}
               />
 
               <div>
@@ -39,22 +42,29 @@ export default function Footer() {
                   leading-tight
                   "
                 >
-                  BOYS & GIRLS
+                  THE 5TH & 9TH
                   <br />
-                  BRIGADE
+                  SURULERE COMPANIES
                 </h2>
 
-                <p
+                {/* <p
                   className="
                   text-xs
                   text-slate-300
                   mt-1
                   "
                 >
-                  SURULERE COMPANY
-                </p>
+                  SURULERE COMPANIES
+                </p> */}
 
               </div>
+
+              <Image
+                src="/images/gb-Logo.png"
+                alt="girls brigade Logo"
+                width={35}
+                height={35}
+              />
 
             </div>
 
@@ -63,7 +73,7 @@ export default function Footer() {
             <div className="flex gap-3 mt-6">
 
               <a
-                href="#"
+                href="https://www.linkedin.com/company/asacsbrigade/"
                 className="
                 h-8
                 w-8
@@ -82,7 +92,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="#"
+                href="https://www.instagram.com/bbgb.asacs/"
                 className="
                 h-8
                 w-8
@@ -117,6 +127,25 @@ export default function Footer() {
                 "
               >
                 <FaYoutube size={14} />
+              </a>
+
+  <a
+                href="#"
+                className="
+                h-8
+                w-8
+                rounded-full
+                border
+                border-slate-500
+                flex
+                items-center
+                justify-center
+                hover:bg-secondary
+                hover:border-secondary
+                transition
+                "
+              >
+                <FaFacebookF size={14} />
               </a>
 
             </div>
@@ -243,7 +272,7 @@ export default function Footer() {
                 <li>Weekly Meetings</li>
                 <li>Outreach</li>
                 <li>Camps</li>
-               <Link href="/about#members">Members</Link>
+              <Link href="/about#members">Members</Link>
                 {/* <li>Training</li> */}
 
               </ul>

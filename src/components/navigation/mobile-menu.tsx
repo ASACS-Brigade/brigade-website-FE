@@ -95,7 +95,7 @@ export default function MobileMenu({
             text-foreground
             "
           >
-            Menu
+            MENU
           </h2>
 
           <button
@@ -107,6 +107,7 @@ export default function MobileMenu({
             p-2
             text-foreground
             hover:bg-background
+            hover:pointer-cursor
             "
           >
             <X />
@@ -149,7 +150,7 @@ export default function MobileMenu({
             font-semibold
             "
           >
-            BGB Surulere Chapter
+            DONATE
           </div>
         </div>
       </div>

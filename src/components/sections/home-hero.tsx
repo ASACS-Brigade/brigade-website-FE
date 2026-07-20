@@ -52,8 +52,8 @@ export default function HomeHero() {
           </h1>
 
           <p className="mt-5 max-w-2xl text-base leading-7 text-white/90 sm:text-lg md:mt-6 md:text-[18px] md:leading-8">
-            Empowering boys and girls in
-            Surulere through Christian values,
+            Empowering boys and girls
+            through Christian values,
             leadership development and
             community impact.
           </p>

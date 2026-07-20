@@ -41,7 +41,7 @@ export default function CtaBanner() {
 
           {/* Logos */}
 
-          <div className="flex items-center gap-3">
+          {/* <div className="flex items-center gap-3">
 
             <Image
               src="/images/bb-Logo.png"
@@ -59,9 +59,7 @@ export default function CtaBanner() {
               className="w-20 h-auto md:w-[100px]"
             />
 
-          </div>
-
-          {/* Text */}
+          </div> */}
 
           <div>
 
@@ -86,7 +84,7 @@ export default function CtaBanner() {
               max-w-xl
               "
             >
-              Join a brotherhood and sisterhood
+              Join a family of young people and adults who are
               committed to faith, leadership,
               discipline and service.
             </p>

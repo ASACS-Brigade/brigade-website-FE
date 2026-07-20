@@ -9,6 +9,7 @@ import ParadeYears from "./parade-years";
 import ParadeGallery from "./parade-gallery";
 
 import CtaBanner from "../../../shared/ctaBanner";
+import type { GalleryCategory } from "../../../../../data/gallery";
 // import GalleryTestPage from "./gallery-test";
 
 /**
@@ -16,7 +17,7 @@ import CtaBanner from "../../../shared/ctaBanner";
  * Replace these with your real images.
  */
 
-const paradeImages = {
+const paradeImages: Record<string, string[]> = {
   "2026": [],
   "2025": [
     "/gallery/gallery1.png",
@@ -40,13 +41,31 @@ const paradeImages = {
   ],
 } satisfies Record<string, string[]>;
 
-export default function ParadePage() {
+function getParadeImages(album?: GalleryCategory) {
+  if (!album?.years.length) {
+    return paradeImages;
+  }
+
+  const images = Object.fromEntries(
+    album.years.map((year) => [year.year, year.images]),
+  );
+
+  return {
+    ...paradeImages,
+    ...images,
+  };
+}
+
+export default function ParadePage({ album }: { album?: GalleryCategory }) {
+  const imageGroups = getParadeImages(album);
+  const initialYear =
+    album?.years[0]?.year ?? Object.keys(imageGroups)[0] ?? "2026";
+
   /**
    * Active selected year
    */
 
-  const [selectedYear, setSelectedYear] =
-    useState<keyof typeof paradeImages>("2026");
+  const [selectedYear, setSelectedYear] = useState(initialYear);
 
   return (
     <>
@@ -58,13 +77,14 @@ export default function ParadePage() {
 
       <ParadeYears
         activeYear={selectedYear}
-        onYearChange={(year) => setSelectedYear(year as keyof typeof paradeImages)}
+        onYearChange={setSelectedYear}
+        years={album?.years}
       />
 
       <ParadeGallery
         year={selectedYear}
         images={
-          paradeImages[selectedYear] ?? []
+          imageGroups[selectedYear] ?? []
         }
       />
       <CtaBanner

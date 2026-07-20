@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ImageOff } from "lucide-react";
 import FadeIn from "../../layout/fade-in";
 import Container from "../../layout/container";
 import {
@@ -44,12 +44,21 @@ export default function PastEvents({ events }: { events: BrigadeEvent[] }) {
                 href={event.href}
                 className="group relative aspect-[4/3] overflow-hidden rounded-lg bg-primary/10 shadow-sm ring-1 ring-border transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:ring-secondary/70"
               >
-                <Image
-                  src={event.image}
-                  alt={event.title}
-                  fill
-                  className="object-cover transition duration-700 group-hover:scale-110"
-                />
+                {event.image ? (
+                  <Image
+                    src={event.image}
+                    alt={event.title}
+                    fill
+                    className="object-cover transition duration-700 group-hover:scale-110"
+                  />
+                ) : (
+                  <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-primary/10 text-white/75">
+                    <ImageOff size={34} />
+                    <span className="text-xs font-black uppercase tracking-[0.14em]">
+                      No cover
+                    </span>
+                  </div>
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/88 via-primary/20 to-transparent opacity-80 transition group-hover:opacity-95" />
 
                 <div className="absolute left-4 top-4 flex h-14 w-12 flex-col items-center justify-center rounded-lg bg-white/95 text-primary shadow-sm">
