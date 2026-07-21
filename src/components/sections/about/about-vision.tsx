@@ -87,7 +87,7 @@ export default function AboutVisionMission() {
       <Container>
 
         <h2 className="text-3xl font-bold text-primary mb-9">
-          Vision & Mission
+          Object & Aim Of The Brigade
         </h2>
 
          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center justify-center">
@@ -103,10 +103,10 @@ export default function AboutVisionMission() {
                 <Eye size={50} style={{ color: "#D4A017" }} />
               </div>
               <div>
-                <h3 className="font-medium text-foreground mb-2">Our Vision</h3>
+                <h3 className="font-medium text-foreground mb-2">Object of the Boys' Brigade</h3>
                 <p className="text-sm text-muted leading-relaxed">
-                  To be a leading youth movement that raises disciplined,
-                  Christ-centered leaders who transform their world.
+                 The Advancement of Christ's Kingdom among Boys and the Promotion of Habits of
+                  Obedience, Reverence, Discipline, Self-Respect and all that tends towards a true Christian Manliness.
                 </p>
               </div>
             </div>
@@ -125,11 +125,11 @@ export default function AboutVisionMission() {
               </div>
               <div>
                 <h3 className="font-medium text-foreground mb-2">
-                  Our Mission
+                  Aim of the Girls' Brigade
                 </h3>
                 <p className="text-sm text-muted leading-relaxed">
-                  To develop the total boy and girl through Christian faith,
-                  leadership training, and community service.
+                 To help Girls become followers of the Lord Jesus Christ through self-control, 
+                 reverence and a sense of responsibility to find true enrichment of life.
                 </p>
               </div>
             </div>

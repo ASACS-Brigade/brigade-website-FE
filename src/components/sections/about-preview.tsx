@@ -1,69 +1,330 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+
+import {
+  ShieldCheck,
+  Users,
+  HeartHandshake,
+} from "lucide-react";
+
+import FadeIn from "../layout/fade-in";
 import Container from "../layout/container";
+
+const highlights = [
+  {
+    icon: ShieldCheck,
+    title: "Faith",
+    description:
+      "Rooted in Christian values and Biblical principles.",
+  },
+  {
+    icon: Users,
+    title: "Leadership",
+    description:
+      "Developing confident and disciplined young leaders.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Service",
+    description:
+      "Impacting communities through outreach and service.",
+  },
+];
 
 export default function AboutPreview() {
   return (
-    <section className="section">
-      <Container>
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="text-4xl font-bold">
-              A Family, A Mission, A Future
-            </h2>
+    <section
+      className="
+      relative
+      py-20
+      overflow-hidden
+      "
+    >
+      {/* Background Accent */}
 
-            <p className="mt-6 text-gray-600">
-              Boys and Girls Brigade Surulere exists to develop young people who
-              lead with integrity and impact their world.
-            </p>
+      <div
+        className="
+        absolute
+        inset-0
+        bg-primary/5
+        "
+      />
 
-            {/* <Link href="/about" className="btn-primary">
-              Learn More
-            </Link> */}
+      <Container className="relative z-10">
 
-            <Link
-              href="/about"
+        <div
+          className="
+          grid
+          items-center
+          gap-14
+          lg:grid-cols-2
+          "
+        >
+          {/* Left Content */}
+
+          <FadeIn>
+
+            <div>
+
+              <span
+                className="
+                inline-flex
+                rounded-full
+                bg-secondary/10
+                px-4
+                py-2
+                md:text-xs text-[9px]
+                font-semibold
+                uppercase
+                tracking-[0.2em]
+                text-secondary
+                "
+              >
+                Who We Are
+              </span>
+
+              <h2
+                className="
+                mt-5
+                text-xl
+                font-bold
+                text-primary
+                md:text-5xl
+                "
+              >
+                A Family, A Mission,
+                A Future
+              </h2>
+
+              <p
+                className="
+                mt-6
+                max-w-xl
+                text-muted
+                leading-8
+                md:text-base text-sm
+                "
+              >
+                The Boys & Girls Brigade,
+                Surulere Company exists to raise
+                boys and girls who are grounded
+                in faith, equipped for leadership,
+                and committed to serving God,
+                their communities and the world.
+              </p>
+
+              {/* Highlights */}
+
+              <div
+                className="
+                mt-10
+                grid
+                gap-5
+                "
+              >
+                {highlights.map((item) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <div
+                      key={item.title}
+                      className="
+                      flex
+                      items-start
+                      gap-4
+                      "
+                    >
+                      <div
+                        className="
+                        flex
+                        h-12
+                        w-12
+                        shrink-0
+                        items-center
+                        justify-center
+                        rounded-xl
+                        bg-secondary/10
+                        "
+                      >
+                        <Icon
+                          size={24}
+                          className="text-secondary"
+                        />
+                      </div>
+
+                      <div>
+
+                        <h3
+                          className="
+                          font-semibold
+                          text-foreground
+                          "
+                        >
+                          {item.title}
+                        </h3>
+
+                        <p
+                          className="
+                          mt-1
+                          text-sm
+                          text-muted
+                          "
+                        >
+                          {item.description}
+                        </p>
+
+                      </div>
+
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* CTA */}
+
+              <div
+                className="
+                mt-10
+                flex
+                flex-col
+                gap-4
+                sm:flex-row
+                "
+              >
+                <Link
+                  href="/about"
+                  className="
+                  inline-flex
+                  items-center
+                  justify-center
+                  rounded-lg
+                  bg-primary
+                  px-6
+                  py-3
+                  font-semibold
+                  text-white text-xs md:text-base
+                  transition
+                  hover:bg-primary-light
+                  "
+                >
+                  Learn About Us
+                </Link>
+
+                <Link
+                  href="/contact"
+                  className="
+                  inline-flex
+                  items-center
+                  justify-center
+                  rounded-lg
+                  border
+                  border-secondary
+                  px-6
+                  py-3
+                  font-semibold
+                  text-secondary text-xs md:text-base
+                  transition
+                  hover:bg-secondary
+                  hover:text-white
+                  "
+                >
+                  Contact Us
+                </Link>
+
+              </div>
+
+            </div>
+
+          </FadeIn>
+
+          {/* Right Image */}
+
+          <FadeIn>
+
+            <div
               className="
-              inline-flex
-              min-h-12
+              relative
+              mx-auto
+              h-[450px]
               w-full
-              items-center
-              justify-center
-              rounded-lg
-              bg-primary-light
-              px-6
-              py-3
-              text-center
-              text-sm
-              font-semibold
-              text-white
-              shadow-lg
-              shadow-black/20
-              transition
-              hover:bg-primary-dark
-              focus:outline-none
-              focus:ring-2
-              focus:ring-primary
-              focus:ring-offset-2
-              focus:ring-offset-background
-              sm:w-auto
-              md:text-base
-              mt-7
+              max-w-[550px]
               "
             >
-              Learn About Us
-            </Link>
-          </div>
 
-          <div className="relative h-100">
-            <Image
-              src="/events/pic2.png"
-              alt="About"
-              fill
-              className="rounded-2xl object-cover"
-            />
-          </div>
+              {/* Decorative Background */}
+
+              <div
+                className="
+                absolute
+                -right-6
+                -bottom-6
+                h-full
+                w-full
+                rounded-[32px]
+                bg-secondary
+                "
+              />
+
+              <div
+                className="
+                relative
+                h-full
+                overflow-hidden
+                rounded-[32px]
+                shadow-2xl
+                "
+              >
+                <Image
+                  src="/events/pic2.png"
+                  alt="Boys and Girls Brigade"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+              {/* Floating Badge */}
+
+              <div
+                className="
+                absolute
+                left-6
+                top-6
+                rounded-2xl
+                bg-white
+                p-4
+                shadow-xl
+                dark:bg-slate-900
+                "
+              >
+                <p
+                  className="
+                  text-2xl
+                  font-bold
+                  text-secondary
+                  "
+                >
+                  100+
+                </p>
+
+                <p
+                  className="
+                  text-xs
+                  text-muted
+                  "
+                >
+                  Active Members
+                </p>
+
+              </div>
+
+            </div>
+
+          </FadeIn>
+
         </div>
+
       </Container>
     </section>
   );

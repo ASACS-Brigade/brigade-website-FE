@@ -18,13 +18,13 @@ const leaders = [
   },
   {
     image: "/images/team/training.jpg",
-    name: "Lt. Nora H.",
+    name: "Lt. Norah H.",
     role: "Secretary",
   },
   {
     image: "/team/ekenepic.png",
     name: "Lt. Ekene O.",
-    role: "Battalion Fin. Secretary",
+    role: "Company Fin. Secretary",
   },
   {
     image: "/images/team/treasurer.jpg",

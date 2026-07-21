@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 @import "../styles/theme.css";
 
 html {
@@ -11,14 +12,18 @@ html.dark {
 }
 
 body {
- background: var(--color-background);
+  min-height: 100vh;
+  background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-inter);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 html.dark body {
-  background: #020617;
-  color: #ffffff;
+  background: var(--color-background);
+  color: var(--color-foreground);
 }
 
 h1,
@@ -108,6 +113,24 @@ h6 {
     0 0 0 4px var(--background);
 }
 
+.event-hero-copy {
+  animation: eventHeroIntro 0.75s ease-out both;
+}
+
+@keyframes eventHeroIntro {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
 @media (min-width: 640px) {
   .btn-primary {
     width: auto;
@@ -119,6 +142,218 @@ h6 {
     font-size: 1rem;
   }
 }
+
+@keyframes notFoundFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+@keyframes notFoundPhotoZoom {
+  0%,
+  100% {
+    transform: scale(1.02);
+  }
+  50% {
+    transform: scale(1.07);
+  }
+}
+
+@keyframes notFoundPop {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.8);
+  }
+  70% {
+    transform: translateY(-3px) scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes notFoundDashDrift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 36px;
+  }
+}
+
+@keyframes notFoundCurveFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--not-found-curve-rotate));
+  }
+  50% {
+    transform: translate3d(10px, -8px, 0) rotate(var(--not-found-curve-rotate));
+  }
+}
+
+.not-found-photo-frame {
+  animation: notFoundFloat 5.5s ease-in-out infinite;
+}
+
+.not-found-photo {
+  animation: notFoundPhotoZoom 8s ease-in-out infinite;
+}
+
+.not-found-pop {
+  animation: notFoundPop 0.75s cubic-bezier(0.2, 1.35, 0.35, 1) both;
+}
+
+.not-found-pop:nth-of-type(2) {
+  animation-delay: 0.15s;
+}
+
+.not-found-curve-line {
+  animation: notFoundCurveFloat 5s ease-in-out infinite;
+  filter: drop-shadow(0 12px 18px rgb(14 42 71 / 16%));
+  pointer-events: none;
+}
+
+.not-found-curve-line-top {
+  --not-found-curve-rotate: 18deg;
+}
+
+.not-found-curve-line-bottom {
+  --not-found-curve-rotate: 198deg;
+  animation-delay: 0.9s;
+}
+
+.not-found-dash-track {
+  position: absolute;
+  width: 2px;
+  height: 46%;
+  border-radius: 999px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(212, 164, 55, 0.75) 0 10px,
+    transparent 10px 22px
+  );
+  background-size: 2px 36px;
+  animation: notFoundDashDrift 1.8s linear infinite;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.not-found-dash-track-left {
+  left: max(1rem, calc((100vw - 80rem) / 2));
+  top: 14%;
+}
+
+.not-found-dash-track-right {
+  right: max(1rem, calc((100vw - 80rem) / 2));
+  bottom: 12%;
+  animation-direction: reverse;
+}
+
+.not-found-step {
+  position: absolute;
+  z-index: 15;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--color-secondary);
+  border-radius: 999px;
+  background: var(--color-background);
+  box-shadow: 0 8px 18px rgb(14 42 71 / 18%);
+  animation: notFoundPop 0.7s cubic-bezier(0.2, 1.35, 0.35, 1) both;
+}
+
+.not-found-step-one {
+  left: 8%;
+  top: -6%;
+  animation-delay: 0.2s;
+}
+
+.not-found-step-two {
+  right: 10%;
+  bottom: -9%;
+  animation-delay: 0.35s;
+}
+
+.not-found-step-three {
+  right: -3%;
+  top: 48%;
+  animation-delay: 0.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .event-hero-copy,
+  .not-found-photo-frame,
+  .not-found-photo,
+  .not-found-pop,
+  .not-found-curve-line,
+  .not-found-dash-track,
+  .not-found-step {
+    animation: none !important;
+  }
+}
+
+.hng-memory-section {
+  background-color: #070b18;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.08) 2px, transparent 2px),
+    radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.08), transparent 28%),
+    radial-gradient(circle at 85% 10%, rgba(236, 72, 153, 0.08), transparent 24%);
+  background-position:
+    0 0,
+    center,
+    center;
+  background-size:
+    38px 38px,
+    cover,
+    cover;
+}
+
+.memory-photo-card {
+  transform-origin: center;
+  will-change: transform;
+}
+
+.memory-photo-card::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  z-index: -1;
+  border: 1px dashed rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+}
+
+.memory-connector-layer {
+  pointer-events: none;
+}
+
+.memory-connector-layer path {
+  stroke: rgba(255, 255, 255, 0.82);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 0.02 0.035;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.08));
+  animation: memoryDashFlow 3s linear infinite;
+}
+
+@keyframes memoryDashFlow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -0.22;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .memory-connector-layer path {
+    animation: none !important;
+  }
+}
+
 /* About page  dashed snake like lines */
 @keyframes float {
   0% {
@@ -156,3 +391,601 @@ h6 {
   box-shadow: 0 15px 30px rgb(0 0 0 / 12%);
 }
 
+.hoverLink:hover {
+  color: #d4a437;
+}
+
+html.dark .text-primary {
+  color: var(--color-foreground);
+}
+
+html.dark .text-muted,
+html.dark .text-slate-500,
+html.dark .text-slate-600,
+html.dark .text-gray-500,
+html.dark .text-gray-600,
+html.dark .text-gray-700 {
+  color: var(--color-muted);
+}
+
+html.dark .text-slate-700,
+html.dark .text-slate-900,
+html.dark .text-gray-900 {
+  color: var(--color-foreground);
+}
+
+html.dark .bg-white,
+html.dark .bg-\[white\] {
+  background-color: var(--color-card);
+}
+
+html.dark .border-slate-200,
+html.dark .border-gray-100,
+html.dark .border-gray-200 {
+  border-color: var(--color-border);
+}
+
+html.dark .bg-gray-100,
+html.dark .bg-gray-200 {
+  background-color: #1e293b;
+}
+
+html.dark :where(.bg-white\/90, .bg-white\/95, .bg-white\/80) :where(.text-gray-900, .text-slate-900, .text-primary) {
+  color: #111827;
+}
+
+html.dark .gallery-card-wrapper,
+html.dark .gallery-card-wrapper .bg-white {
+  background: var(--color-card);
+}
+
+html.dark .gallery-card-wrapper {
+  border-color: rgba(212, 164, 55, 0.42);
+  box-shadow:
+    0 0 0 1px rgba(212, 164, 55, 0.14),
+    0 12px 30px rgba(0, 0, 0, 0.36);
+}
+
+html.dark .gallery-category-card:hover .gallery-card-wrapper {
+  border-color: var(--color-secondary);
+  box-shadow:
+    0 0 0 1px rgba(212, 164, 55, 0.36),
+    0 20px 42px rgba(0, 0, 0, 0.5),
+    0 0 24px rgba(212, 164, 55, 0.18);
+}
+
+html.dark .gallery-nav-button {
+  background: var(--color-card);
+  border-color: var(--color-border);
+}
+
+
+
+
+/* ================================================
+   AIRBNB-STYLE GALLERY CATEGORIES CAROUSEL
+   Hover Effects & Animations
+   Add to your global.css
+   ================================================ */
+
+/* Gallery Category Card */
+.gallery-category-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-category-card:hover {
+  transform: translateY(-8px);
+}
+
+/* Card Wrapper */
+.gallery-card-wrapper {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+}
+
+.gallery-category-card:hover .gallery-card-wrapper {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Container */
+.gallery-card-image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-card-image-container img {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.gallery-category-card:hover .gallery-card-image-container img {
+  transform: scale(1.1);
+}
+
+/* Overlay Transition */
+.gallery-card-overlay {
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Favorite Button */
+.gallery-favorite-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.gallery-category-card:hover .gallery-favorite-btn {
+  opacity: 1 !important;
+}
+
+.gallery-favorite-btn:hover {
+  transform: scale(1.15);
+  background-color: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-favorite-btn:focus-visible {
+  outline: 2px solid #f43f5e;
+  outline-offset: 2px;
+}
+
+/* Favorite Button SVG Animation */
+.gallery-favorite-btn svg {
+  transition: all 0.3s ease;
+}
+
+.gallery-favorite-btn:hover svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+/* Navigation Buttons */
+.gallery-nav-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.gallery-nav-button:not(:disabled):hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.gallery-nav-button:not(:disabled):active {
+  transform: scale(0.95);
+}
+
+.gallery-nav-button:focus-visible {
+  outline: 2px solid #f43f5e;
+  outline-offset: 2px;
+}
+
+.gallery-nav-button:disabled {
+  pointer-events: none;
+}
+
+/* Smooth Scroll Behavior */
+[role="region"] {
+  scroll-behavior: smooth;
+}
+
+/* Card Entry Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gallery-category-card {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+.gallery-category-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.gallery-category-card:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.gallery-category-card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.gallery-category-card:nth-child(4) {
+  animation-delay: 0.25s;
+}
+.gallery-category-card:nth-child(5) {
+  animation-delay: 0.3s;
+}
+.gallery-category-card:nth-child(6) {
+  animation-delay: 0.35s;
+}
+.gallery-category-card:nth-child(7) {
+  animation-delay: 0.4s;
+}
+.gallery-category-card:nth-child(8) {
+  animation-delay: 0.45s;
+}
+
+/* Featured Badge Animation */
+.gallery-card-image-container .absolute[class*="top-4"] {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-category-card:hover .gallery-card-image-container .absolute[class*="top-4"][class*="left-4"] {
+  animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Text Truncation Smooth Transition */
+.gallery-category-card h3,
+.gallery-category-card p {
+  transition: color 0.3s ease;
+}
+
+.gallery-category-card:hover h3 {
+  color: #111827;
+}
+
+html.dark .gallery-category-card:hover h3 {
+  color: var(--color-foreground);
+}
+
+/* See All Card Hover */
+.gallery-card-wrapper {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-see-all-preview {
+  opacity: 0;
+  transform: translateY(18px) scale(0.72);
+  transform-origin: center bottom;
+  transition:
+    opacity 0.55s ease,
+    transform 0.7s cubic-bezier(0.2, 1.35, 0.35, 1);
+}
+
+.gallery-see-all-preview.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Responsive Adjustments */
+@media (hover: hover) {
+  .gallery-category-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .gallery-nav-button:not(:disabled):hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@media (hover: none) {
+  /* Touch devices */
+  .gallery-category-card:active {
+    transform: translateY(-4px);
+  }
+
+  .gallery-favorite-btn {
+    opacity: 1 !important;
+  }
+
+  .gallery-nav-button {
+    opacity: 0.8;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-category-card,
+  .gallery-card-wrapper,
+  .gallery-favorite-btn,
+  .gallery-nav-button {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .gallery-card-image-container img,
+  .gallery-category-card:hover .gallery-card-image-container img {
+    transform: none !important;
+  }
+}
+
+/* Custom Scrollbar for Webkit Browsers */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Text Selection */
+.gallery-category-card {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.gallery-category-card h3,
+.gallery-category-card p {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+/* Loading State */
+.gallery-card-image-container.loading {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 50%,
+    #f0f0f0 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Link Styling */
+.gallery-category-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Mobile Optimization */
+@media (max-width: 640px) {
+  .gallery-category-card {
+    width: 280px !important;
+    flex-shrink: 0;
+  }
+
+  .gallery-card-image-container {
+    height: 220px;
+  }
+
+  .gallery-nav-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .gallery-nav-button svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Tablet Optimization */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .gallery-category-card {
+    width: 300px !important;
+    flex-shrink: 0;
+  }
+}
+
+/* Hide scrollbars for webkit browsers */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
+
+
+/* Overlay Smooth Transition */
+.airbnb-overlay {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-backdrop-filter: blur(0px); /* Safari/iOS support */
+  backdrop-filter: blur(0px);
+}
+
+.airbnb-card-container:hover .airbnb-overlay {
+  -webkit-backdrop-filter: blur(2px); /* Safari/iOS support */
+  backdrop-filter: blur(2px);
+}
+
+/* Image Container Rounded Effect */
+.airbnb-card-image-wrapper {
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Stagger Animation for Grid Items */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.airbnb-card-container {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.airbnb-card-container:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.airbnb-card-container:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.airbnb-card-container:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.airbnb-card-container:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.airbnb-card-container:nth-child(5) {
+  animation-delay: 0.25s;
+}
+.airbnb-card-container:nth-child(6) {
+  animation-delay: 0.3s;
+}
+.airbnb-card-container:nth-child(7) {
+  animation-delay: 0.35s;
+}
+.airbnb-card-container:nth-child(8) {
+  animation-delay: 0.4s;
+}
+
+/* Smooth Filter Transitions */
+@keyframes filterSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.airbnb-filter-btn {
+  animation: filterSlideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+.airbnb-filter-btn:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.airbnb-filter-btn:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.airbnb-filter-btn:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.airbnb-filter-btn:nth-child(4) {
+  animation-delay: 0.25s;
+}
+.airbnb-filter-btn:nth-child(5) {
+  animation-delay: 0.3s;
+}
+.airbnb-filter-btn:nth-child(6) {
+  animation-delay: 0.35s;
+}
+
+/* Button States */
+.airbnb-filter-btn[class*="border-gray-900"] {
+  color: #111827;
+  font-weight: 600;
+}
+
+.airbnb-filter-btn[class*="border-transparent"] {
+  color: #4b5563;
+}
+
+.airbnb-filter-btn[class*="border-transparent"]:hover {
+  color: #111827;
+}
+
+/* Responsive Hover Effects */
+@media (hover: hover) {
+  .airbnb-card-image-wrapper:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .airbnb-card-container:hover {
+    transform: translateY(-6px);
+  }
+}
+
+@media (hover: none) {
+  .airbnb-card-container:active {
+    transform: translateY(-2px);
+  }
+}
+
+/* Loading State */
+.airbnb-card-image-wrapper.loading {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 50%,
+    #f0f0f0 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Badge Animations */
+.airbnb-card-image-wrapper .category-badge {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.airbnb-card-container:hover .category-badge {
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth Text Selection */
+.airbnb-card-container {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.airbnb-card-container h3,
+.airbnb-card-container p {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Focus States for Accessibility */
+.airbnb-favorite-btn:focus-visible {
+  outline: 2px solid #ff006e;
+  outline-offset: 2px;
+}
+
+.airbnb-filter-btn:focus-visible {
+  outline: 2px solid #ff006e;
+  outline-offset: -2px;
+}
+
+/* Touch Device Optimizations */
+@media (max-width: 768px) {
+  .airbnb-card-container:active {
+    transform: translateY(-2px);
+  }
+
+  .airbnb-favorite-btn {
+    opacity: 1 !important;
+  }
+
+  .airbnb-card-image-wrapper:active img {
+    transform: scale(1.08);
+  }
+}

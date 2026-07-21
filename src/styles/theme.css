@@ -1,42 +1,41 @@
 @theme {
   --color-primary: #0E2A47;
   --color-primary-light: #173B61;
-
   --color-secondary: #D4A437;
-
   --color-background: #F8FAFC;
-
   --color-foreground: #111827;
-
   --color-card: #FFFFFF;
-
   --color-border: #E5E7EB;
-
   --color-success: #16A34A;
-
   --color-danger: #DC2626;
   --color-muted: #64748B;
+  --color-success: #16A34A;
+  --color-danger: #DC2626;
 }
 
+:root {
+  --font-inter: "Inter", "Segoe UI", Arial, sans-serif;
+  --font-montserrat: "Montserrat", "Segoe UI", Arial, sans-serif;
+  --color-primary: #0E2A47;
+  --color-primary-light: #173B61;
+  --color-secondary: #D4A437;
+  --color-background: #F8FAFC;
+  --color-foreground: #111827;
+  --color-card: #FFFFFF;
+  --color-border: #E5E7EB;
+  --color-muted: #64748B;
+  --color-success: #16A34A;
+  --color-danger: #DC2626;
+}
 
-/* :root {
-  --primary: #0E2A47;
-  --primary-light: #173B61;
+html.dark {
+  --color-background: #020617;
+  --color-foreground: #F8FAFC;
+  --color-card: #0F172A;
+  --color-border: #1E293B;
+  --color-muted: #CBD5E1;
+}
 
-  --secondary: #D4A437;
-
-  --background: #F8FAFC;
-
-  --foreground: #111827;
-
-  --card: #FFFFFF;
-
-  --border: #E5E7EB;
-
-  --success: #16A34A;
-
-  --danger: #DC2626;
-} */
 
 /* :root {
   --navy: #0E2A47;
