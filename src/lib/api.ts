@@ -66,3 +66,17 @@ export function submitContactMessage(input: {
     body: JSON.stringify(input),
   });
 }
+
+export function submitRegistration(input: {
+  childName: string;
+  parentName: string;
+  parentEmail: string;
+  parentPhone: string;
+  ageGroup: string;
+  message?: string;
+}) {
+  return apiRequest("/registrations", {
+    method: "POST",
+    body: JSON.stringify(input),
+  });
+}

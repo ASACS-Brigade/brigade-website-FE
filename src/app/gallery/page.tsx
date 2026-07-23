@@ -12,7 +12,7 @@ export default async function GalleryPage() {
   return (
     <main>
       <Container>
-        <GallerySlider />
+        <GallerySlider categories={cards} images={images} />
       </Container>
 
 

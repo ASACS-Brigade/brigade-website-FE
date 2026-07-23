@@ -2,12 +2,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Shield } from "lucide-react";
+import { Menu } from "lucide-react";
 
 import Container from "../layout/container";
 import ThemeToggle from "../layout/theme-toggle";
 import MobileMenu from "./mobile-menu";
 import { cn } from "../../lib/utils";
+import DonateButton from "../shared/donate-button";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -114,6 +115,7 @@ export default function Navbar() {
             </nav>
 
             <div className="flex items-center gap-3">
+              <DonateButton className="hidden lg:inline-flex" />
               <ThemeToggle />
 
               <button

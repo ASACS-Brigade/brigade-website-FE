@@ -53,7 +53,7 @@ export default function AlbumLightbox({
             title="Close"
             aria-label="Close"
             onClick={onClose}
-            className="absolute right-4 top-4 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-secondary sm:right-6 sm:top-6"
+            className="absolute right-4 top-4 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-secondary sm:right-6 sm:top-6 cursor-pointer"
           >
             <X size={22} />
           </button>

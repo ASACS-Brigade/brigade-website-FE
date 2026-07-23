@@ -7,14 +7,29 @@ import { motion } from "framer-motion";
 
 import type { GalleryCategory } from "../../../../../data/gallery";
 import Container from "../../../layout/container";
-import { albumIcons } from "./album-icons";
 
 interface AlbumHeroProps {
   album: GalleryCategory;
 }
 
+function splitHeroTitle(title: string) {
+  const words = title.trim().split(/\s+/);
+
+  if (words.length <= 2) {
+    return {
+      lead: title,
+      accent: "",
+    };
+  }
+
+  return {
+    lead: words.slice(0, -2).join(" "),
+    accent: words.slice(-2).join(" "),
+  };
+}
+
 export default function AlbumHero({ album }: AlbumHeroProps) {
-  const Icon = albumIcons[album.icon];
+  const heroTitle = splitHeroTitle(album.heroTitle);
 
   return (
     <section className="relative min-h-[560px] overflow-hidden bg-primary md:min-h-[640px]">
@@ -27,7 +42,7 @@ export default function AlbumHero({ album }: AlbumHeroProps) {
         className="pointer-events-none object-cover"
       />
 
-      <div className="absolute inset-0 bg-primary/80" />
+      <div className="absolute inset-0 bg-primary/95 lg:bg-primary/80" />
 
       <Container className="relative z-10 flex min-h-[560px] items-center py-20 md:min-h-[640px] md:py-24">
         <div className="max-w-3xl text-white">
@@ -45,7 +60,7 @@ export default function AlbumHero({ album }: AlbumHeroProps) {
             </Link>
           </motion.div>
 
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.5 }}
@@ -53,15 +68,21 @@ export default function AlbumHero({ album }: AlbumHeroProps) {
           >
             <Icon size={18} />
             {album.shortTitle} Archive
-          </motion.div>
+          </motion.div> */}
 
           <motion.h1
             initial={{ opacity: 0, y: 34 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.18, duration: 0.55 }}
-            className="mt-5 max-w-3xl text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
+            className="mt-8 max-w-3xl text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
           >
-            {album.heroTitle}
+            {heroTitle.lead}
+            {heroTitle.accent ? (
+              <>
+                <br />
+                <span className="text-secondary">{heroTitle.accent}</span>
+              </>
+            ) : null}
           </motion.h1>
 
           <motion.p

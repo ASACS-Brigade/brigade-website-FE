@@ -2,9 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import {
-  FaFacebook,
   FaFacebookF,
-  
   FaInstagram,
   FaLinkedinIn,
   FaYoutube,
@@ -13,6 +11,8 @@ import {
 import Container from "./container";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="bg-primary text-white">
 
@@ -184,10 +184,10 @@ export default function Footer() {
 
               <ul className="space-y-3 text-sm">
 
-                <li>Our Story</li>
-                <li>Leadership</li>
-                <li>Our Values</li>
-                <li>Programs</li>
+                <li><Link href="/about#story" className="navHover">Our Story</Link></li>
+                <li><Link href="/about#leadership" className="navHover">Leadership</Link></li>
+                <li><Link href="/about#values" className="navHover">Our Values</Link></li>
+                <li><Link href="/about#programs" className="navHover">Programs</Link></li>
 
               </ul>
 
@@ -269,10 +269,10 @@ export default function Footer() {
 
               <ul className="space-y-3 text-sm">
 
-                <li>Weekly Meetings</li>
-                <li>Outreach</li>
-                <li>Camps</li>
-              <Link href="/about#members">Members</Link>
+                <li><Link href="/events" className="navHover">Weekly Meetings</Link></li>
+                <li><Link href="/gallery/outreach" className="navHover">Outreach</Link></li>
+                <li><Link href="/gallery/camp" className="navHover">Camps</Link></li>
+                <li><Link href="/about#leadership" className="navHover">Members</Link></li>
                 {/* <li>Training</li> */}
 
               </ul>
@@ -304,9 +304,11 @@ export default function Footer() {
               <div className="space-y-3 text-sm text-slate-300">
 
                 <p>
-                  All Saints' Anglican Church,
+                  All Saints Anglican Church,
+                  {/* <br />
+                  4, Adisa Bashua Street, */}
                   <br />
-                  Surulere, Lagos
+                  Surulere, Lagos, Nigeria
                 </p>
 
                 {/* <p>
@@ -314,7 +316,9 @@ export default function Footer() {
                 </p> */}
 
                 <p>
-                  bbgb.asacs@gmail.com
+                  <a href="mailto:bbgb.asacs@gmail.com" className="navHover">
+                    bbgb.asacs@gmail.com
+                  </a>
                 </p>
 
               </div>
@@ -336,7 +340,7 @@ export default function Footer() {
             text-slate-400
             "
           >
-            © 2026 Boys & Girls Brigade,
+            © {currentYear} Boys & Girls Brigade,
             Surulere Company. All Rights Reserved.
           </div>
 

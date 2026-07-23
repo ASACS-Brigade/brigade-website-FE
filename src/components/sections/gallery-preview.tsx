@@ -5,14 +5,9 @@ import Container from "../layout/container";
 import FadeIn from "../layout/fade-in";
 import { FaArrowRight } from "react-icons/fa6";
 
-const images = [
-  "/gallery/gallery1.png",
-  // "/gallery/gallery2.png",
-  // "/gallery/gallery3.png",
-  "/images/hero.jpeg",
-];
+export default function GalleryPreview({ images = [] }: { images?: string[] }) {
+  const previewImages = images.slice(0, 4);
 
-export default function GalleryPreview() {
   return (
     <section className="py-8">
 
@@ -62,7 +57,13 @@ export default function GalleryPreview() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-5">
 
-          {images.map((image, index) => (
+          {previewImages.length === 0 ? (
+            <div className="rounded-xl border border-dashed border-border bg-card p-6 text-sm text-muted md:col-span-4">
+              Gallery images published from the dashboard will appear here.
+            </div>
+          ) : null}
+
+          {previewImages.map((image, index) => (
             <FadeIn key={index}>
 
               <div

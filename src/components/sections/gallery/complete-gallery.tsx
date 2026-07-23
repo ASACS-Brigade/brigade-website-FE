@@ -4,10 +4,7 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import { ArrowLeft, ImageIcon } from "lucide-react";
 import Link from "next/link";
-import {
-  galleryCategories,
-  type GalleryCategory,
-} from "../../../../data/gallery";
+import type { GalleryCategory } from "../../../../data/gallery";
 import Container from "../../layout/container";
 import AlbumLightbox from "./category-album/album-lightbox";
 
@@ -19,10 +16,6 @@ type CompleteGalleryItem = {
   categoryTitle: string;
   year?: string;
 };
-
-const fallbackCategoryEntries = Object.entries(galleryCategories).map(
-  ([slug, category]) => ({ slug, category }),
-);
 
 function buildCompleteGalleryItems(
   categoryEntries: { slug: string; category: GalleryCategory }[],
@@ -62,7 +55,7 @@ function buildCompleteGalleryItems(
 }
 
 export default function CompleteGallery({
-  categories = fallbackCategoryEntries,
+  categories = [],
 }: {
   categories?: { slug: string; category: GalleryCategory }[];
 }) {
@@ -163,6 +156,12 @@ export default function CompleteGallery({
         </div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {filteredItems.length === 0 ? (
+            <div className="col-span-full rounded-2xl border border-dashed border-gray-300 bg-white p-8 text-center text-gray-600">
+              Published gallery photos from the dashboard will appear here.
+            </div>
+          ) : null}
+
           {filteredItems.map((item, index) => (
             <button
               key={item.id}

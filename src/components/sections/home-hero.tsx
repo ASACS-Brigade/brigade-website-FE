@@ -18,6 +18,7 @@ export default function HomeHero() {
 
       <div
         className="
+        hero-fade-overlay
         pointer-events-none
         absolute
         inset-0
@@ -129,4 +130,3 @@ export default function HomeHero() {
     </section>
   );
 }
-

@@ -8,14 +8,16 @@ import CtaBanner from "../../../shared/ctaBanner";
 import AlbumGallery from "./album-gallery";
 import AlbumHero from "./album-hero";
 import AlbumLightbox from "./album-lightbox";
+import AlbumOverview, { OutreachSponsorsMarquee } from "./album-overview";
 import AlbumStats from "./album-stats";
 import AlbumYears from "./album-years";
 
 interface AlbumPageProps {
   album: GalleryCategory;
+  categorySlug: string;
 }
 
-export default function AlbumPage({ album }: AlbumPageProps) {
+export default function AlbumPage({ album, categorySlug }: AlbumPageProps) {
   const initialYear =
     album.years.find((item) => item.status === "available")?.year ??
     album.years[0]?.year ??
@@ -58,6 +60,8 @@ export default function AlbumPage({ album }: AlbumPageProps) {
   return (
     <main className="bg-background text-foreground">
       <AlbumHero album={album} />
+      <AlbumOverview album={album} categorySlug={categorySlug} />
+      {categorySlug === "outreach" ? <OutreachSponsorsMarquee /> : null}
       <AlbumStats album={album} />
       <AlbumYears
         album={album}

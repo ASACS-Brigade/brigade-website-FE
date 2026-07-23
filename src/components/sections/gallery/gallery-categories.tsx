@@ -4,55 +4,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { galleryCategories } from "../../../../data/gallery";
 import type { GalleryCategoryCard } from "../../../lib/content-api";
 import Container from "../../layout/container";
 
 // Adjust this class to increase or reduce the bottom spacing of this section.
 const SECTION_BOTTOM_SPACE_CLASS = "pb-24 sm:pb-28 lg:pb-32";
 
-const fallbackCategoryCards: GalleryCategoryCard[] = [
-  {
-    title: "Parade & Drill",
-    count: "120+ Photos",
-    slug: "parade",
-    image: "/gallery/gallery1.png",
-    description: "Discipline and Precision",
-  },
-  {
-    title: "Medical Outreach",
-    count: "80+ Photos",
-    slug: "outreach",
-    image: "/gallery/gallery1.png",
-    description: "Service to Community",
-  },
-  {
-    title: "Band & Orchestra",
-    count: "65+ Photos",
-    slug: "band",
-    image: "/gallery/gallery1.png",
-    description: "Music Ministry",
-  },
-  {
-    title: "Enrolment Service",
-    count: "110+ Photos",
-    slug: "enrolment",
-    image: "/gallery/gallery1.png",
-    description: "New Beginnings",
-  },
-];
-
-const seeAllPreviewImages = Object.values(galleryCategories)
-  .flatMap((category) => [
-    category.heroImage,
-    ...category.images,
-    ...category.years.flatMap((year) => year.images),
-  ])
-  .filter((image, index, images) => images.indexOf(image) === index)
-  .slice(0, 3);
-
 export default function GalleryCategories({
-  categories = fallbackCategoryCards,
+  categories = [],
 }: {
   categories?: GalleryCategoryCard[];
 }) {
@@ -62,6 +21,12 @@ export default function GalleryCategories({
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [screenSize, setScreenSize] = useState<"sm" | "md" | "lg">("lg");
   const [isSeeAllVisible, setIsSeeAllVisible] = useState(false);
+  const seeAllPreviewImages = categories
+    .map((category) => category.image)
+    .filter((image, index, images) => image && images.indexOf(image) === index)
+    .concat(["/gallery/gallery1.png", "/images/hero.jpeg", "/events/pic1.png"])
+    .filter((image, index, images) => image && images.indexOf(image) === index)
+    .slice(0, 3);
 
   useEffect(() => {
     const updateScreenSize = () => {
@@ -236,6 +201,13 @@ export default function GalleryCategories({
               </Link>
             ))}
 
+            {categories.length === 0 ? (
+              <div className="w-full rounded-2xl border border-dashed border-gray-300 bg-white p-8 text-center text-gray-600">
+                Gallery albums will appear here once they are published from the dashboard.
+              </div>
+            ) : null}
+
+            {seeAllPreviewImages.length > 0 ? (
             <Link
               ref={seeAllCardRef}
               href="/gallery/all"
@@ -284,6 +256,7 @@ export default function GalleryCategories({
                 </div>
               </div>
             </Link>
+            ) : null}
 
             <div className="flex-shrink-0 w-4 sm:w-6 md:w-8 lg:w-12" />
           </div>

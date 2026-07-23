@@ -187,7 +187,9 @@ export default function ParadeGallery({ year, images }: ParadeGalleryProps) {
               >
                 {/* Image Container */}
                 <div
-                  className={`${heights[index % heights.length]} relative cursor-pointer overflow-hidden rounded-3xl`}
+                  className={`${heights[index % heights.length]} protected-image relative cursor-pointer overflow-hidden rounded-3xl`}
+                  onClick={() => openLightbox(index)}
+                  onContextMenu={(event) => event.preventDefault()}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
@@ -196,6 +198,7 @@ export default function ParadeGallery({ year, images }: ParadeGalleryProps) {
                     src={image}
                     alt={`Parade ${year}`}
                     fill
+                    draggable={false}
                     className={`object-cover transition-transform duration-700 ${
                       hoveredIndex === index ? "scale-110" : "scale-100"
                     }`}

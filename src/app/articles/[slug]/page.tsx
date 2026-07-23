@@ -14,18 +14,13 @@ import {
 
 import ArticleCard from "../../../components/cards/article-card";
 import Container from "../../../components/layout/container";
-import {
-  brigadeArticles,
-  formatArticleDate,
-} from "../../../constants/articles";
+import { formatArticleDate } from "../../../constants/articles";
 import { getArticleDetailData } from "../../../lib/content-api";
 
 export const dynamicParams = true;
 
 export function generateStaticParams() {
-  return brigadeArticles.map((article) => ({
-    slug: article.slug,
-  }));
+  return [];
 }
 
 export async function generateMetadata({
@@ -100,7 +95,7 @@ export default async function ArticleDetailPage({
                 <ImageOff size={96} />
               </div>
             )}
-            <div className="absolute inset-0 bg-primary/80" />
+            <div className="absolute inset-0 bg-primary/95 lg:bg-primary/80" />
           </div>
 
           <Container className="relative z-10 py-14 sm:py-18 lg:py-24">

@@ -10,6 +10,7 @@ import ParadeGallery from "./parade-gallery";
 
 import CtaBanner from "../../../shared/ctaBanner";
 import type { GalleryCategory } from "../../../../../data/gallery";
+import AlbumOverview from "../category-album/album-overview";
 // import GalleryTestPage from "./gallery-test";
 
 /**
@@ -70,6 +71,8 @@ export default function ParadePage({ album }: { album?: GalleryCategory }) {
   return (
     <>
       <ParadeHero />
+
+      {album ? <AlbumOverview album={album} categorySlug="parade" /> : null}
 
       <ParadeStats />
 

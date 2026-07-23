@@ -1,4 +1,4 @@
-// app/gallery-test/page.tsx
+
 
 import ParadeGallery from "../../../../components/sections/gallery/parade/parade-gallery"; // adjust path
 

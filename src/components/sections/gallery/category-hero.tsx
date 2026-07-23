@@ -34,7 +34,8 @@ export default function CategoryHero({
         className="
         absolute
         inset-0
-        bg-primary/80
+        bg-primary/95
+        lg:bg-primary/80
         "
       />
 

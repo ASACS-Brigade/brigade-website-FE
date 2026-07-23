@@ -2,6 +2,30 @@
 @custom-variant dark (&:where(.dark, .dark *));
 @import "../styles/theme.css";
 
+@media (max-width: 1023px) {
+  .hero-fade-overlay {
+    background: rgba(14, 42, 71, 0.95) !important;
+  }
+}
+
+@keyframes outreachMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.outreach-marquee {
+  width: max-content;
+  animation: outreachMarquee 28s linear infinite;
+}
+
+.outreach-marquee:hover {
+  animation-play-state: paused;
+}
+
 html {
   scroll-behavior: smooth;
   color-scheme: light;
@@ -19,6 +43,13 @@ body {
   transition:
     background-color 0.2s ease,
     color 0.2s ease;
+}
+
+img,
+.protected-image {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  user-select: none;
 }
 
 html.dark body {

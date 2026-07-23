@@ -36,5 +36,5 @@ export default async function CategoryPage({
     return <ParadePage album={data} />;
   }
 
-  return <AlbumPage album={data} />;
+  return <AlbumPage album={data} categorySlug={category} />;
 }

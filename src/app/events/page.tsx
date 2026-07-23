@@ -14,7 +14,7 @@ export default async function EventsPage() {
 
   return (
     <main>
-      <EventsHero />
+      <EventsHero events={events} />
       <EventsPageContent
         events={events}
         featured={featuredEvent}

@@ -1,15 +1,10 @@
 import {
-  articleCategories,
-  brigadeArticles,
   type ArticleCategory,
   type ArticleSection,
   type ArticleTimelineItem,
   type BrigadeArticle,
 } from "../constants/articles";
-import {
-  brigadeEvents,
-  type BrigadeEvent,
-} from "../constants/events";
+import { type BrigadeEvent } from "../constants/events";
 import {
   galleryCategories,
   type GalleryCategory,
@@ -110,7 +105,9 @@ export type GalleryCategoryCard = {
   description: string;
 };
 
-const TODAY = "2026-07-18";
+function todayIsoDate() {
+  return new Date().toISOString().slice(0, 10);
+}
 
 function splitParagraphs(content?: string | null) {
   return (content ?? "")
@@ -159,16 +156,6 @@ function isArticleTimeline(value: unknown): value is ArticleTimelineItem[] {
       );
     })
   );
-}
-
-function mergeBySlug<T extends { slug: string }>(fallback: T[], live: T[]) {
-  const merged = new Map(fallback.map((item) => [item.slug, item]));
-
-  live.forEach((item) => {
-    merged.set(item.slug, item);
-  });
-
-  return Array.from(merged.values());
 }
 
 function normalizeArticle(article: ApiArticle): BrigadeArticle {
@@ -317,7 +304,7 @@ export async function getArticlesData() {
     getApiOrNull<ApiArticleCategory[]>("/articles/categories"),
   ]);
   const liveArticles = response?.items.map(normalizeArticle) ?? [];
-  const articles = mergeBySlug(brigadeArticles, liveArticles).sort((a, b) => {
+  const articles = liveArticles.sort((a, b) => {
     if (a.featured && !b.featured) return -1;
     if (!a.featured && b.featured) return 1;
     return b.date.localeCompare(a.date);
@@ -328,7 +315,7 @@ export async function getArticlesData() {
       .filter(Boolean) ?? [];
   const articleCategoryNames = articles.map((article) => article.category);
   const categories = Array.from(
-    new Set([...articleCategories, ...liveCategories, ...articleCategoryNames]),
+    new Set([...liveCategories, ...articleCategoryNames]),
   );
 
   return {
@@ -349,7 +336,9 @@ export async function getArticleDetailData(slug: string) {
     return null;
   }
 
-  const mergedArticles = mergeBySlug(articles, [article]);
+  const mergedArticles = articles.some((item) => item.slug === article.slug)
+    ? articles
+    : [...articles, article];
   const sameCategory = mergedArticles.filter(
     (item) => item.category === article.category && item.slug !== article.slug,
   );
@@ -367,16 +356,12 @@ export async function getEventsData() {
   const response = await getApiOrNull<PaginatedResponse<ApiEvent>>(
     "/events?limit=100",
   );
-  const fallbackBySlug = new Map(
-    brigadeEvents.map((event) => [event.id, event]),
-  );
   const liveEvents =
-    response?.items.map((event) =>
-      normalizeEvent(event, fallbackBySlug.get(event.slug)),
-    ) ?? [];
-  const events = response ? liveEvents : brigadeEvents;
-  const upcoming = sortEvents(events.filter((event) => event.date >= TODAY));
-  const past = sortEvents(events.filter((event) => event.date < TODAY)).reverse();
+    response?.items.map((event) => normalizeEvent(event)) ?? [];
+  const events = liveEvents;
+  const today = todayIsoDate();
+  const upcoming = sortEvents(events.filter((event) => event.date >= today));
+  const past = sortEvents(events.filter((event) => event.date < today)).reverse();
 
   return {
     events: sortEvents(events),
@@ -402,21 +387,11 @@ export async function getGalleryData() {
     "/gallery/categories",
   );
 
-  if (!categories || categories.length === 0) {
-    const fallbackCategories = Object.entries(galleryCategories).map(
-      ([slug, category]) => ({ slug, category }),
-    );
-
+  if (!categories) {
     return {
-      categories: fallbackCategories,
-      cards: buildGalleryCards(fallbackCategories),
-      images: uniqueImages(
-        Object.values(galleryCategories).flatMap((category) => [
-          category.heroImage,
-          ...category.images,
-          ...category.years.flatMap((year) => year.images),
-        ]),
-      ),
+      categories: [],
+      cards: [],
+      images: [],
     };
   }
 
@@ -438,10 +413,7 @@ export async function getGalleryData() {
     }),
   );
 
-  const fallbackMissing = Object.entries(galleryCategories)
-    .filter(([slug]) => !categoryEntries.some((entry) => entry.slug === slug))
-    .map(([slug, category]) => ({ slug, category }));
-  const mergedCategories = [...categoryEntries, ...fallbackMissing];
+  const mergedCategories = categoryEntries;
 
   return {
     categories: mergedCategories,

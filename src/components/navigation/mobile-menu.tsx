@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { X } from "lucide-react";
+import DonateButton from "../shared/donate-button";
 
 interface MobileMenuProps {
   open: boolean;
@@ -140,18 +141,7 @@ export default function MobileMenu({
         </nav>
 
         <div className="p-6">
-          <div
-            className="
-            rounded-xl
-            bg-[#D4A437]
-            p-4
-            text-center
-            text-white
-            font-semibold
-            "
-          >
-            DONATE
-          </div>
+          <DonateButton fullWidth />
         </div>
       </div>
     </div>

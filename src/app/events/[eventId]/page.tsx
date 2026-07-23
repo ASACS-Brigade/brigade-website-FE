@@ -3,18 +3,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CalendarDays, Clock3, ImageOff, MapPin } from "lucide-react";
 import Container from "../../../components/layout/container";
-import {
-  brigadeEvents,
-  eventFullDate,
-} from "../../../constants/events";
+import { eventFullDate } from "../../../constants/events";
 import { getEventDetailData } from "../../../lib/content-api";
 
 export const dynamicParams = true;
 
 export function generateStaticParams() {
-  return brigadeEvents.map((event) => ({
-    eventId: event.id,
-  }));
+  return [];
 }
 
 export async function generateMetadata({
@@ -66,7 +61,7 @@ export default async function EventDetailPage({
           </div>
         )}
         <div
-          className="pointer-events-none absolute inset-0"
+          className="hero-fade-overlay pointer-events-none absolute inset-0"
           style={{
             background:
               "linear-gradient(90deg, rgba(14, 42, 71, 0.98) 0%, rgba(14, 42, 71, 0.88) 48%, rgba(14, 42, 71, 0.35) 100%)",

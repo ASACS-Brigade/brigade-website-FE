@@ -5,13 +5,17 @@ import Container from "../layout/container";
 import ArticleCard from "../cards/article-card";
 import FadeIn from "../layout/fade-in";
 import {
-  brigadeArticles,
   formatArticleDate,
+  type BrigadeArticle,
 } from "../../constants/articles";
 
-const previewArticles = brigadeArticles.slice(0, 3);
+export default function ArticlesPreview({
+  articles = [],
+}: {
+  articles?: BrigadeArticle[];
+}) {
+  const previewArticles = articles.slice(0, 3);
 
-export default function ArticlesPreview() {
   return (
     <section className="bg-background py-12 sm:py-14">
       <Container>
@@ -38,6 +42,12 @@ export default function ArticlesPreview() {
         </div>
 
         <div className="mt-8 grid gap-6 md:grid-cols-3">
+          {previewArticles.length === 0 ? (
+            <div className="rounded-xl border border-dashed border-border bg-card p-6 text-sm text-muted md:col-span-3">
+              Latest published articles from the dashboard will appear here.
+            </div>
+          ) : null}
+
           {previewArticles.map((article) => (
             <FadeIn key={article.slug}>
               <ArticleCard

@@ -6,10 +6,14 @@ import { FaArrowRight } from "react-icons/fa6";
 import {
   eventDay,
   eventMonth,
-  upcomingEvents,
+  type BrigadeEvent,
 } from "../../constants/events";
 
-export default function EventsPreview() {
+export default function EventsPreview({
+  events = [],
+}: {
+  events?: BrigadeEvent[];
+}) {
   return (
     <section className="py-20 bg-white">
       <Container>
@@ -64,7 +68,13 @@ export default function EventsPreview() {
         </div>
 
         <div className="mt-8 grid md:grid-cols-3 gap-6">
-          {upcomingEvents.slice(0, 3).map((event) => (
+          {events.length === 0 ? (
+            <div className="rounded-xl border border-dashed border-border bg-card p-6 text-sm text-muted md:col-span-3">
+              Upcoming published events from the dashboard will appear here.
+            </div>
+          ) : null}
+
+          {events.slice(0, 3).map((event) => (
             <FadeIn key={event.title}>
               <EventCard
                 image={event.image}

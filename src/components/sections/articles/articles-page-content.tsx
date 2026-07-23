@@ -20,8 +20,6 @@ import {
 import ArticleCard from "../../cards/article-card";
 import Container from "../../layout/container";
 import {
-  articleCategories,
-  brigadeArticles,
   formatArticleDate,
   type ArticleCategory,
   type BrigadeArticle,
@@ -550,8 +548,8 @@ function ArchiveGrid({
 
 export default function ArticlesPageContent({
   page,
-  articles = brigadeArticles,
-  categories = articleCategories,
+  articles = [],
+  categories = [],
   featuredArticle = articles.find((article) => article.featured) ?? articles[0],
 }: {
   page: string | string[] | undefined;
@@ -561,6 +559,24 @@ export default function ArticlesPageContent({
 }) {
   const totalPages = Math.max(1, Math.ceil(articles.length / articlesPerPage));
   const currentPage = clampPage(page, totalPages);
+
+  if (!featuredArticle || articles.length === 0) {
+    return (
+      <main className="bg-background py-20 text-foreground">
+        <Container>
+          <div className="rounded-2xl border border-dashed border-border bg-card p-8 text-center shadow-sm sm:p-12">
+            <h1 className="text-3xl font-black text-primary sm:text-4xl">
+              Articles Coming Soon
+            </h1>
+            <p className="mx-auto mt-4 max-w-2xl text-muted">
+              Published articles from the dashboard will appear here once they
+              are available.
+            </p>
+          </div>
+        </Container>
+      </main>
+    );
+  }
 
   return (
     <main className="bg-background text-foreground">

@@ -202,8 +202,8 @@ function GalleryPhotoFrame({
       onMouseLeave={() => setHoveredId(null)}
     >
       <div
-        className={`relative h-full border border-dashed border-white/55 bg-white/5 p-2 shadow-2xl shadow-black/35 transition duration-300 ${
-          isHovered ? "scale-[1.035] border-sky-400" : ""
+        className={`relative h-full bg-white/5 p-2 shadow-2xl shadow-black/35 transition duration-300 ${
+          isHovered ? "scale-[1.035]" : ""
         }`}
       >
         <span
@@ -242,6 +242,7 @@ export default function ArtGallery({ images = [] }: { images?: string[] }) {
   const displayItems = galleryItems.map((item, index) => ({
     ...item,
     image: images[index] ?? item.image,
+    title: images[index] ? `Gallery Moment ${index + 1}` : item.title,
   }));
 
   return (

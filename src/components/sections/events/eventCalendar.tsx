@@ -51,7 +51,7 @@ export default function EventCalendar({
   selectedDate,
   onSelectDate,
 }: EventCalendarProps) {
-  const firstEventDate = eventDate(events[0]);
+  const firstEventDate = events[0] ? eventDate(events[0]) : new Date();
   const [year, setYear] = useState(firstEventDate.getFullYear());
   const [month, setMonth] = useState(firstEventDate.getMonth());
 

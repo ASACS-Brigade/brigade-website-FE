@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, CalendarDays } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 
 import Container from "../../../layout/container";
@@ -23,7 +23,7 @@ export default function ParadeHero() {
 
       {/* Overlay */}
 
-      <div className="absolute inset-0 bg-primary/78" />
+      <div className="absolute inset-0 bg-primary/95 lg:bg-primary/78" />
 
       {/* Decorative */}
 
@@ -50,7 +50,7 @@ export default function ParadeHero() {
               inline-flex
               items-center
               gap-2
-              rounded-full
+              rounded-lg
               border
               border-white/20
               bg-white/10
@@ -62,12 +62,12 @@ export default function ParadeHero() {
               hover:border-secondary
               "
             >
-              <ArrowLeft size={18} />
+              <ArrowLeft size={17} />
               Back To Gallery
             </Link>
           </motion.div>
 
-          <motion.span
+          {/* <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: .1 }}
@@ -85,7 +85,7 @@ export default function ParadeHero() {
           >
             <CalendarDays size={18}/>
             Brigade Archives
-          </motion.span>
+          </motion.span> */}
 
           <motion.h1
             initial={{
@@ -102,11 +102,12 @@ export default function ParadeHero() {
             className="
             mt-6
             text-4xl
-            font-black
+            font-bold
             leading-tight
             text-white
             sm:text-5xl
             md:text-6xl
+            lg:text-7xl
             "
           >
             Parade &

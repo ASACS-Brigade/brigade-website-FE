@@ -4,11 +4,11 @@ import { useState } from "react";
 import { ArrowRight, CalendarDays } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { brigadeEvents } from "../../../constants/events";
+import type { BrigadeEvent } from "../../../constants/events";
 import Container from "../../layout/container";
 import CalendarModal from "./calendarModal";
 
-export default function EventsHero() {
+export default function EventsHero({ events }: { events: BrigadeEvent[] }) {
   const [calendarOpen, setCalendarOpen] = useState(false);
 
   return (
@@ -23,7 +23,7 @@ export default function EventsHero() {
         />
 
         <div
-          className="pointer-events-none absolute inset-0"
+          className="hero-fade-overlay pointer-events-none absolute inset-0"
           style={{
             background:
               "linear-gradient(90deg, rgba(14, 42, 71, 0.96) 0%, rgba(14, 42, 71, 0.9) 44%, rgba(14, 42, 71, 0.18) 76%, rgba(14, 42, 71, 0) 100%)",
@@ -36,10 +36,10 @@ export default function EventsHero() {
           <div className="event-hero-copy">
             <div className="max-w-3xl text-white">
 
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-secondary backdrop-blur">
+              {/* <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-secondary backdrop-blur">
                 <CalendarDays size={15} />
                 Brigade Calendar
-              </div>
+              </div> */}
 
               <h1 className="max-w-3xl text-4xl font-bold leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
                 Gatherings that build{" "}
@@ -75,7 +75,7 @@ export default function EventsHero() {
       </section>
 
       <CalendarModal
-        events={brigadeEvents}
+        events={events}
         open={calendarOpen}
         onClose={() => setCalendarOpen(false)}
       />
