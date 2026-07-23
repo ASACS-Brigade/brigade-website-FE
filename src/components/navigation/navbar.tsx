@@ -2,12 +2,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Shield } from "lucide-react";
+import { Menu } from "lucide-react";
 
 import Container from "../layout/container";
 import ThemeToggle from "../layout/theme-toggle";
 import MobileMenu from "./mobile-menu";
 import { cn } from "../../lib/utils";
+import DonateButton from "../shared/donate-button";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -39,7 +40,7 @@ export default function Navbar() {
         shadow-black/5
         "
       >
-    
+
         <Container>
           <div className="flex h-20 items-center justify-between">
             <Link
@@ -54,7 +55,7 @@ export default function Navbar() {
               sm:gap-3
               "
             >
-              <span
+              {/* <span
                 className="
                 flex
                 h-10
@@ -74,12 +75,19 @@ export default function Navbar() {
                 aria-hidden="true"
               >
                 <Shield className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={1.8} />
+              </span> */}
+              <span className="">
+                <img src="/images/bb-logo.png" alt="Brigade Logo" width={40} height={40} />
               </span>
 
               <span className="flex min-w-0 flex-col text-[11px] font-bold uppercase leading-[1.08] tracking-wide sm:text-xs md:text-[13px]">
-                <span>Boys & Girls</span>
+                <span>ALL SAINTS SURULERE</span>
                 <span>Brigade</span>
-                <span>Surulere Company</span>
+                {/* <span>Surulere Companies</span> */}
+              </span>
+
+                <span className="">
+                <img src="/images/gb-logo.png" alt="girls Brigade Logo" width={37} height={37} />
               </span>
             </Link>
 
@@ -107,6 +115,7 @@ export default function Navbar() {
             </nav>
 
             <div className="flex items-center gap-3">
+              <DonateButton className="hidden lg:inline-flex" />
               <ThemeToggle />
 
               <button

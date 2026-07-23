@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import ArticlesPageContent from "../../components/sections/articles/articles-page-content";
+import { getArticlesData } from "../../lib/content-api";
 
 export const metadata: Metadata = {
   title: "Articles | Boys & Girls Brigade Surulere",
@@ -14,6 +15,14 @@ export default async function ArticlesPage({
   searchParams?: Promise<{ page?: string | string[] }>;
 }) {
   const resolvedSearchParams = await searchParams;
+  const { articles, categories, featuredArticle } = await getArticlesData();
 
-  return <ArticlesPageContent page={resolvedSearchParams?.page} />;
+  return (
+    <ArticlesPageContent
+      page={resolvedSearchParams?.page}
+      articles={articles}
+      categories={categories}
+      featuredArticle={featuredArticle}
+    />
+  );
 }

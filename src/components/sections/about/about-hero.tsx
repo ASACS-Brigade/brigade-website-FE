@@ -14,7 +14,7 @@ export default function AboutHero() {
       />
 
       <div
-        className="absolute inset-0"
+        className="hero-fade-overlay absolute inset-0"
         style={{
           background:
             "linear-gradient(90deg, rgba(14,42,71,.96) 0%, rgba(14,42,71,.85) 45%, rgba(14,42,71,0) 80%)",
@@ -43,9 +43,9 @@ export default function AboutHero() {
           </h1>
 
           <p className="mt-5 max-w-2xl text-base leading-7 text-white/90 sm:text-lg md:mt-6 md:text-[18px] md:leading-8">
-            lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
-            quasi, voluptate quisquam corporis doloremque, voluptate quisquam
-            corporis doloremque, voluptate quisquam corporis doloremque,
+            A Christ-centred company at All Saints Anglican Church Surulere,
+            raising boys and girls through worship, discipline, leadership,
+            service and lasting fellowship.
           </p>
 
           <div className="mt-8 flex w-full flex-col gap-4 sm:w-auto sm:flex-row md:mt-10">

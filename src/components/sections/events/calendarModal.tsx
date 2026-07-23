@@ -61,7 +61,7 @@ export default function CalendarModal({
   open,
   onClose,
 }: CalendarModalProps) {
-  const firstEventDate = eventDate(events[0]);
+  const firstEventDate = events[0] ? eventDate(events[0]) : new Date();
   const [year, setYear] = useState(firstEventDate.getFullYear());
   const [month, setMonth] = useState(firstEventDate.getMonth());
   const [selectedDate, setSelectedDate] = useState(events[0]?.date ?? null);
@@ -110,6 +110,18 @@ export default function CalendarModal({
     ...Array(42 - cells.length).fill(null),
   ];
 
+  useEffect(() => {
+    if (!open) return;
+
+    const selectedInCurrentMonth =
+      selectedDate &&
+      monthlyEvents.some((event) => event.date === selectedDate);
+
+    if (!selectedInCurrentMonth) {
+      setSelectedDate(monthlyEvents[0]?.date ?? null);
+    }
+  }, [month, monthlyEvents, open, selectedDate, year]);
+
   if (!open) {
     return null;
   }
@@ -149,7 +161,7 @@ export default function CalendarModal({
       />
 
       <div className="relative grid h-[calc(100dvh-1.5rem)] max-h-[860px] w-full max-w-7xl grid-rows-[minmax(0,1fr)_minmax(180px,36dvh)] overflow-hidden rounded-lg bg-background shadow-2xl ring-1 ring-white/15 sm:h-[calc(100dvh-2.5rem)] lg:grid-cols-[minmax(0,1fr)_360px] lg:grid-rows-none">
-        <div className="flex min-h-0 flex-col">
+        <div className="flex min-h-0 flex-col overflow-y-auto">
           <header className="flex flex-shrink-0 items-start justify-between gap-3 border-b border-border bg-card px-4 py-3 sm:items-center sm:px-5 sm:py-4">
             <div className="min-w-0">
               <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-secondary">
@@ -207,7 +219,7 @@ export default function CalendarModal({
             ))}
           </div>
 
-          <div className="grid min-h-0 flex-1 grid-cols-7 grid-rows-6 gap-px bg-border">
+          <div className="grid grid-cols-7 gap-px bg-border [grid-template-rows:repeat(6,minmax(104px,1fr))] sm:[grid-template-rows:repeat(6,minmax(118px,1fr))]">
             {calendarCells.map((day, index) => {
               if (day === null) {
                 return (
@@ -221,13 +233,19 @@ export default function CalendarModal({
               const currentDateId = dateId(year, month, day);
               const dayEvents = eventsByDate[currentDateId] ?? [];
               const isSelected = selectedDate === currentDateId;
+              const today = new Date();
+              const isToday =
+                day === today.getDate() &&
+                month === today.getMonth() &&
+                year === today.getFullYear();
 
               return (
                 <div
                   key={currentDateId}
                   className={[
-                    "min-h-0 min-w-0 overflow-hidden bg-card p-1 transition sm:p-2",
+                    "flex min-h-[104px] min-w-0 flex-col overflow-hidden bg-card p-1 transition sm:min-h-[118px] sm:p-2",
                     isSelected ? "ring-2 ring-inset ring-secondary" : "",
+                    isToday ? "bg-secondary/10" : "",
                   ].join(" ")}
                 >
                   <button
@@ -238,27 +256,31 @@ export default function CalendarModal({
                       dayEvents.length > 0
                         ? "bg-secondary/15 text-primary hover:bg-secondary hover:text-white"
                         : "text-muted hover:bg-primary/5",
+                      isToday ? "ring-2 ring-secondary ring-offset-1 ring-offset-card" : "",
                       isSelected ? "bg-primary text-white" : "",
                     ].join(" ")}
                   >
                     {day}
                   </button>
 
-                  <div className="space-y-1 overflow-hidden">
-                    {dayEvents.slice(0, 2).map((event) => (
+                  <div className="min-h-0 flex-1 space-y-1 overflow-y-auto pr-0.5">
+                    {dayEvents.slice(0, 3).map((event) => (
                       <Link
                         key={event.id}
                         href={event.href}
-                        className="block truncate rounded-md bg-primary/10 px-1.5 py-1 text-[10px] font-semibold text-primary transition hover:bg-secondary hover:text-white sm:px-2 sm:text-[11px]"
+                        className="block min-w-0 rounded-md bg-primary/10 px-1.5 py-1 text-[9px] font-semibold leading-tight text-primary transition hover:bg-secondary hover:text-white sm:px-2 sm:text-[10px]"
                         onClick={onClose}
+                        title={event.title}
                       >
-                        {event.title}
+                        <span className="block truncate sm:line-clamp-2 sm:whitespace-normal">
+                          {event.title}
+                        </span>
                       </Link>
                     ))}
 
-                    {dayEvents.length > 2 && (
+                    {dayEvents.length > 3 && (
                       <span className="block px-1.5 text-[10px] font-semibold text-muted sm:px-2 sm:text-[11px]">
-                        +{dayEvents.length - 2} more
+                        +{dayEvents.length - 3} more
                       </span>
                     )}
                   </div>

@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
-import { CalendarDays, Expand, ImageIcon } from "lucide-react";
+import { CalendarDays, Camera, Expand, ImageIcon } from "lucide-react";
 import { motion } from "framer-motion";
 
 import type { GalleryCategory } from "../../../../../data/gallery";
@@ -33,46 +34,105 @@ export default function AlbumGallery({
   images,
   onOpen,
 }: AlbumGalleryProps) {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const openLightbox = (index: number) => {
+    onOpen(index);
+  };
+
   const renderImageButton = (
     image: string,
     index: number,
     className: string,
     labelMode: "hover" | "below" | "side" = "hover",
   ) => (
-    <button
-      type="button"
-      onClick={() => onOpen(index)}
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={() => openLightbox(index)}
       onContextMenu={(event) => event.preventDefault()}
-      className={`${className} group relative block w-full overflow-hidden bg-card text-left`}
+      onMouseEnter={() => setHoveredIndex(index)}
+      onMouseLeave={() => setHoveredIndex(null)}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openLightbox(index);
+        }
+      }}
+      className={`${className} protected-image relative cursor-pointer overflow-hidden bg-card`}
     >
       <Image
         src={image}
-        alt={`${albumTitle} ${year} photo ${index + 1}`}
+        alt={`${albumTitle} ${year}`}
         fill
         sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
         draggable={false}
-        className="select-none object-cover transition duration-500 group-hover:scale-105"
+        className={`select-none object-cover transition-transform duration-700 ${
+          hoveredIndex === index ? "scale-110" : "scale-100"
+        }`}
       />
 
-      <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/30" />
+      {hoveredIndex === index && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="absolute inset-0 bg-black/60"
+        />
+      )}
 
-      <div className="absolute right-4 top-4 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-white text-primary opacity-0 shadow-lg transition group-hover:translate-y-0 group-hover:opacity-100">
-        <Expand size={18} />
-      </div>
+      {hoveredIndex === index && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
+          transition={{ duration: 0.3 }}
+          className="absolute right-5 top-5 z-30"
+        >
+          <button
+            type="button"
+            title="Expand image"
+            aria-label="Expand image"
+            onClick={(event) => {
+              event.stopPropagation();
+              openLightbox(index);
+            }}
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-primary shadow-lg transition-all duration-200 hover:bg-secondary hover:text-white"
+          >
+            <Expand size={20} />
+          </button>
+        </motion.div>
+      )}
 
-      {labelMode === "below" ? null : (
-        <div
-          className={`absolute ${
-            labelMode === "side"
-              ? "bottom-5 left-5 max-w-[70%]"
-              : "bottom-0 left-0 right-0 translate-y-4 p-5 opacity-0 transition group-hover:translate-y-0 group-hover:opacity-100"
+      {hoveredIndex === index && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.3 }}
+          className={`absolute bottom-0 left-0 right-0 p-5 ${
+            labelMode === "side" ? "md:p-7" : "md:p-6"
           }`}
         >
-          <span className="text-sm font-semibold text-secondary">{year}</span>
-          <h3 className="mt-1 text-xl font-bold text-white">{albumTitle}</h3>
-        </div>
+          <div className="flex items-center justify-between gap-4">
+            <div className="min-w-0">
+              <span className="text-sm text-secondary">
+                {albumTitle} {year}
+              </span>
+              <h3
+                className={`mt-2 font-bold text-white ${
+                  labelMode === "side" ? "text-2xl" : "text-xl"
+                }`}
+              >
+                {albumTitle} Gallery
+              </h3>
+            </div>
+            <Camera size={labelMode === "side" ? 32 : 28} className="shrink-0 text-secondary" />
+          </div>
+        </motion.div>
       )}
-    </button>
+    </div>
   );
 
   const renderGalleryPattern = () => {

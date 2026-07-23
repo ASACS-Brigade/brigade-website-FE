@@ -19,6 +19,7 @@ export default function ContactHero() {
 
       <div
         className="
+        hero-fade-overlay
         pointer-events-none
         absolute
         inset-0

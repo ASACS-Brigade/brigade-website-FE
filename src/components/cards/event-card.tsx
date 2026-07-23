@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MapPin, Clock3 } from "lucide-react";
+import { MapPin, Clock3, ImageOff } from "lucide-react";
 
 interface EventCardProps {
   image: string;
@@ -34,12 +34,21 @@ export default function EventCard({
       "
     >
       <div className="relative h-70">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-cover"
-        />
+        {image ? (
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover"
+          />
+        ) : (
+          <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-slate-100 text-slate-400">
+            <ImageOff size={30} />
+            <span className="text-xs font-black uppercase tracking-[0.14em]">
+              No cover
+            </span>
+          </div>
+        )}
       </div>
 
       <div className="p-4 flex gap-3">
@@ -62,6 +71,7 @@ export default function EventCard({
           <div
             className="
             bg-slate-200
+            dark:bg-slate-700
             text-xs
             font-semibold
             py-1.5
@@ -90,7 +100,8 @@ export default function EventCard({
             font-semibold
             text-[15px]
             leading-tight
-            text-[#0E2A47]
+            text-primary
+            dark:text-white
             "
           >
             {title}

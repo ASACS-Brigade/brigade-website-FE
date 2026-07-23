@@ -73,7 +73,7 @@ export default function FeatureCards() {
                   </div>
 
                   <div className="min-w-0 pt-1">
-                    <h3 className="text-base font-bold leading-snug text-[#0E2A47] sm:text-lg">
+                    <h3 className="text-base font-bold leading-snug text-primary sm:text-lg dark:text-white">
                       {feature.title}
                     </h3>
 

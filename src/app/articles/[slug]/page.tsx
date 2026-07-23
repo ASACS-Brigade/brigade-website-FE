@@ -8,22 +8,19 @@ import {
   BookOpen,
   CalendarDays,
   Clock3,
+  ImageOff,
   UserRound,
 } from "lucide-react";
 
 import ArticleCard from "../../../components/cards/article-card";
 import Container from "../../../components/layout/container";
-import {
-  brigadeArticles,
-  formatArticleDate,
-  getArticleBySlug,
-  getRelatedArticles,
-} from "../../../constants/articles";
+import { formatArticleDate } from "../../../constants/articles";
+import { getArticleDetailData } from "../../../lib/content-api";
+
+export const dynamicParams = true;
 
 export function generateStaticParams() {
-  return brigadeArticles.map((article) => ({
-    slug: article.slug,
-  }));
+  return [];
 }
 
 export async function generateMetadata({
@@ -32,7 +29,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const data = await getArticleDetailData(slug);
+  const article = data?.article;
 
   if (!article) {
     return {
@@ -46,7 +44,7 @@ export async function generateMetadata({
     openGraph: {
       title: article.title,
       description: article.excerpt,
-      images: [article.image],
+      images: article.image ? [article.image] : undefined,
     },
   };
 }
@@ -57,13 +55,14 @@ export default async function ArticleDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const data = await getArticleDetailData(slug);
+  const article = data?.article;
 
   if (!article) {
     notFound();
   }
 
-  const relatedArticles = getRelatedArticles(article);
+  const relatedArticles = data.relatedArticles;
 
   return (
     <main className="bg-background text-foreground">
@@ -82,15 +81,21 @@ export default async function ArticleDetailPage({
       <article>
         <section className="relative overflow-hidden bg-primary text-white">
           <div className="absolute inset-0">
-            <Image
-              src={article.image}
-              alt={article.title}
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover opacity-28"
-            />
-            <div className="absolute inset-0 bg-primary/80" />
+            {article.image ? (
+              <Image
+                src={article.image}
+                alt={article.title}
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover opacity-28"
+              />
+            ) : (
+              <div className="flex h-full w-full items-center justify-center bg-primary-light/20 text-white/25">
+                <ImageOff size={96} />
+              </div>
+            )}
+            <div className="absolute inset-0 bg-primary/95 lg:bg-primary/80" />
           </div>
 
           <Container className="relative z-10 py-14 sm:py-18 lg:py-24">

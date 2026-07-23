@@ -4,11 +4,13 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { CalendarDays, Clock3, Flag, Images } from "lucide-react";
 
+import type { GalleryYear } from "../../../../../data/gallery";
 import Container from "../../../layout/container";
 
 interface ParadeYearsProps {
   activeYear: string;
   onYearChange: (year: string) => void;
+  years?: GalleryYear[];
 }
 
 const paradeYears = [
@@ -46,12 +48,29 @@ const paradeYears = [
   },
 ];
 
+function normalizeParadeYears(years?: GalleryYear[]) {
+  if (!years?.length) {
+    return paradeYears;
+  }
+
+  return years.map((year) => ({
+    year: year.year,
+    status: year.status,
+    title: year.title,
+    description: year.description,
+    cover: year.cover,
+    photos: year.images.length,
+  }));
+}
+
 export default function ParadeYears({
   activeYear,
   onYearChange,
+  years,
 }: ParadeYearsProps) {
+  const displayYears = normalizeParadeYears(years);
   const selected =
-    paradeYears.find((item) => item.year === activeYear) ?? paradeYears[0];
+    displayYears.find((item) => item.year === activeYear) ?? displayYears[0];
 
   return (
     <section id="years" className="bg-background py-20">
@@ -78,7 +97,7 @@ export default function ParadeYears({
         </motion.div>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          {paradeYears.map((item, index) => {
+          {displayYears.map((item, index) => {
             const active = activeYear === item.year;
             const available = item.status === "available";
 

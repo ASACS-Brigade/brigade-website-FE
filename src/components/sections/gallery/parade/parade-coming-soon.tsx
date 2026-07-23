@@ -3,9 +3,6 @@
 import { motion } from "framer-motion";
 import {
   CalendarClock,
-  BellRing,
-  Sparkles,
-  ChevronRight,
 } from "lucide-react";
 
 import Container from "../../../layout/container";
@@ -21,22 +18,6 @@ export default function ParadeComingSoon() {
         absolute
         inset-0
         bg-primary
-        "
-      />
-
-      {/* Glow */}
-
-      <div
-        className="
-        absolute
-        -top-20
-        left-1/2
-        h-[420px]
-        w-[420px]
-        -translate-x-1/2
-        rounded-full
-        bg-secondary/20
-        blur-[130px]
         "
       />
 
@@ -63,36 +44,9 @@ export default function ParadeComingSoon() {
           rounded-[32px]
           border
           border-white/10
-          bg-white/5
-          backdrop-blur-xl
+          bg-white/8
           "
         >
-
-          {/* Floating Decorations */}
-
-          <Sparkles
-            className="
-            absolute
-            top-8
-            right-8
-            text-secondary
-            "
-            size={28}
-          />
-
-          <div
-            className="
-            absolute
-            -right-16
-            -bottom-16
-            h-52
-            w-52
-            rounded-full
-            bg-secondary/20
-            blur-[80px]
-            "
-          />
-
           <div
             className="
             grid
@@ -157,60 +111,6 @@ export default function ParadeComingSoon() {
                 and memories that will
                 become part of Brigade history.
               </p>
-
-              <div
-                className="
-                mt-10
-                flex
-                flex-wrap
-                gap-4
-                "
-              >
-
-                <button
-                  className="
-                  inline-flex
-                  items-center
-                  gap-2
-                  rounded-xl
-                  bg-secondary
-                  px-7
-                  py-4
-                  font-semibold
-                  text-white
-                  transition
-                  hover:scale-105
-                  "
-                >
-                  <BellRing size={18} />
-
-                  Notify Me
-
-                </button>
-
-                <button
-                  className="
-                  inline-flex
-                  items-center
-                  gap-2
-                  rounded-xl
-                  border
-                  border-white/20
-                  px-7
-                  py-4
-                  text-white
-                  transition
-                  hover:bg-white
-                  hover:text-primary
-                  "
-                >
-                  Learn More
-
-                  <ChevronRight size={18} />
-
-                </button>
-
-              </div>
 
             </div>
 

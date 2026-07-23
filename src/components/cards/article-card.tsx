@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Clock3 } from "lucide-react";
+import { ArrowUpRight, Clock3, ImageOff } from "lucide-react";
 
 interface ArticleCardProps {
   image: string;
@@ -47,13 +47,22 @@ export default function ArticleCard({
           variant === "compact" ? "h-48" : "h-64"
         }`}
       >
-        <Image
-          src={image}
-          alt={title}
-          fill
-          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover transition duration-700 group-hover:scale-105"
-        />
+        {image ? (
+          <Image
+            src={image}
+            alt={title}
+            fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            className="object-cover transition duration-700 group-hover:scale-105"
+          />
+        ) : (
+          <span className="flex h-full w-full flex-col items-center justify-center gap-2 bg-slate-100 text-slate-400">
+            <ImageOff size={30} />
+            <span className="text-xs font-black uppercase tracking-[0.14em]">
+              No cover
+            </span>
+          </span>
+        )}
 
         <span
           className={`absolute bottom-3 left-3 rounded-md px-3 py-1 text-xs font-bold ${

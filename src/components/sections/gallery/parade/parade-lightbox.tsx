@@ -55,7 +55,7 @@ export default function ParadeLightbox({
           <button
           title="Close lightbox"
             onClick={onClose}
-            className="absolute right-6 top-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-secondary"
+            className="absolute right-6 top-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-secondary cursor-pointer"
           >
             <X size={24} />
           </button>

@@ -23,15 +23,21 @@ export default function AboutPage() {
     <>
       <AboutHero />
 
-      <AboutStory />
+      <section id="story">
+        <AboutStory />
+      </section>
 
       {/* <FounderSpotlight /> */}
 
       <AboutVision />
 
-      <AboutValues />
+      <section id="values">
+        <AboutValues />
+      </section>
 
-      <Programs />
+      <section id="programs">
+        <Programs />
+      </section>
 
       <ChapterAchievements />
 

@@ -202,8 +202,8 @@ function GalleryPhotoFrame({
       onMouseLeave={() => setHoveredId(null)}
     >
       <div
-        className={`relative h-full border border-dashed border-white/55 bg-white/5 p-2 shadow-2xl shadow-black/35 transition duration-300 ${
-          isHovered ? "scale-[1.035] border-sky-400" : ""
+        className={`relative h-full bg-white/5 p-2 shadow-2xl shadow-black/35 transition duration-300 ${
+          isHovered ? "scale-[1.035]" : ""
         }`}
       >
         <span
@@ -237,8 +237,13 @@ function GalleryPhotoFrame({
   );
 }
 
-export default function ArtGallery() {
+export default function ArtGallery({ images = [] }: { images?: string[] }) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const displayItems = galleryItems.map((item, index) => ({
+    ...item,
+    image: images[index] ?? item.image,
+    title: images[index] ? `Gallery Moment ${index + 1}` : item.title,
+  }));
 
   return (
     <section
@@ -291,7 +296,7 @@ export default function ArtGallery() {
             />
           ))}
 
-          {galleryItems.map((item) => (
+          {displayItems.map((item) => (
             <GalleryPhotoFrame
               key={item.id}
               item={item}
@@ -314,7 +319,7 @@ export default function ArtGallery() {
         </div>
 
         <div className="grid gap-10 sm:grid-cols-2 lg:hidden">
-          {galleryItems.map((item) => (
+          {displayItems.map((item) => (
             <GalleryPhotoFrame
               key={item.id}
               item={item}

@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import Navbar from "../components/navigation/navbar";
 import Footer from "../components/layout/footer";
 import { Providers } from "../components/layout/theme-provider";
+import ImageProtection from "../components/shared/image-protection";
+import ScrollToTop from "../components/shared/scroll-to-top";
 
 export const metadata: Metadata = {
   title:
@@ -107,7 +109,11 @@ export default function RootLayout({
 
           <Navbar />
 
+          <ImageProtection />
+
           {children}
+
+          <ScrollToTop />
 
           <Footer />
 

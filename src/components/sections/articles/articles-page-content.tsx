@@ -9,6 +9,7 @@ import {
   ChevronRight,
   Clock3,
   Flame,
+  ImageOff,
   Megaphone,
   Newspaper,
   ShieldCheck,
@@ -19,18 +20,14 @@ import {
 import ArticleCard from "../../cards/article-card";
 import Container from "../../layout/container";
 import {
-  articleCategories,
-  brigadeArticles,
-  featuredArticle,
   formatArticleDate,
-  getArticlesByCategory,
   type ArticleCategory,
   type BrigadeArticle,
 } from "../../../constants/articles";
 
 const articlesPerPage = 6;
 
-const categoryIcons: Record<ArticleCategory, ComponentType<{ size?: number; className?: string }>> = {
+const categoryIcons: Record<string, ComponentType<{ size?: number; className?: string }>> = {
   "Latest News": Newspaper,
   "Brigade History": BookOpen,
   "Faith & Devotion": Flame,
@@ -39,7 +36,7 @@ const categoryIcons: Record<ArticleCategory, ComponentType<{ size?: number; clas
   "Golden Jubilee": Trophy,
 };
 
-const categoryDescriptions: Record<ArticleCategory, string> = {
+const categoryDescriptions: Record<string, string> = {
   "Latest News": "Recent announcements, notices and company updates.",
   "Brigade History": "Educational features about the movement, traditions and identity.",
   "Faith & Devotion": "Bible studies, reflections and spiritual formation for members.",
@@ -47,6 +44,32 @@ const categoryDescriptions: Record<ArticleCategory, string> = {
   "Events & Reports": "Coverage from parades, camps, outreach and enrolment services.",
   "Golden Jubilee": "A dedicated archive for the 50th anniversary story.",
 };
+
+function categoryId(category: ArticleCategory) {
+  return category.toLowerCase().replaceAll(" ", "-").replaceAll("&", "and");
+}
+
+function getCategoryIcon(category: ArticleCategory) {
+  return categoryIcons[category] ?? Newspaper;
+}
+
+function getCategoryDescription(category: ArticleCategory) {
+  return (
+    categoryDescriptions[category] ??
+    "Stories and updates grouped by this editorial section."
+  );
+}
+
+function ArticleImagePlaceholder({ label }: { label: string }) {
+  return (
+    <span className="flex h-full min-h-full w-full flex-col items-center justify-center gap-2 bg-slate-100 text-slate-400">
+      <ImageOff size={30} />
+      <span className="px-4 text-center text-xs font-black uppercase tracking-[0.14em]">
+        {label}
+      </span>
+    </span>
+  );
+}
 
 function articleHref(article: BrigadeArticle) {
   return `/articles/${article.slug}`;
@@ -63,7 +86,14 @@ function clampPage(value: string | string[] | undefined, totalPages: number) {
   return Math.min(page, totalPages);
 }
 
-function FeaturedStory() {
+function getArticlesByCategoryFrom(
+  articles: BrigadeArticle[],
+  category: ArticleCategory,
+) {
+  return articles.filter((article) => article.category === category);
+}
+
+function FeaturedStory({ article }: { article: BrigadeArticle }) {
   return (
     <section className="pt-10 sm:pt-12 lg:pt-16">
       <Container>
@@ -88,44 +118,48 @@ function FeaturedStory() {
 
         <article className="grid overflow-hidden rounded-lg border border-border bg-card shadow-2xl shadow-slate-900/10 lg:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.72fr)]">
           <Link
-            href={articleHref(featuredArticle)}
+            href={articleHref(article)}
             className="relative min-h-[330px] overflow-hidden sm:min-h-[430px] lg:min-h-[560px]"
           >
-            <Image
-              src={featuredArticle.image}
-              alt={featuredArticle.title}
-              fill
-              priority
-              sizes="(min-width: 1024px) 58vw, 100vw"
-              className="object-cover transition duration-700 hover:scale-105"
-            />
+            {article.image ? (
+              <Image
+                src={article.image}
+                alt={article.title}
+                fill
+                priority
+                sizes="(min-width: 1024px) 58vw, 100vw"
+                className="object-cover transition duration-700 hover:scale-105"
+              />
+            ) : (
+              <ArticleImagePlaceholder label="No cover image" />
+            )}
           </Link>
 
           <div className="flex flex-col justify-between p-6 sm:p-8 lg:p-10">
             <div>
               <div className="flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-muted">
                 <span className="rounded-full bg-secondary px-3 py-1 text-white">
-                  {featuredArticle.eyebrow}
+                  {article.eyebrow}
                 </span>
-                <span>{formatArticleDate(featuredArticle.date)}</span>
+                <span>{formatArticleDate(article.date)}</span>
                 <span className="inline-flex items-center gap-1.5">
                   <Clock3 size={13} />
-                  {featuredArticle.readTime}
+                  {article.readTime}
                 </span>
               </div>
 
               <h2 className="mt-6 text-3xl font-black leading-tight text-foreground sm:text-4xl lg:text-5xl">
-                {featuredArticle.title}
+                {article.title}
               </h2>
 
               <p className="mt-5 text-base leading-8 text-muted sm:text-lg">
-                {featuredArticle.deck}
+                {article.deck}
               </p>
             </div>
 
             <div className="mt-8 border-t border-border pt-6">
               <Link
-                href={articleHref(featuredArticle)}
+                href={articleHref(article)}
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
               >
                 Read Full History
@@ -139,7 +173,13 @@ function FeaturedStory() {
   );
 }
 
-function MagazineIntro() {
+function MagazineIntro({
+  articles,
+  categories,
+}: {
+  articles: BrigadeArticle[];
+  categories: ArticleCategory[];
+}) {
   return (
     <section className="border-b border-border py-8 sm:py-10">
       <Container>
@@ -153,7 +193,7 @@ function MagazineIntro() {
           <div className="grid grid-cols-2 gap-3 text-sm sm:grid-cols-3 lg:grid-cols-1">
             <div className="rounded-lg border border-border bg-card p-4">
               <p className="text-2xl font-black text-foreground">
-                {brigadeArticles.length}
+                {articles.length}
               </p>
               <p className="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-muted">
                 Articles
@@ -161,7 +201,7 @@ function MagazineIntro() {
             </div>
             <div className="rounded-lg border border-border bg-card p-4">
               <p className="text-2xl font-black text-foreground">
-                {articleCategories.length}
+                {categories.length}
               </p>
               <p className="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-muted">
                 Sections
@@ -180,18 +220,18 @@ function MagazineIntro() {
   );
 }
 
-function CategoryRail() {
+function CategoryRail({ categories }: { categories: ArticleCategory[] }) {
   return (
     <section className="py-10 sm:py-12">
       <Container>
         <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-          {articleCategories.map((category) => {
-            const Icon = categoryIcons[category];
+          {categories.map((category) => {
+            const Icon = getCategoryIcon(category);
 
             return (
               <a
                 key={category}
-                href={`#${category.toLowerCase().replaceAll(" ", "-").replaceAll("&", "and")}`}
+                href={`#${categoryId(category)}`}
                 className="inline-flex min-w-max items-center gap-3 rounded-full border border-border bg-card px-4 py-3 text-sm font-bold text-foreground transition hover:border-secondary hover:text-secondary"
               >
                 <Icon size={17} />
@@ -205,8 +245,8 @@ function CategoryRail() {
   );
 }
 
-function LatestNews() {
-  const latest = getArticlesByCategory("Latest News").slice(0, 3);
+function LatestNews({ articles }: { articles: BrigadeArticle[] }) {
+  const latest = getArticlesByCategoryFrom(articles, "Latest News").slice(0, 3);
 
   return (
     <section id="latest-news" className="pb-12">
@@ -248,8 +288,11 @@ function LatestNews() {
   );
 }
 
-function HistoryTimeline() {
-  const historyArticles = getArticlesByCategory("Brigade History").slice(0, 4);
+function HistoryTimeline({ articles }: { articles: BrigadeArticle[] }) {
+  const historyArticles = getArticlesByCategoryFrom(
+    articles,
+    "Brigade History",
+  ).slice(0, 4);
 
   return (
     <section id="brigade-history" className="py-12">
@@ -300,8 +343,14 @@ function HistoryTimeline() {
   );
 }
 
-function CategorySections() {
-  const categories = articleCategories.filter(
+function CategorySections({
+  articles,
+  categories: allCategories,
+}: {
+  articles: BrigadeArticle[];
+  categories: ArticleCategory[];
+}) {
+  const categories = allCategories.filter(
     (category) => category !== "Latest News" && category !== "Brigade History"
   );
 
@@ -310,12 +359,12 @@ function CategorySections() {
       <Container>
         <div className="grid gap-5 lg:grid-cols-2">
           {categories.map((category) => {
-            const Icon = categoryIcons[category];
-            const articles = getArticlesByCategory(category).slice(0, 2);
-            const sectionId = category
-              .toLowerCase()
-              .replaceAll(" ", "-")
-              .replaceAll("&", "and");
+            const Icon = getCategoryIcon(category);
+            const sectionArticles = getArticlesByCategoryFrom(
+              articles,
+              category,
+            ).slice(0, 2);
+            const sectionId = categoryId(category);
 
             return (
               <section
@@ -332,26 +381,30 @@ function CategorySections() {
                       {category}
                     </h2>
                     <p className="mt-1 text-sm leading-6 text-muted">
-                      {categoryDescriptions[category]}
+                      {getCategoryDescription(category)}
                     </p>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  {articles.map((article) => (
+                  {sectionArticles.map((article) => (
                     <Link
                       key={article.slug}
                       href={articleHref(article)}
                       className="group grid gap-4 border-t border-border pt-4 sm:grid-cols-[96px_1fr]"
                     >
                       <span className="relative hidden aspect-square overflow-hidden rounded-lg bg-primary/10 sm:block">
-                        <Image
-                          src={article.image}
-                          alt={article.title}
-                          fill
-                          sizes="96px"
-                          className="object-cover transition duration-500 group-hover:scale-105"
-                        />
+                        {article.image ? (
+                          <Image
+                            src={article.image}
+                            alt={article.title}
+                            fill
+                            sizes="96px"
+                            className="object-cover transition duration-500 group-hover:scale-105"
+                          />
+                        ) : (
+                          <ArticleImagePlaceholder label="No image" />
+                        )}
                       </span>
                       <span>
                         <span className="text-xs font-bold uppercase tracking-[0.14em] text-muted">
@@ -366,6 +419,11 @@ function CategorySections() {
                       </span>
                     </Link>
                   ))}
+                  {sectionArticles.length === 0 ? (
+                    <div className="rounded-lg border border-dashed border-border p-5 text-sm font-semibold text-muted">
+                      No published articles in this section yet.
+                    </div>
+                  ) : null}
                 </div>
               </section>
             );
@@ -436,11 +494,17 @@ function ArchivePagination({
   );
 }
 
-function ArchiveGrid({ page }: { page: number }) {
-  const totalPages = Math.ceil(brigadeArticles.length / articlesPerPage);
+function ArchiveGrid({
+  page,
+  articles,
+}: {
+  page: number;
+  articles: BrigadeArticle[];
+}) {
+  const totalPages = Math.max(1, Math.ceil(articles.length / articlesPerPage));
   const currentPage = clampPage(String(page), totalPages);
   const start = (currentPage - 1) * articlesPerPage;
-  const articles = brigadeArticles.slice(start, start + articlesPerPage);
+  const visibleArticles = articles.slice(start, start + articlesPerPage);
 
   return (
     <section id="archive" className="py-12 sm:py-16">
@@ -461,7 +525,7 @@ function ArchiveGrid({ page }: { page: number }) {
         </div>
 
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {articles.map((article) => (
+          {visibleArticles.map((article) => (
             <ArticleCard
               key={article.slug}
               image={article.image}
@@ -484,20 +548,44 @@ function ArchiveGrid({ page }: { page: number }) {
 
 export default function ArticlesPageContent({
   page,
+  articles = [],
+  categories = [],
+  featuredArticle = articles.find((article) => article.featured) ?? articles[0],
 }: {
   page: string | string[] | undefined;
+  articles?: BrigadeArticle[];
+  categories?: ArticleCategory[];
+  featuredArticle?: BrigadeArticle;
 }) {
-  const totalPages = Math.ceil(brigadeArticles.length / articlesPerPage);
+  const totalPages = Math.max(1, Math.ceil(articles.length / articlesPerPage));
   const currentPage = clampPage(page, totalPages);
+
+  if (!featuredArticle || articles.length === 0) {
+    return (
+      <main className="bg-background py-20 text-foreground">
+        <Container>
+          <div className="rounded-2xl border border-dashed border-border bg-card p-8 text-center shadow-sm sm:p-12">
+            <h1 className="text-3xl font-black text-primary sm:text-4xl">
+              Articles Coming Soon
+            </h1>
+            <p className="mx-auto mt-4 max-w-2xl text-muted">
+              Published articles from the dashboard will appear here once they
+              are available.
+            </p>
+          </div>
+        </Container>
+      </main>
+    );
+  }
 
   return (
     <main className="bg-background text-foreground">
-      <FeaturedStory />
-      <MagazineIntro />
-      <CategoryRail />
-      <LatestNews />
-      <HistoryTimeline />
-      <CategorySections />
+      <FeaturedStory article={featuredArticle} />
+      <MagazineIntro articles={articles} categories={categories} />
+      <CategoryRail categories={categories} />
+      <LatestNews articles={articles} />
+      <HistoryTimeline articles={articles} />
+      <CategorySections articles={articles} categories={categories} />
 
       <section className="py-10">
         <Container>
@@ -522,7 +610,7 @@ export default function ArticlesPageContent({
         </Container>
       </section>
 
-      <ArchiveGrid page={currentPage} />
+      <ArchiveGrid page={currentPage} articles={articles} />
     </main>
   );
 }

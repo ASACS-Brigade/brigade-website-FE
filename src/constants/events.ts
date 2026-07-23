@@ -16,14 +16,14 @@ export type BrigadeEvent = {
 export const brigadeEvents: BrigadeEvent[] = [
   {
     id: "monthly-fellowship",
-    title: "Monthly Fellowship & Devotion",
-    date: "2026-07-18",
-    time: "10:00 AM",
-    location: "Brigade Hall, Surulere",
+    title: "Weekly Fellowship & Meeting",
+    date: "2026-07-11",
+    time: "4:00 PM",
+    location: "All Saints Anglican Church Surulere",
     description:
-      "A morning of devotion, worship, mentoring and group fellowship for members and leaders.",
+      "An Afternoon of devotion, worship, mentoring and group fellowship for members and leaders.",
     writeup: [
-      "Monthly Fellowship & Devotion brings members together for worship, prayer, scripture reflection and practical mentoring. It is designed to keep the company spiritually grounded while giving younger members a steady space to learn, ask questions and grow.",
+      "Weekly Fellowship & Devotion brings members together for worship, prayer, scripture reflection and practical mentoring. It is designed to keep the company spiritually grounded while giving younger members a steady space to learn, ask questions and grow.",
       "The gathering usually includes songs, devotion, group discussion and short leadership reflections from officers and senior members.",
     ],
     outcome:
@@ -53,10 +53,10 @@ export const brigadeEvents: BrigadeEvent[] = [
   },
   {
     id: "leadership-training",
-    title: "Leadership Training Camp",
+    title: "Battalion NCO Training Camp",
     date: "2026-08-08",
     time: "9:00 AM",
-    location: "Camp Ground, Lagos",
+    location: "BAHM Church, Lagos",
     description:
       "A focused training day for young leaders, with team-building drills and guided leadership sessions.",
     writeup: [

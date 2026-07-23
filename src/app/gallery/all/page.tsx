@@ -1,10 +1,13 @@
 import CompleteGallery from "../../../components/sections/gallery/complete-gallery";
 import CtaBanner from "../../../components/shared/ctaBanner";
+import { getGalleryData } from "../../../lib/content-api";
 
-export default function CompleteGalleryPage() {
+export default async function CompleteGalleryPage() {
+  const { categories } = await getGalleryData();
+
   return (
     <main>
-      <CompleteGallery />
+      <CompleteGallery categories={categories} />
       <CtaBanner
         heading="Get Involved Today"
         subheading="Join our community and make an impact."

@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 
 import { useEffect, useState } from "react";
+import type { GalleryCategoryCard } from "../../../lib/content-api";
 
 const slides = [
   {
@@ -62,7 +63,35 @@ const slides = [
   },
 ];
 
-export default function GalleryFeaturedSlider() {
+function buildSlides(categories: GalleryCategoryCard[], images: string[]) {
+  const icons = [Cross, Shield, Heart, Music];
+  const liveSlides = categories.map((category, index) => ({
+    title: category.title,
+    subtitle: category.description,
+    image: category.image,
+    icon: icons[index % icons.length],
+  }));
+
+  if (liveSlides.length > 0) {
+    return liveSlides;
+  }
+
+  return images.slice(0, 4).map((image, index) => ({
+    title: `Gallery Moment ${index + 1}`,
+    subtitle: "Published from the Brigade gallery archive.",
+    image,
+    icon: icons[index % icons.length],
+  }));
+}
+
+export default function GalleryFeaturedSlider({
+  categories = [],
+  images = [],
+}: {
+  categories?: GalleryCategoryCard[];
+  images?: string[];
+}) {
+  const displaySlides = buildSlides(categories, images);
   const [active, setActive] = useState(0);
 
   const [paused, setPaused] =
@@ -73,14 +102,14 @@ export default function GalleryFeaturedSlider() {
 
     const interval = setInterval(() => {
       setActive((prev) =>
-        prev === slides.length - 1
+          prev === displaySlides.length - 1
           ? 0
           : prev + 1
       );
     }, 2000);
 
     return () => clearInterval(interval);
-  }, [paused]);
+  }, [displaySlides.length, paused]);
 
   return (
     <section className="lg:py-20 py-10">
@@ -122,7 +151,7 @@ export default function GalleryFeaturedSlider() {
         h-[500px]
         "
       >
-        {slides.map((slide, index) => {
+        {displaySlides.map((slide, index) => {
           const Icon = slide.icon;
 
           return (
@@ -247,7 +276,7 @@ export default function GalleryFeaturedSlider() {
         })}
       </div>
          <div className="justify-center gap-2 mt-10 hidden lg:flex">
-          {slides.map((_, index) => (
+          {displaySlides.map((_, index) => (
             <button
               key={index}
               onClick={() => setActive(index)}
@@ -277,8 +306,8 @@ export default function GalleryFeaturedSlider() {
           "
         >
           <Image
-            src={slides[active].image}
-            alt={slides[active].title}
+            src={displaySlides[active]?.image ?? "/gallery/gallery1.png"}
+            alt={displaySlides[active]?.title ?? "Gallery moment"}
             fill
             className="object-cover"
           />
@@ -300,17 +329,17 @@ export default function GalleryFeaturedSlider() {
             "
           >
             <h3 className="text-white text-2xl font-bold">
-              {slides[active].title}
+              {displaySlides[active]?.title ?? "Gallery Moment"}
             </h3>
 
             <p className="text-white/80 mt-2">
-              {slides[active].subtitle}
+              {displaySlides[active]?.subtitle ?? "Published from the Brigade gallery archive."}
             </p>
           </div>
         </div>
 
         <div className="flex justify-center gap-2 mt-5">
-          {slides.map((_, index) => (
+          {displaySlides.map((_, index) => (
                <button
               key={index}
               onClick={() => setActive(index)}

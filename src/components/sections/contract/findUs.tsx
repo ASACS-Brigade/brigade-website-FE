@@ -1,23 +1,22 @@
 "use client";
+
 import FadeIn from "../../layout/fade-in";
 
-// Replace PLACE_ID or the embed URL with your actual location
-// Get your embed URL from: https://maps.google.com → Share → Embed a map
 const MAP_EMBED_URL =
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.7216786!2d3.3514!3d6.4969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2!2sSurulere%2C%20Lagos!5e0!3m2!1sen!2sng!4v1700000000000";
+  "https://www.google.com/maps?q=All%20Saints%20Anglican%20Church%20Surulere%20Lagos&output=embed";
 
 export default function FindUs() {
   return (
     <FadeIn>
-      <div className="rounded-xl border border-border overflow-hidden shadow-sm">
-        <div className="px-4 py-3 border-b border-border bg-background">
+      <div className="overflow-hidden rounded-xl border border-border shadow-sm">
+        <div className="border-b border-border bg-background px-4 py-3">
           <h2 className="text-base font-bold text-primary">Find Us</h2>
-          <p className="text-xs text-muted mt-0.5">
-            Join us during our weekly meetings and activities.
+          <p className="mt-0.5 text-xs text-muted">
+            All Saints Anglican Church, Surulere, Lagos.
           </p>
         </div>
 
-        <div className="relative w-full" style={{ height: "260px" }}>
+        <div className="relative h-[260px] w-full">
           <iframe
             src={MAP_EMBED_URL}
             width="100%"
@@ -26,7 +25,7 @@ export default function FindUs() {
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="Brigade location map"
+            title="All Saints Anglican Church Surulere map"
           />
         </div>
       </div>

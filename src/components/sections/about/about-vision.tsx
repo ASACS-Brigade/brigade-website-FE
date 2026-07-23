@@ -75,7 +75,7 @@
 
 "use client";
 
-import { Eye, Target } from "lucide-react";
+import { Cross, ShieldCheck } from "lucide-react";
 
 import FadeIn from "../../layout/fade-in";
 import Container from "../../layout/container";
@@ -90,17 +90,16 @@ export default function AboutVisionMission() {
           Object & Aim Of The Brigade
         </h2>
 
-         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center justify-center">
+         <div className="grid grid-cols-1 gap-5 items-stretch justify-center md:grid-cols-2">
           <FadeIn>
             <div
-              className="flex items-start gap-4 p-6 rounded-xl border border-border bg-background
-                transition-all duration-200 hover:-translate-y-1 hover:border-border-secondary w-3/4 h-full"
+              className="flex h-full w-full flex-col gap-4 rounded-xl border border-border bg-background p-5 transition-all duration-200 hover:-translate-y-1 hover:border-border-secondary sm:flex-row sm:items-start md:p-6"
             >
               <div
-                className="w-20 h-20 rounded-lg flex items-center justify-center shrink-0"
+                className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg sm:h-20 sm:w-20"
                 style={{ background: "#173B61" }}
               >
-                <Eye size={50} style={{ color: "#D4A017" }} />
+                <ShieldCheck size={44} style={{ color: "#D4A017" }} />
               </div>
               <div>
                 <h3 className="font-medium text-foreground mb-2">Object of the Boys' Brigade</h3>
@@ -114,14 +113,13 @@ export default function AboutVisionMission() {
 
           <FadeIn>
             <div
-              className="flex items-start gap-4 p-6 rounded-xl border border-border bg-background
-                transition-all duration-200 hover:-translate-y-1 hover:border-border-secondary w-3/4 h-full"
+              className="flex h-full w-full flex-col gap-4 rounded-xl border border-border bg-background p-5 transition-all duration-200 hover:-translate-y-1 hover:border-border-secondary sm:flex-row sm:items-start md:p-6"
             >
               <div
-                className="w-20 h-20 rounded-lg flex items-center justify-center shrink-0"
+                className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg sm:h-20 sm:w-20"
                 style={{ background: "#173B61" }}
               >
-                <Target size={50} style={{ color: "#D4A017" }} />
+                <Cross size={44} style={{ color: "#D4A017" }} />
               </div>
               <div>
                 <h3 className="font-medium text-foreground mb-2">
