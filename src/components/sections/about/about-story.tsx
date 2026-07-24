@@ -322,9 +322,10 @@ function ImagePlaceholder({
       )}
       {side === "girls" && index === 0 && (
         <>
-          <circle cx="74" cy="48" r="24" fill="#D97706" />
+          {/* <circle cx="74" cy="48" r="24" fill="#D97706" />
           <rect x="70" y="28" width="8" height="40" rx="2" fill="#FEF3C7" />
-          <rect x="54" y="44" width="40" height="8" rx="2" fill="#FEF3C7" />
+          <rect x="54" y="44" width="40" height="8" rx="2" fill="#FEF3C7" /> */}
+          <img src="/images/gb-logo.png" alt="Brigade Logo" width={50} height={50} />
           <text
             x="74"
             y="94"
@@ -682,9 +683,9 @@ export default function AboutStory() {
             >
               <div
                 className="w-10 h-10 rounded-full flex items-center justify-center text-lg flex-shrink-0"
-                style={{ background: "#FEF3C7" }}
+                style={{ background: "#FFF" }}
               >
-                ⚓
+                <img src="/images/bb-logo.png" alt="Brigade Logo" width={30} height={30} />
               </div>
               <div>
                 <p className="text-base font-medium text-foreground">
@@ -728,9 +729,9 @@ export default function AboutStory() {
               </div>
               <div
                 className="w-10 h-10 rounded-full flex items-center justify-center text-lg flex-shrink-0"
-                style={{ background: "#FEF3C7" }}
+                style={{ background: "#FFF" }}
               >
-                ✦
+                <img src="/images/gb-logo.png" alt="Girls' Brigade Logo" width={25} height={25} />
               </div>
             </div>
 

@@ -77,17 +77,17 @@ export default function Navbar() {
                 <Shield className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={1.8} />
               </span> */}
               <span className="">
-                <img src="/images/bb-logo.png" alt="Brigade Logo" width={40} height={40} />
+                <img src="/images/bb-logo.png" alt="Brigade Logo" width={50} height={50} />
               </span>
 
               <span className="flex min-w-0 flex-col text-[11px] font-bold uppercase leading-[1.08] tracking-wide sm:text-xs md:text-[13px]">
                 <span>ALL SAINTS SURULERE</span>
-                <span>Brigade</span>
+                <span className="text-center">Brigade</span>
                 {/* <span>Surulere Companies</span> */}
               </span>
 
                 <span className="">
-                <img src="/images/gb-logo.png" alt="girls Brigade Logo" width={37} height={37} />
+                <img src="/images/gb-logo.png" alt="girls Brigade Logo" width={45} height={45} />
               </span>
             </Link>
 
