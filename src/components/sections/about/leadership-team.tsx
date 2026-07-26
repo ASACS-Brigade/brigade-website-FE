@@ -181,7 +181,7 @@ export default function LeadershipTeam() {
                   className={`min-h-11 rounded-lg px-3 text-sm font-bold transition ${
                     isActive
                       ? "bg-primary text-white shadow-sm"
-                      : "text-primary hover:bg-primary/5"
+                      : "text-primary hover:bg-primary/5 dark:hover:bg-secondary/10"
                   }`}
                 >
                   {group.label}
@@ -202,7 +202,7 @@ export default function LeadershipTeam() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
             {activeGroup.people.map((person) => (
               <FadeIn key={`${activeGroup.id}-${person.name}`}>
-                <article className="overflow-hidden rounded-xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                <article className="overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-secondary/60 hover:shadow-lg hover:shadow-slate-900/10 dark:hover:shadow-black/30">
                   <div className="relative aspect-square bg-primary/10">
                     <Image
                       src={person.image}
@@ -215,7 +215,7 @@ export default function LeadershipTeam() {
                       type="button"
                       onClick={() => setSelectedPerson(person)}
                       aria-label={`Open ${person.name} profile`}
-                      className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-white text-primary shadow-lg transition hover:bg-secondary hover:text-white"
+                      className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-card text-primary shadow-lg transition hover:bg-secondary hover:text-white"
                     >
                       <UserRound size={18} />
                     </button>
@@ -238,7 +238,7 @@ export default function LeadershipTeam() {
           onClick={() => setSelectedPerson(null)}
         >
           <div
-            className="w-full max-w-lg overflow-hidden rounded-2xl bg-white text-primary shadow-2xl"
+            className="w-full max-w-lg overflow-hidden rounded-2xl border border-border bg-card text-foreground shadow-2xl"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="relative h-72 bg-primary/10">
@@ -252,7 +252,7 @@ export default function LeadershipTeam() {
                 type="button"
                 onClick={() => setSelectedPerson(null)}
                 aria-label="Close profile"
-                className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white text-primary shadow-lg"
+                className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-card text-primary shadow-lg transition hover:bg-secondary hover:text-white"
               >
                 <X size={18} />
               </button>

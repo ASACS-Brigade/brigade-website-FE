@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { HeartHandshake } from "lucide-react";
 
+import { cn } from "../../lib/utils";
+
 type DonateButtonProps = {
   className?: string;
   fullWidth?: boolean;
@@ -26,9 +28,11 @@ export default function DonateButton({
       <button
         type="button"
         onClick={() => setVisible(true)}
-        className={`inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-secondary px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-[#b98c22] ${
-          fullWidth ? "w-full" : ""
-        } ${className}`}
+        className={cn(
+          "inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-secondary px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-[#b98c22]",
+          fullWidth && "w-full",
+          className
+        )}
       >
         <HeartHandshake size={17} />
         Donate

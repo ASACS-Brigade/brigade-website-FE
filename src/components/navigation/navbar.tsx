@@ -91,7 +91,7 @@ export default function Navbar() {
               </span>
             </Link>
 
-            <nav className="hidden items-center gap-8 lg:flex">
+            <nav className="hidden lg:flex lg:items-center lg:gap-8">
               {navItems.map((item) => {
                 const isActive =
                   item.href === "/"
@@ -126,7 +126,7 @@ export default function Navbar() {
                 aria-controls="mobile-navigation"
                 onClick={() => setIsOpen((open) => !open)}
                 className="
-                flex
+                inline-flex
                 h-10
                 w-10
                 items-center

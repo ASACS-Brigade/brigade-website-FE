@@ -93,13 +93,12 @@ export default function AboutVisionMission() {
          <div className="grid grid-cols-1 gap-5 items-stretch justify-center md:grid-cols-2">
           <FadeIn>
             <div
-              className="flex h-full w-full flex-col gap-4 rounded-xl border border-border bg-background p-5 transition-all duration-200 hover:-translate-y-1 hover:border-border-secondary sm:flex-row sm:items-start md:p-6"
+              className="flex h-full w-full flex-col gap-4 rounded-xl border border-border bg-background p-5 transition-all duration-200 hover:-translate-y-1 hover:border-secondary sm:flex-row sm:items-start md:p-6"
             >
               <div
-                className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg sm:h-20 sm:w-20"
-                style={{ background: "#173B61" }}
+                className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg bg-primary-light sm:h-20 sm:w-20"
               >
-                <ShieldCheck size={44} style={{ color: "#D4A017" }} />
+                <ShieldCheck className="text-secondary" size={44} />
               </div>
               <div>
                 <h3 className="font-medium text-foreground mb-2">Object of the Boys' Brigade</h3>
@@ -113,13 +112,12 @@ export default function AboutVisionMission() {
 
           <FadeIn>
             <div
-              className="flex h-full w-full flex-col gap-4 rounded-xl border border-border bg-background p-5 transition-all duration-200 hover:-translate-y-1 hover:border-border-secondary sm:flex-row sm:items-start md:p-6"
+              className="flex h-full w-full flex-col gap-4 rounded-xl border border-border bg-background p-5 transition-all duration-200 hover:-translate-y-1 hover:border-secondary sm:flex-row sm:items-start md:p-6"
             >
               <div
-                className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg sm:h-20 sm:w-20"
-                style={{ background: "#173B61" }}
+                className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg bg-primary-light sm:h-20 sm:w-20"
               >
-                <Cross size={44} style={{ color: "#D4A017" }} />
+                <Cross className="text-secondary" size={44} />
               </div>
               <div>
                 <h3 className="font-medium text-foreground mb-2">

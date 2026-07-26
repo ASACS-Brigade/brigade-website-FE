@@ -53,6 +53,7 @@ export default function MobileMenu({
 
   return (
     <div
+      aria-hidden={!open}
       className={`
       fixed
       inset-0
@@ -61,8 +62,8 @@ export default function MobileMenu({
       duration-300
       ${
         open
-          ? "pointer-events-auto bg-black/50"
-          : "pointer-events-none bg-transparent"
+          ? "visible pointer-events-auto bg-black/50 opacity-100"
+          : "invisible pointer-events-none bg-transparent opacity-0"
       }
       `}
       onClick={onClose}
@@ -81,6 +82,7 @@ export default function MobileMenu({
         shadow-2xl
         transition-transform
         duration-300
+        will-change-transform
         ${
           open
             ? "translate-x-0"
@@ -108,7 +110,7 @@ export default function MobileMenu({
             p-2
             text-foreground
             hover:bg-background
-            hover:pointer-cursor
+            cursor-pointer
             "
           >
             <X />

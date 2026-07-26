@@ -120,7 +120,7 @@ function useSnake(
       );
       path.setAttribute("d", d);
       path.setAttribute("fill", "none");
-      path.setAttribute("stroke", "#000");
+      path.setAttribute("stroke", "var(--color-secondary)");
       path.setAttribute("stroke-width", "1");
       path.setAttribute("stroke-linecap", "round");
       // draw path BEHIND bubbles — z-index on SVG is now z-0
@@ -442,6 +442,91 @@ function ImagePlaceholder({
   );
 }
 
+function StoryArtifactImage({
+  index,
+  side,
+}: {
+  index: number;
+  side: "boys" | "girls";
+}) {
+  const artifacts = {
+    boys: [
+      {
+        src: "/about/william-A-Smith.jpg",
+        alt: "William Alexander Smith, founder of The Boys' Brigade",
+        label: "Founder",
+        contain: false,
+      },
+      {
+        src: "/images/bb-Logo.png",
+        alt: "The Boys' Brigade emblem",
+        label: "Sure and Stedfast",
+        contain: true,
+      },
+      {
+        src: "/gallery/gallery1.png",
+        alt: "Boys' Brigade members in uniform during a Brigade moment",
+        label: "Discipline",
+        contain: false,
+      },
+      {
+        src: "/images/hero.jpeg",
+        alt: "Boys' and Girls' Brigade members gathered in service",
+        label: "Today",
+        contain: false,
+      },
+    ],
+    girls: [
+      {
+        src: "/images/gb-logo.png",
+        alt: "The Girls' Brigade emblem",
+        label: "Seek, Serve, Follow",
+        contain: true,
+      },
+      {
+        src: "/about/biblestud.jpeg",
+        alt: "Girls' Brigade faith and study activity",
+        label: "Faith",
+        contain: false,
+      },
+      {
+        src: "/images/flowpng.png",
+        alt: "Girls' Brigade mission and formation artifact",
+        label: "One Crest",
+        contain: true,
+      },
+      {
+        src: "/gallery/outreach2025.jpg",
+        alt: "Girls' Brigade members serving through outreach",
+        label: "Service",
+        contain: false,
+      },
+    ],
+  };
+  const artifact = artifacts[side][index] ?? artifacts[side][0];
+  const logoBg = side === "boys" ? "bg-[#D0E4F7]" : "bg-[#FEF3C7]";
+  const containedLabelClass = side === "boys" ? "bg-primary-light" : "bg-[#B8860B]";
+
+  return (
+    <div className={`relative h-full w-full overflow-hidden ${artifact.contain ? logoBg : "bg-primary"}`}>
+      <Image
+        src={artifact.src}
+        alt={artifact.alt}
+        fill
+        sizes="(max-width: 1024px) 180px, 148px"
+        className={artifact.contain ? "object-contain p-5" : "object-cover"}
+      />
+      <div
+        className={`absolute inset-x-0 bottom-0 px-3 py-2 text-[10px] font-semibold uppercase tracking-wider text-white ${
+          artifact.contain ? containedLabelClass : "bg-gradient-to-t from-black/70 to-transparent pt-8"
+        }`}
+      >
+        {artifact.label}
+      </div>
+    </div>
+  );
+}
+
 function StepRow({
   step,
   index,
@@ -473,7 +558,11 @@ function StepRow({
     return () => obs.disconnect();
   }, [index]);
 
-  const accentColor = "#B8860B";
+  const accentTextClass = side === "boys" ? "text-primary-light dark:text-secondary" : "text-[#B8860B] dark:text-secondary";
+  const bubbleClass =
+    side === "boys"
+      ? "bg-primary-light shadow-[0_0_0_8px_#D0E4F7,0_10px_25px_rgba(0,0,0,.18)] dark:shadow-[0_0_0_8px_rgba(212,164,55,.22),0_10px_25px_rgba(0,0,0,.35)]"
+      : "bg-[#B8860B] shadow-[0_0_0_8px_#FEF3C7,0_10px_25px_rgba(0,0,0,.18)] dark:shadow-[0_0_0_8px_rgba(212,164,55,.22),0_10px_25px_rgba(0,0,0,.35)]";
 
   // ── Mobile layout: image on top, text below, no number ──────────────
   const MobileLayout = (
@@ -483,18 +572,16 @@ function StepRow({
           className={`relative w-full max-w-[180px] transition-transform duration-300 hover:rotate-0 hover:scale-105 ${step.rotate}`}
         >
           <div
-            className="absolute inset-0 rounded-2xl translate-x-3 translate-y-3 blur-[1px]"
-            style={{ background: "#D4A017", opacity: 0.35 }}
+            className="absolute inset-0 rounded-2xl bg-secondary/35 translate-x-3 translate-y-3 blur-[1px]"
           />
           <div className="relative rounded-2xl overflow-hidden border-2 border-white aspect-[4/3]">
-            <ImagePlaceholder index={index} side={side} />
+            <StoryArtifactImage index={index} side={side} />
           </div>
         </div>
       </div>
       <div>
         <p
-          className="text-[10px] font-medium uppercase tracking-widest mb-1"
-          style={{ color: accentColor }}
+          className={`text-[10px] font-medium uppercase tracking-widest mb-1 ${accentTextClass}`}
         >
           {step.year}
         </p>
@@ -511,8 +598,7 @@ function StepRow({
     // Extra horizontal padding keeps text away from the snake line
     <div className={isEven ? "pl-3 pr-6" : "pr-3 pl-6"}>
       <p
-        className="text-[10px] font-medium uppercase tracking-widest mb-1"
-        style={{ color: accentColor }}
+        className={`text-[10px] font-medium uppercase tracking-widest mb-1 ${accentTextClass}`}
       >
         {step.year}
       </p>
@@ -529,11 +615,10 @@ function StepRow({
         className={`relative w-full max-w-[148px] transition-transform duration-300 hover:rotate-0 hover:scale-105 ${step.rotate}`}
       >
         <div
-          className="absolute inset-0 rounded-2xl translate-x-3 translate-y-3 blur-[1px]"
-          style={{ background: "#D4A017", opacity: 0.35 }}
+          className="absolute inset-0 rounded-2xl bg-secondary/35 translate-x-3 translate-y-3 blur-[1px]"
         />
         <div className="relative rounded-2xl overflow-hidden border-2 border-white aspect-[4/3]">
-          <ImagePlaceholder index={index} side={side} />
+          <StoryArtifactImage index={index} side={side} />
         </div>
       </div>
     </div>
@@ -547,14 +632,7 @@ function StepRow({
       {/* z-10 ensures bubble renders above the SVG (z-0) */}
       <div className="flex justify-center relative z-10">
         <div
-          className="step-num-bubble w-11 h-11 rounded-full flex items-center justify-center text-sm font-bold text-white animate-[float_3s_ease-in-out_infinite]"
-          style={{
-            background: side === "boys" ? "#173B61" : "#B8860B",
-            boxShadow:
-              side === "boys"
-                ? "0 0 0 8px #D0E4F7, 0 10px 25px rgba(0,0,0,.18)"
-                : "0 0 0 8px #FEF3C7, 0 10px 25px rgba(0,0,0,.18)",
-          }}
+          className={`step-num-bubble w-11 h-11 rounded-full flex items-center justify-center text-sm font-bold text-white animate-[float_3s_ease-in-out_infinite] ${bubbleClass}`}
         >
           {index + 1}
         </div>
@@ -678,14 +756,12 @@ export default function AboutStory() {
             />
 
             <div
-              className="flex items-center gap-3 mb-10 pb-4 border-b-2"
-              style={{ borderColor: "#173B61" }}
+              className="flex items-center gap-3 mb-10 pb-4 border-b-2 border-primary-light dark:border-secondary/60"
             >
               <div
-                className="w-10 h-10 rounded-full flex items-center justify-center text-lg flex-shrink-0"
-                style={{ background: "#FFF" }}
+                className="w-10 h-10 rounded-full flex items-center justify-center text-lg flex-shrink-0 bg-white dark:bg-card"
               >
-                <img src="/images/bb-logo.png" alt="Brigade Logo" width={30} height={30} />
+                <img src="/images/bb-Logo.png" alt="Brigade Logo" width={30} height={30} />
               </div>
               <div>
                 <p className="text-base font-medium text-foreground">
@@ -716,8 +792,7 @@ export default function AboutStory() {
             />
 
             <div
-              className="flex items-center justify-end gap-3 mb-10 pb-4 border-b-2"
-              style={{ borderColor: "#B8860B" }}
+              className="flex items-center justify-end gap-3 mb-10 pb-4 border-b-2 border-[#B8860B] dark:border-secondary/60"
             >
               <div className="text-right">
                 <p className="text-base font-medium text-foreground">
@@ -728,8 +803,7 @@ export default function AboutStory() {
                 </p>
               </div>
               <div
-                className="w-10 h-10 rounded-full flex items-center justify-center text-lg flex-shrink-0"
-                style={{ background: "#FFF" }}
+                className="w-10 h-10 rounded-full flex items-center justify-center text-lg flex-shrink-0 bg-white dark:bg-card"
               >
                 <img src="/images/gb-logo.png" alt="Girls' Brigade Logo" width={25} height={25} />
               </div>
@@ -744,26 +818,22 @@ export default function AboutStory() {
         {/* Mottos */}
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div
-            className="rounded-xl p-5 border"
-            style={{ background: "#173B61", borderColor: "#FDE68A" }}
+            className="rounded-xl border border-secondary/40 bg-primary-light p-5 text-white dark:border-secondary/50"
           >
             <p
-              className="text-[10px] font-medium uppercase tracking-widest mb-1.5"
-              style={{ color: "#ffffff" }}
+              className="text-[10px] font-medium uppercase tracking-widest mb-1.5 text-white/80"
             >
               Boys' Brigade motto
             </p>
-            <p className="text-sm text-foreground italic text-white">
+            <p className="text-sm italic text-white">
               "Sure and Stedfast" — Hebrews 6:19
             </p>
           </div>
           <div
-            className="rounded-xl p-5 border text-right"
-            style={{ background: "#FEFCE8", borderColor: "#FDE68A" }}
+            className="rounded-xl border border-secondary/40 bg-[#FEFCE8] p-5 text-right dark:border-secondary/50 dark:bg-card"
           >
             <p
-              className="text-[10px] font-medium uppercase tracking-widest mb-1.5"
-              style={{ color: "#92680B" }}
+              className="text-[10px] font-medium uppercase tracking-widest mb-1.5 text-[#92680B] dark:text-secondary"
             >
               Girls' Brigade motto
             </p>

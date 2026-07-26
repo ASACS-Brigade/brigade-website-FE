@@ -59,12 +59,15 @@ export default function AboutPrograms() {
                 overflow-hidden
                 rounded-xl
                 border
-                border-slate-200
-                bg-white
+                border-border
+                bg-card
                 transition-all
                 duration-300
                 hover:-translate-y-1
+                hover:border-secondary/60
                 hover:shadow-lg
+                hover:shadow-slate-900/10
+                dark:hover:shadow-black/30
                 "
               >
                 <div className="relative h-40">
