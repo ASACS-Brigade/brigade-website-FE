@@ -179,15 +179,16 @@ export default function Footer() {
                 mb-4
                 "
               >
-                Ministry
+                About
               </h3>
 
               <ul className="space-y-3 text-sm">
 
-                <li><Link href="/about#story" className="navHover">Our Story</Link></li>
+                <li><Link href="/about" className="navHover">About Us</Link></li>
+                <li><Link href="/about/5th-surulere-company" className="navHover">5th Surulere Company</Link></li>
+                <li><Link href="/about/9th-surulere-company" className="navHover">9th Surulere Company</Link></li>
                 <li><Link href="/about#leadership" className="navHover">Leadership</Link></li>
                 <li><Link href="/about#values" className="navHover">Our Values</Link></li>
-                <li><Link href="/about#programs" className="navHover">Programs</Link></li>
 
               </ul>
 

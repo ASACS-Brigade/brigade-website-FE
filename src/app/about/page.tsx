@@ -1,5 +1,6 @@
 import AboutHero from "../../components/sections/about/about-hero";
 import AboutStory from "../../components/sections/about/about-story";
+import CompanyPreviewSection from "../../components/sections/about/company-preview-section";
 
 import FounderSpotlight from "../../components/sections/about/founder-spotlight";
 
@@ -26,6 +27,8 @@ export default function AboutPage() {
       <section id="story">
         <AboutStory />
       </section>
+
+      <CompanyPreviewSection />
 
       {/* <FounderSpotlight /> */}
 

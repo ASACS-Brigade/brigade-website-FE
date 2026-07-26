@@ -1,8 +1,9 @@
 "use client";
-import { useState } from "react";
+
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
+import { ChevronDown, Menu } from "lucide-react";
 
 import Container from "../layout/container";
 import ThemeToggle from "../layout/theme-toggle";
@@ -12,102 +13,154 @@ import DonateButton from "../shared/donate-button";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
   { label: "Articles", href: "/articles" },
   { label: "Events", href: "/events" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
 ];
 
+const aboutItems = [
+  {
+    label: "About Us",
+    description: "Our shared story, mission and values",
+    href: "/about",
+  },
+  {
+    label: "5th Surulere Company",
+    description: "The Boys’ Brigade Nigeria",
+    href: "/about/5th-surulere-company",
+  },
+  {
+    label: "9th Surulere Company",
+    description: "The Girls’ Brigade Nigeria",
+    href: "/about/9th-surulere-company",
+  },
+];
+
+function routeIsActive(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  if (href === "/about") return pathname === "/about";
+  return pathname.startsWith(href);
+}
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
+  const aboutRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   const closeMenu = () => setIsOpen(false);
 
+  useEffect(() => {
+    function closeOnOutsideClick(event: PointerEvent) {
+      if (!aboutRef.current?.contains(event.target as Node)) {
+        setAboutOpen(false);
+      }
+    }
+
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setAboutOpen(false);
+      }
+    }
+
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsideClick);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, []);
+
   return (
     <>
-      <header
-        className="
-        sticky
-        top-0
-        z-[999]
-        border-b
-        border-border
-        bg-card
-        text-foreground
-        shadow-sm
-        shadow-black/5
-        "
-      >
-
+      <header className="sticky top-0 z-[999] border-b border-border bg-card text-foreground shadow-sm shadow-black/5">
         <Container>
           <div className="flex h-20 items-center justify-between">
-            <Link
-              href="/"
-              onClick={closeMenu}
-              className="
-              flex
-              min-w-0
-              items-center
-              gap-2
-              text-primary
-              sm:gap-3
-              "
-            >
-              {/* <span
-                className="
-                flex
-                h-10
-                w-10
-                shrink-0
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-[#D4A437]/50
-                bg-[#0E2A47]
-                text-[#D4A437]
-                shadow-sm
-                sm:h-11
-                sm:w-11
-                "
-                aria-hidden="true"
-              >
-                <Shield className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={1.8} />
-              </span> */}
-              <span className="">
-                <img src="/images/bb-logo.png" alt="Brigade Logo" width={50} height={50} />
+            <Link href="/" onClick={closeMenu} className="flex min-w-0 items-center gap-2 text-primary sm:gap-3">
+              <span>
+                <img src="/images/bb-logo.png" alt="Boys’ Brigade logo" width={50} height={50} />
               </span>
-
               <span className="flex min-w-0 flex-col text-[11px] font-bold uppercase leading-[1.08] tracking-wide sm:text-xs md:text-[13px]">
                 <span>ALL SAINTS SURULERE</span>
                 <span className="text-center">Brigade</span>
-                {/* <span>Surulere Companies</span> */}
               </span>
-
-                <span className="">
-                <img src="/images/gb-logo.png" alt="girls Brigade Logo" width={45} height={45} />
+              <span>
+                <img src="/images/gb-logo.png" alt="Girls’ Brigade logo" width={45} height={45} />
               </span>
             </Link>
 
-            <nav className="hidden lg:flex lg:items-center lg:gap-8">
-              {navItems.map((item) => {
-                const isActive =
-                  item.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(item.href);
+            <nav aria-label="Primary navigation" className="hidden lg:flex lg:items-center lg:gap-8">
+              <Link href="/" aria-current={pathname === "/" ? "page" : undefined} className={cn("navHover text-foreground transition", pathname === "/" && "is-active")}>
+                Home
+              </Link>
 
-                return (
+              <div
+                ref={aboutRef}
+                className="relative"
+                onMouseEnter={() => setAboutOpen(true)}
+                onMouseLeave={() => setAboutOpen(false)}
+                onBlur={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                    setAboutOpen(false);
+                  }
+                }}
+              >
+                <div className="flex items-center gap-1">
                   <Link
-                    key={item.label}
-                    href={item.href}
-                    aria-current={isActive ? "page" : undefined}
-                    className={cn(
-                      "navHover text-foreground transition",
-                      isActive && "is-active"
-                    )}
+                    href="/about"
+                    aria-current={pathname === "/about" ? "page" : undefined}
+                    onFocus={() => setAboutOpen(true)}
+                    className={cn("navHover text-foreground transition", pathname.startsWith("/about") && "is-active")}
                   >
+                    About
+                  </Link>
+                  <button
+                    type="button"
+                    aria-label="Toggle About submenu"
+                    aria-expanded={aboutOpen}
+                    aria-controls="desktop-about-menu"
+                    onClick={() => setAboutOpen((open) => !open)}
+                    className="flex h-9 w-9 items-center justify-center rounded-md text-foreground outline-none transition hover:bg-background hover:text-secondary focus-visible:ring-2 focus-visible:ring-secondary"
+                  >
+                    <ChevronDown aria-hidden="true" className={cn("h-4 w-4 transition-transform", aboutOpen && "rotate-180")} />
+                  </button>
+                </div>
+
+                <div
+                  id="desktop-about-menu"
+                  className={cn(
+                    "absolute left-1/2 top-full w-80 -translate-x-1/2 pt-3 transition duration-200",
+                    aboutOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0",
+                  )}
+                >
+                  <div className="rounded-xl border border-border bg-card p-2 shadow-xl shadow-slate-900/10 dark:shadow-black/30">
+                    {aboutItems.map((item) => {
+                      const active = routeIsActive(pathname, item.href);
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          aria-current={active ? "page" : undefined}
+                          onClick={() => setAboutOpen(false)}
+                          className={cn(
+                            "block rounded-lg px-4 py-3 outline-none transition hover:bg-primary/5 focus-visible:bg-primary/5 focus-visible:ring-2 focus-visible:ring-secondary",
+                            active && "bg-primary/5",
+                          )}
+                        >
+                          <span className={cn("block text-sm font-bold text-primary", active && "text-secondary")}>{item.label}</span>
+                          <span className="mt-1 block text-xs leading-5 text-muted">{item.description}</span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
+              {navItems.slice(1).map((item) => {
+                const isActive = routeIsActive(pathname, item.href);
+                return (
+                  <Link key={item.label} href={item.href} aria-current={isActive ? "page" : undefined} className={cn("navHover text-foreground transition", isActive && "is-active")}>
                     {item.label}
                   </Link>
                 );
@@ -117,7 +170,6 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               <DonateButton className="hidden lg:inline-flex" />
               <ThemeToggle />
-
               <button
                 type="button"
                 title="Open menu"
@@ -125,20 +177,7 @@ export default function Navbar() {
                 aria-expanded={isOpen}
                 aria-controls="mobile-navigation"
                 onClick={() => setIsOpen((open) => !open)}
-                className="
-                inline-flex
-                h-10
-                w-10
-                items-center
-                justify-center
-                rounded-lg
-                border
-                border-border
-                text-foreground
-                transition
-                hover:bg-background
-                lg:hidden
-                "
+                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border text-foreground transition hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hidden"
               >
                 <Menu size={22} />
               </button>
