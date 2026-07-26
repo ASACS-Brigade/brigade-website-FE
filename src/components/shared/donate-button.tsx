@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { HeartHandshake } from "lucide-react";
 
 import { cn } from "../../lib/utils";
 
@@ -34,7 +33,6 @@ export default function DonateButton({
           className
         )}
       >
-        <HeartHandshake size={17} />
         Donate
       </button>
 

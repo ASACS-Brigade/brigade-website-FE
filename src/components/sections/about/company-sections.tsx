@@ -65,7 +65,9 @@ function SectionCardContent({
         <span className="text-xs font-bold tracking-[0.2em] text-primary/40">
           SECTION {String(index + 1).padStart(2, "0")}
         </span>
-        <Icon aria-hidden="true" className="h-7 w-7 text-primary" strokeWidth={1.7} />
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-secondary shadow-md shadow-primary/20">
+          <Icon aria-hidden="true" className="h-6 w-6" strokeWidth={1.7} />
+        </span>
       </div>
 
       <div className="relative my-auto py-5 sm:py-7">
@@ -83,7 +85,7 @@ function SectionCardContent({
       </div>
 
       <div className="relative flex justify-end">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-primary/15 bg-white/55 text-primary sm:h-20 sm:w-20">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-primary bg-primary text-secondary shadow-lg shadow-primary/20 sm:h-20 sm:w-20">
           <Icon aria-hidden="true" className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={1.45} />
         </div>
       </div>
@@ -141,7 +143,7 @@ function StackedSectionCard({
         zIndex,
         backgroundColor: cardColours[index % cardColours.length],
       }}
-      className="absolute left-1/2 top-1/2 flex h-[min(450px,58svh)] min-h-[360px] w-[min(88vw,420px)] -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-4xl border border-white/40 p-5 shadow-[0_32px_90px_rgba(0,0,0,.24)] will-change-transform sm:h-[min(500px,62svh)] sm:min-h-[400px] sm:p-7 lg:left-[70%] lg:h-[min(520px,70vh)] lg:w-[min(44vw,460px)] lg:p-8 xl:left-[62%]"
+      className="absolute left-1/2 top-[45%] flex h-[min(450px,58svh)] min-h-[360px] w-[min(88vw,420px)] -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-4xl border border-white/40 p-5 shadow-[0_32px_90px_rgba(0,0,0,.24)] will-change-transform sm:top-1/2 sm:h-[min(500px,62svh)] sm:min-h-[400px] sm:p-7 lg:left-[70%] lg:h-[min(520px,70vh)] lg:w-[min(44vw,460px)] lg:p-8 xl:left-[62%]"
     >
       <SectionCardContent section={section} index={index} />
     </motion.article>
@@ -153,7 +155,7 @@ export default function CompanySectionsShowcase({
 }: {
   sections: CompanyPageData["sections"];
 }) {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const reduceMotion = Boolean(useReducedMotion());
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -163,34 +165,39 @@ export default function CompanySectionsShowcase({
 
   return (
     <section
-      ref={sectionRef}
       id="company-sections"
       className="relative bg-primary-light"
       data-testid="company-sections"
-      style={{ height: sectionHeight }}
     >
-      <div className="relative z-[120] px-5 py-12 text-center sm:px-8 lg:hidden">
+      <div className="relative z-[120] px-5 py-8 text-center sm:px-8 sm:py-12 lg:hidden">
         <SectionHeading />
       </div>
 
-      <div className="sticky top-0 h-[100svh] overflow-hidden lg:top-20 lg:h-[calc(100svh-5rem)]">
-        <SectionBackdrop />
+      <div
+        ref={sectionRef}
+        className="relative -mt-16 lg:mt-0"
+        data-testid="company-sections-scroll"
+        style={{ height: sectionHeight }}
+      >
+        <div className="sticky top-0 h-[100svh] overflow-hidden lg:top-20 lg:h-[calc(100svh-5rem)]">
+          <SectionBackdrop />
 
-        <div className="absolute left-[6%] top-[7%] z-[120] hidden max-w-sm lg:block">
-          <SectionHeading />
-        </div>
+          <div className="absolute left-[6%] top-[7%] z-[120] hidden max-w-sm lg:block">
+            <SectionHeading />
+          </div>
 
-        <div className="relative h-full w-full">
-          {sections.map((section, index) => (
-            <StackedSectionCard
-              key={section.name}
-              section={section}
-              index={index}
-              total={sections.length}
-              progress={scrollYProgress}
-              reduceMotion={reduceMotion}
-            />
-          ))}
+          <div className="relative h-full w-full">
+            {sections.map((section, index) => (
+              <StackedSectionCard
+                key={section.name}
+                section={section}
+                index={index}
+                total={sections.length}
+                progress={scrollYProgress}
+                reduceMotion={reduceMotion}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

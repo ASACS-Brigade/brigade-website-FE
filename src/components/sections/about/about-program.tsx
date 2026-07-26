@@ -13,19 +13,19 @@ const programs = [
       "Spiritual growth, learning and fellowship.",
   },
   {
-    image: "/images/programs/program-2.jpg",
+    image: "/images/hero.jpeg",
     title: "Medical and Charity Outreach",
     description:
       "Reaching out and making a positive impact.",
   },
   {
-    image: "/images/programs/program-3.jpg",
+    image: "/events/pic2.png",
     title: "Camps & Retreats",
     description:
       "Building skills, friendships and memories.",
   },
   {
-    image: "/images/programs/program-4.jpg",
+    image: "/events/pic3.png",
     title: "Mentorship Program",
     description:
       "Guiding and supporting the next generation.",

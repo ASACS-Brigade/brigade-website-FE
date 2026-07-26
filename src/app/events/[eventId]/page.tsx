@@ -53,7 +53,7 @@ export default async function EventDetailPage({
             alt={event.title}
             fill
             priority
-            className="pointer-events-none object-cover opacity-35"
+            className="pointer-events-none object-cover opacity-55"
           />
         ) : (
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-primary-light/20 text-white/25">
@@ -61,11 +61,7 @@ export default async function EventDetailPage({
           </div>
         )}
         <div
-          className="hero-fade-overlay pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(90deg, rgba(14, 42, 71, 0.98) 0%, rgba(14, 42, 71, 0.88) 48%, rgba(14, 42, 71, 0.35) 100%)",
-          }}
+          className="event-detail-hero-overlay pointer-events-none absolute inset-0"
         />
 
         <Container className="relative z-10">

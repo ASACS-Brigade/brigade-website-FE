@@ -520,9 +520,9 @@ const testimonials: Testimonial[] = [
     manifestations: {
       title: "Manifestations",
       tags: [
-        { label: "Family", color: "#06BF37", bg: "#E6F8EA", icon: "/icons/travel1.svg" },
-        { label: "Leadership", color: "#3C6BF6", bg: "#EEF1FF", icon: "/icons/career1.svg" },
-        { label: "Physique", color: "#800080", bg: "#F3E8F8", icon: "/icons/physique1.svg" },
+        { label: "Family", color: "#06BF37", bg: "#E6F8EA", icon: "/images/gb-logo.png" },
+        { label: "Leadership", color: "#3C6BF6", bg: "#EEF1FF", icon: "/images/bb-Logo.png" },
+        { label: "Physique", color: "#800080", bg: "#F3E8F8", icon: "/images/bb-Logo.png" },
       ],
     },
   },
@@ -536,9 +536,9 @@ const testimonials: Testimonial[] = [
     manifestations: {
       title: "Manifestations",
       tags: [
-        { label: "Leadership", color: "#06BF37", bg: "#E6F8EA", icon: "/icons/travel1.svg" },
-        { label: "Career", color: "#3C6BF6", bg: "#EEF1FF", icon: "/icons/career1.svg" },
-        { label: "Physique", color: "#800080", bg: "#F3E8F8", icon: "/icons/physique1.svg" },
+        { label: "Leadership", color: "#06BF37", bg: "#E6F8EA", icon: "/images/bb-Logo.png" },
+        { label: "Career", color: "#3C6BF6", bg: "#EEF1FF", icon: "/images/bb-Logo.png" },
+        { label: "Physique", color: "#800080", bg: "#F3E8F8", icon: "/images/bb-Logo.png" },
       ],
     },
   },
@@ -552,8 +552,8 @@ const testimonials: Testimonial[] = [
     manifestations: {
       title: "Manifestations",
       tags: [
-        { label: "Impact", color: "#06BF37", bg: "#E6F8EA", icon: "/icons/travel1.svg" },
-        { label: "Career", color: "#3C6BF6", bg: "#EEF1FF", icon: "/icons/career1.svg" },
+        { label: "Impact", color: "#06BF37", bg: "#E6F8EA", icon: "/images/gb-logo.png" },
+        { label: "Career", color: "#3C6BF6", bg: "#EEF1FF", icon: "/images/bb-Logo.png" },
       ],
     },
   },
@@ -567,8 +567,8 @@ const testimonials: Testimonial[] = [
     manifestations: {
       title: "Manifestations",
       tags: [
-        { label: "Health", color: "#06BF37", bg: "#E6F8EA", icon: "/icons/travel1.svg" },
-        { label: "Physique", color: "#800080", bg: "#F3E8F8", icon: "/icons/physique1.svg" },
+        { label: "Health", color: "#06BF37", bg: "#E6F8EA", icon: "/images/gb-logo.png" },
+        { label: "Physique", color: "#800080", bg: "#F3E8F8", icon: "/images/bb-Logo.png" },
       ],
     },
   },
@@ -582,8 +582,8 @@ const testimonials: Testimonial[] = [
     manifestations: {
       title: "Manifestations",
       tags: [
-        { label: "Business", color: "#3C6BF6", bg: "#EEF1FF", icon: "/icons/career1.svg" },
-        { label: "Travel", color: "#06BF37", bg: "#E6F8EA", icon: "/icons/travel1.svg" },
+        { label: "Business", color: "#3C6BF6", bg: "#EEF1FF", icon: "/images/bb-Logo.png" },
+        { label: "Travel", color: "#06BF37", bg: "#E6F8EA", icon: "/images/gb-logo.png" },
       ],
     },
   },
@@ -597,8 +597,8 @@ const testimonials: Testimonial[] = [
     manifestations: {
       title: "Manifestations",
       tags: [
-        { label: "Education", color: "#3C6BF6", bg: "#EEF1FF", icon: "/icons/career1.svg" },
-        { label: "Health", color: "#06BF37", bg: "#E6F8EA", icon: "/icons/travel1.svg" },
+        { label: "Education", color: "#3C6BF6", bg: "#EEF1FF", icon: "/images/bb-Logo.png" },
+        { label: "Health", color: "#06BF37", bg: "#E6F8EA", icon: "/images/gb-logo.png" },
       ],
     },
   },
@@ -787,14 +787,14 @@ export default function Testimonials() {
                     <div className="flex items-center gap-2 mb-3 md:mb-4">
                       {/* <div className="relative w-5 h-5 md:w-6 md:h-6 shrink-0">
                         <Image
-                          src="/icons/star-purple.svg"
+                          src="/images/bb-Logo.png"
                           alt=""
                           width={isActive ? 20 : 16}
                           height={isActive ? 20 : 16}
                           className="absolute top-0 left-0"
                         />
                         <Image
-                          src="/icons/star-purple.svg"
+                          src="/images/bb-Logo.png"
                           alt=""
                           width={isActive ? 10 : 8}
                           height={isActive ? 10 : 8}

@@ -60,7 +60,7 @@ export default function Footer() {
               </div>
 
               <Image
-                src="/images/gb-Logo.png"
+                src="/images/gb-logo.png"
                 alt="girls brigade Logo"
                 width={35}
                 height={35}

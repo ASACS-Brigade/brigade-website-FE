@@ -13,7 +13,7 @@ export default function FounderSpotlight() {
           <FadeIn>
             <div className="relative h-[500px] rounded-3xl overflow-hidden">
               <Image
-                src="/about/founder.jpg"
+                src="/about/william-A-Smith.jpg"
                 alt="William Alexander Smith"
                 fill
                 className="object-cover"

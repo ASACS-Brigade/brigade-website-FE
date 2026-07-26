@@ -193,7 +193,7 @@ export const companies: Record<CompanySlug, CompanyPageData> = {
     galleryImages: [
       {
         src: "/about/biblestud.jpeg",
-        alt: "A young Brigade member taking part in a creative learning activity",
+        alt: "A junior boy taking part in the Battalion bible quiz competition, a creative learning activity",
       },
       {
         src: "/images/hero.jpg",
@@ -289,7 +289,7 @@ export const companies: Record<CompanySlug, CompanyPageData> = {
     organisationName: "The Girls’ Brigade Nigeria",
     heroDescription:
       "Helping girls grow in faith, confidence, leadership and service.",
-    logo: "/images/gb-Logo.png",
+    logo: "/images/gb-logo.png",
     logoAlt: "The Girls’ Brigade emblem",
     motto: "Seek, Serve and Follow Christ",
     introduction: [
@@ -366,6 +366,12 @@ export const companies: Record<CompanySlug, CompanyPageData> = {
         description:
           "Lady Maria Ezenma began serving as Girls’ Captain, continuing the company’s leadership story.",
       },
+      {
+        year: "2023",
+        title: "The First Medical & Charity Outreach",
+        description:
+        "Lady Maria Ezenma, in collaboration with the Boys’ Captain, Sir Fred Ichekwai, launched the first Medical & Charity Outreach—an initiative dedicated to serving the church and giving back to the wider community.",
+        },
     ],
     galleryImages: [
       {

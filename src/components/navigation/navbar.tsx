@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu } from "lucide-react";
@@ -75,18 +76,34 @@ export default function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-[999] border-b border-border bg-card text-foreground shadow-sm shadow-black/5">
-        <Container>
+        <Container className="max-[384px]:px-2.5">
           <div className="flex h-20 items-center justify-between">
-            <Link href="/" onClick={closeMenu} className="flex min-w-0 items-center gap-2 text-primary sm:gap-3">
-              <span>
-                <img src="/images/bb-logo.png" alt="Boys’ Brigade logo" width={50} height={50} />
+            <Link href="/" onClick={closeMenu} className="flex min-w-0 items-center gap-2 text-primary max-[384px]:gap-1 sm:gap-3">
+              <span className="shrink-0">
+                <Image
+                  src="/images/bb-Logo.png"
+                  alt="Boys’ Brigade logo"
+                  width={50}
+                  height={50}
+                  priority
+                  unoptimized
+                  className="h-[50px] w-[50px] object-contain max-[384px]:h-9 max-[384px]:w-9"
+                />
               </span>
-              <span className="flex min-w-0 flex-col text-[11px] font-bold uppercase leading-[1.08] tracking-wide sm:text-xs md:text-[13px]">
+              <span className="flex min-w-0 flex-col whitespace-nowrap text-[11px] font-bold uppercase leading-[1.08] tracking-wide max-[384px]:text-[9px] max-[384px]:leading-[1.05] max-[384px]:tracking-normal sm:text-xs md:text-[13px]">
                 <span>ALL SAINTS SURULERE</span>
                 <span className="text-center">Brigade</span>
               </span>
-              <span>
-                <img src="/images/gb-logo.png" alt="Girls’ Brigade logo" width={45} height={45} />
+              <span className="shrink-0">
+                <Image
+                  src="/images/gb-logo.png"
+                  alt="Girls’ Brigade logo"
+                  width={45}
+                  height={45}
+                  priority
+                  unoptimized
+                  className="h-[45px] w-[45px] object-contain max-[384px]:h-8 max-[384px]:w-8"
+                />
               </span>
             </Link>
 
@@ -167,7 +184,7 @@ export default function Navbar() {
               })}
             </nav>
 
-            <div className="flex items-center gap-3">
+            <div className="ml-2 flex shrink-0 items-center gap-2 sm:ml-3 sm:gap-3">
               <DonateButton className="hidden lg:inline-flex" />
               <ThemeToggle />
               <button
