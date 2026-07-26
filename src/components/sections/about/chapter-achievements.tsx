@@ -68,7 +68,7 @@ export default function ChapterAchievements() {
                 <div
                   className="
                   hover-card
-                  bg-white
+                  bg-card
                   border
                   border-border
                   rounded-2xl
