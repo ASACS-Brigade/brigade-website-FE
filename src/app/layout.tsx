@@ -66,7 +66,7 @@ export const metadata: Metadata = {
 
     images: [
       {
-        url: "/images/seo-banner.jpg",
+        url: "/images/hero.jpg",
         width: 1200,
         height: 630,
         alt: "Boys and Girls Brigade Surulere",
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
       "Building Faith, Leadership and Service.",
 
     images: [
-      "/images/seo-banner.jpg",
+      "/images/hero.jpg",
     ],
   },
 

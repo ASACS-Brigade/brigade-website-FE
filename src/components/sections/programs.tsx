@@ -34,7 +34,7 @@ const cards = [
   {
     bg: "#F8F2FC",
     rotate: 9,
-    image: "/events/pic4.png",
+    image: "/events/pic2.png",
     title: "Monthly Parade Drills",
     description:
       "Building discipline, precision, and coordination through structured monthly training sessions. These drills strengthen our collective unity and individual excellence.",
@@ -42,7 +42,7 @@ const cards = [
   {
     bg: "#F2FAFC",
     rotate: -12,
-    image: "/events/pic5.png",
+    image: "/images/hero.jpg",
     title: "Joint Enrolment & Rededication Services",
     description:
       "Every September, we celebrate new beginnings and renewed commitments. This service welcomes fresh members and honors the dedications of returning ones in our extended family.",
@@ -50,7 +50,7 @@ const cards = [
   {
     bg: "#73E9DB",
     rotate: 10,
-    image: "/events/pic6.png",
+    image: "/events/pic1.png",
     title: "Parade Night",
     description:
       "December's grand celebration where the entire community comes alive! Music, joy, and festive energy fill the streets as we showcase the year's excellence and unity.",

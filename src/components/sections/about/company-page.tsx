@@ -253,7 +253,7 @@ function Leadership({ company }: { company: CompanyPageData }) {
           <h3 className="text-sm font-bold leading-5 text-primary">{leader.name}</h3>
           <p className="mt-1 text-xs text-muted">{leader.role}</p>
           {leader.servicePeriod ? (
-            <p className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-secondary/30 bg-secondary/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-primary">
+            <p className="mt-3 inline-flex w-fit items-center gap-1.5 whitespace-nowrap rounded-full border border-secondary/30 bg-secondary/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-primary max-[384px]:gap-1 max-[384px]:px-2 max-[384px]:text-[9px] max-[384px]:tracking-normal">
               <CalendarDays aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-secondary" />
               {leader.servicePeriod}
             </p>
