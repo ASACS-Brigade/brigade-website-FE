@@ -58,6 +58,9 @@ export function submitContactMessage(input: {
   name: string;
   email: string;
   phone?: string;
+  title?: string;
+  inquiryType?: string;
+  preferredContactMethod?: string;
   subject: string;
   message: string;
 }) {

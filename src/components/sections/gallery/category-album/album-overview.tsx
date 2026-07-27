@@ -29,6 +29,8 @@ export default function AlbumOverview({
   categorySlug: string;
 }) {
   const copy = overviewCopy[categorySlug] ?? overviewCopy.default;
+  const title = album.overviewTitle || "What This Gallery Is About";
+  const summary = album.overviewBody || copy.summary;
 
   return (
     <section className="bg-background py-14 sm:py-18">
@@ -38,10 +40,10 @@ export default function AlbumOverview({
             {album.shortTitle} Story
           </span>
           <h2 className="mt-3 text-3xl font-black text-primary sm:text-4xl">
-            What This Gallery Is About
+            {title}
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-muted sm:text-base">
-            {copy.summary}
+            {summary}
           </p>
         </div>
       </Container>

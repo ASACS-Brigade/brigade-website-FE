@@ -20,6 +20,8 @@ export type GalleryCategory = {
   shortTitle: string;
   heroTitle: string;
   description: string;
+  overviewTitle?: string;
+  overviewBody?: string;
   heroImage: string;
   icon: GalleryStat["icon"];
   galleryPattern: "masonry" | "feature" | "rows" | "mosaic" | "tiles";

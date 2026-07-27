@@ -8,6 +8,8 @@ export type BrigadeEvent = {
   writeup: string[];
   outcome: string;
   galleryImages: string[];
+  deadlineAt?: string;
+  videoUrl?: string;
   image: string;
   href: string;
   featured?: boolean;
