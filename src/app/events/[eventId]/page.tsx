@@ -44,6 +44,14 @@ export default async function EventDetailPage({
     notFound();
   }
 
+  const deadline = event.deadlineAt
+    ? new Date(event.deadlineAt).toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      })
+    : null;
+
   return (
     <main className="bg-background text-foreground">
       <section className="relative overflow-hidden bg-primary py-16 text-white sm:py-20">
@@ -120,13 +128,6 @@ export default async function EventDetailPage({
                 ))}
               </div>
 
-              <div className="mt-8 rounded-lg border border-secondary/30 bg-secondary/10 p-5">
-                <h3 className="text-lg font-bold text-primary">Outcome</h3>
-                <p className="mt-3 text-sm leading-7 text-muted">
-                  {event.outcome}
-                </p>
-              </div>
-
               {event.videoUrl ? (
                 <div className="mt-8">
                   <h3 className="text-lg font-bold text-primary">
@@ -146,7 +147,7 @@ export default async function EventDetailPage({
               ) : null}
             </article>
 
-            <aside className="rounded-lg border border-border bg-card p-6 shadow-sm">
+            <aside className="self-start rounded-lg border border-border bg-card p-6 shadow-sm">
               <h2 className="text-xl font-bold text-primary">Quick Details</h2>
               <dl className="mt-5 space-y-4 text-sm">
                 <div>
@@ -161,6 +162,14 @@ export default async function EventDetailPage({
                   <dt className="font-bold text-foreground">Venue</dt>
                   <dd className="mt-1 text-muted">{event.location}</dd>
                 </div>
+                {deadline ? (
+                  <div>
+                    <dt className="font-bold text-foreground">
+                      Registration Deadline
+                    </dt>
+                    <dd className="mt-1 text-muted">{deadline}</dd>
+                  </div>
+                ) : null}
               </dl>
 
               <Link
