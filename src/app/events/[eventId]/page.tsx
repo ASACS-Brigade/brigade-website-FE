@@ -126,6 +126,24 @@ export default async function EventDetailPage({
                   {event.outcome}
                 </p>
               </div>
+
+              {event.videoUrl ? (
+                <div className="mt-8">
+                  <h3 className="text-lg font-bold text-primary">
+                    Event Video
+                  </h3>
+                  <div className="mt-4 overflow-hidden rounded-lg border border-border bg-primary">
+                    <video
+                      src={event.videoUrl}
+                      controls
+                      preload="metadata"
+                      className="aspect-video w-full bg-black"
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+              ) : null}
             </article>
 
             <aside className="rounded-lg border border-border bg-card p-6 shadow-sm">

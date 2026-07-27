@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, CalendarDays, Clock3, MapPin, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, CalendarDays, Clock3, MapPin, X } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 import FadeIn from "../../layout/fade-in";
 import Container from "../../layout/container";
 import {
@@ -18,14 +19,29 @@ type UpcomingEventsProps = {
   onClearSelected: () => void;
 };
 
+const eventsPerPage = 4;
+
 export default function UpcomingEvents({
   events,
   selectedDate,
   onClearSelected,
 }: UpcomingEventsProps) {
-  const selectedEvents = eventsForDate(events, selectedDate);
+  const selectedEvents = useMemo(
+    () => eventsForDate(events, selectedDate),
+    [events, selectedDate],
+  );
   const visibleEvents = selectedEvents.length > 0 ? selectedEvents : events;
   const isFiltered = selectedEvents.length > 0;
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.max(1, Math.ceil(visibleEvents.length / eventsPerPage));
+  const paginatedEvents = visibleEvents.slice(
+    (currentPage - 1) * eventsPerPage,
+    currentPage * eventsPerPage,
+  );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedDate, visibleEvents.length]);
 
   return (
     <section id="upcoming-events" className="pb-16 sm:pb-20">
@@ -57,7 +73,7 @@ export default function UpcomingEvents({
         </FadeIn>
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {visibleEvents.map((event, i) => (
+          {paginatedEvents.map((event, i) => (
             <FadeIn key={event.id}>
               <article
                 className="group flex h-full flex-col rounded-lg border border-border bg-card p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-secondary/70 hover:shadow-lg"
@@ -102,13 +118,62 @@ export default function UpcomingEvents({
                   href={event.href}
                   className="mt-5 inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-secondary px-4 py-2 text-sm font-semibold text-white transition duration-300 hover:bg-[#b98c22] focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-background"
                 >
-                  Register
+                  View
                   <ArrowRight size={15} />
                 </Link>
               </article>
             </FadeIn>
           ))}
         </div>
+
+        {totalPages > 1 ? (
+          <div className="mt-8 flex flex-col items-center justify-between gap-4 rounded-xl border border-border bg-card p-4 sm:flex-row">
+            <p className="text-sm font-semibold text-muted">
+              Page {currentPage} of {totalPages}
+            </p>
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
+                disabled={currentPage === 1}
+                className="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-border px-4 text-sm font-semibold text-primary transition hover:border-secondary hover:text-secondary disabled:cursor-not-allowed disabled:opacity-45"
+              >
+                <ArrowLeft size={15} />
+                Previous
+              </button>
+
+              {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+                (page) => (
+                  <button
+                    key={page}
+                    type="button"
+                    onClick={() => setCurrentPage(page)}
+                    className={`h-10 min-w-10 rounded-lg px-3 text-sm font-bold transition ${
+                      currentPage === page
+                        ? "bg-secondary text-white"
+                        : "border border-border text-primary hover:border-secondary hover:text-secondary"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ),
+              )}
+
+              <button
+                type="button"
+                onClick={() =>
+                  setCurrentPage((page) => Math.min(totalPages, page + 1))
+                }
+                disabled={currentPage === totalPages}
+                className="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-border px-4 text-sm font-semibold text-primary transition hover:border-secondary hover:text-secondary disabled:cursor-not-allowed disabled:opacity-45"
+              >
+                Next
+                <ArrowRight size={15} />
+              </button>
+            </div>
+          </div>
+        ) : null}
       </Container>
     </section>
   );

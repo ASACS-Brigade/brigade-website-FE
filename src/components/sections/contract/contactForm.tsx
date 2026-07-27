@@ -8,6 +8,10 @@ type FormState = {
   fullName: string;
   email: string;
   phone: string;
+  title: string;
+  inquiryType: string;
+  preferredContactMethod: string;
+  subject: string;
   message: string;
 };
 
@@ -25,17 +29,21 @@ function validate(form: FormState): Errors {
 export default function ContactForm() {
   const [form, setForm] = useState<FormState>({
     fullName: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
+  email: "",
+  phone: "",
+  title: "",
+  inquiryType: "General enquiry",
+  preferredContactMethod: "Email",
+  subject: "",
+  message: "",
+});
   const [errors, setErrors] = useState<Errors>({});
   const [submitError, setSubmitError] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
   function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) {
     setForm(f => ({ ...f, [e.target.name]: e.target.value }));
     setErrors(err => ({ ...err, [e.target.name]: undefined }));
@@ -54,7 +62,10 @@ export default function ContactForm() {
         name: form.fullName,
         email: form.email,
         phone: form.phone || undefined,
-        subject: "Website contact message",
+        title: form.title || undefined,
+        inquiryType: form.inquiryType,
+        preferredContactMethod: form.preferredContactMethod,
+        subject: form.subject || form.inquiryType,
         message: form.message,
       });
       setSubmitted(true);
@@ -75,7 +86,19 @@ export default function ContactForm() {
             Thank you for reaching out. We'll get back to you as soon as possible.
           </p>
           <button
-            onClick={() => { setSubmitted(false); setForm({ fullName:"", email:"", phone:"", message:"" }); }}
+            onClick={() => {
+              setSubmitted(false);
+              setForm({
+                fullName: "",
+                email: "",
+                phone: "",
+                title: "",
+                inquiryType: "General enquiry",
+                preferredContactMethod: "Email",
+                subject: "",
+                message: "",
+              });
+            }}
             className="mt-2 text-sm font-medium underline"
             style={{ color: "#D4A017" }}
           >
@@ -144,6 +167,72 @@ export default function ContactForm() {
               onChange={handleChange}
               className={inputBase}
             />
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label className="mb-1.5 block text-xs font-medium text-muted">
+                Message Title
+              </label>
+              <input
+                type="text"
+                name="title"
+                placeholder="Short title for your message"
+                value={form.title}
+                onChange={handleChange}
+                className={inputBase}
+              />
+            </div>
+
+            <div>
+              <label className="mb-1.5 block text-xs font-medium text-muted">
+                Preferred Reply
+              </label>
+              <select
+                name="preferredContactMethod"
+                value={form.preferredContactMethod}
+                onChange={handleChange}
+                className={inputBase}
+              >
+                <option>Email</option>
+                <option>Phone call</option>
+                <option>WhatsApp</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label className="mb-1.5 block text-xs font-medium text-muted">
+                Enquiry Type
+              </label>
+              <select
+                name="inquiryType"
+                value={form.inquiryType}
+                onChange={handleChange}
+                className={inputBase}
+              >
+                <option>General enquiry</option>
+                <option>Membership and registration</option>
+                <option>Events and parade</option>
+                <option>Partnership or sponsorship</option>
+                <option>Pastoral or prayer request</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="mb-1.5 block text-xs font-medium text-muted">
+                Subject
+              </label>
+              <input
+                type="text"
+                name="subject"
+                placeholder="What should we help with?"
+                value={form.subject}
+                onChange={handleChange}
+                className={inputBase}
+              />
+            </div>
           </div>
 
           {/* Message */}

@@ -62,6 +62,10 @@ type ApiEvent = {
   location: string;
   coverImageUrl?: string | null;
   galleryImageUrls?: string[];
+  deadlineAt?: string | null;
+  videoUrl?: string | null;
+  videoPublicId?: string | null;
+  galleryAlbumId?: string | null;
   featured: boolean;
 };
 
@@ -70,6 +74,8 @@ type ApiGalleryCategory = {
   name: string;
   slug: string;
   description?: string | null;
+  overviewTitle?: string | null;
+  overviewBody?: string | null;
   coverImageUrl?: string | null;
   albums?: ApiGalleryAlbumSummary[];
 };
@@ -209,6 +215,8 @@ function normalizeEvent(event: ApiEvent, fallback?: BrigadeEvent): BrigadeEvent 
       fallback?.outcome ??
       "Event outcomes and follow-up notes will be updated after the programme.",
     galleryImages,
+    deadlineAt: event.deadlineAt ?? undefined,
+    videoUrl: event.videoUrl ?? undefined,
     image: event.coverImageUrl ?? fallback?.image ?? "",
     href: `/events/${event.slug}`,
     featured: event.featured,
@@ -242,7 +250,9 @@ function mergeGalleryCategory(
   albums: ApiGalleryAlbum[],
 ): GalleryCategory {
   const fallback =
-    galleryCategories[category.slug as keyof typeof galleryCategories];
+    galleryCategories[
+      category.slug as keyof typeof galleryCategories
+    ] as GalleryCategory | undefined;
 
   const liveYears = albums
     .map(normalizeGalleryYear)
@@ -270,6 +280,8 @@ function mergeGalleryCategory(
       category.description ??
       fallback?.description ??
       "Explore Brigade memories by year.",
+    overviewTitle: category.overviewTitle ?? fallback?.overviewTitle,
+    overviewBody: category.overviewBody ?? fallback?.overviewBody,
     heroImage,
     icon: fallback?.icon ?? "shield",
     galleryPattern: fallback?.galleryPattern ?? "masonry",

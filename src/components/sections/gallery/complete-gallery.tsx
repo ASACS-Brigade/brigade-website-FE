@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, ImageIcon } from "lucide-react";
 import Link from "next/link";
 import type { GalleryCategory } from "../../../../data/gallery";
@@ -16,6 +16,8 @@ type CompleteGalleryItem = {
   categoryTitle: string;
   year?: string;
 };
+
+const galleryBatchSize = 12;
 
 function buildCompleteGalleryItems(
   categoryEntries: { slug: string; category: GalleryCategory }[],
@@ -61,6 +63,8 @@ export default function CompleteGallery({
 }) {
   const [activeCategory, setActiveCategory] = useState("all");
   const [activeItemId, setActiveItemId] = useState<string | null>(null);
+  const [visibleCount, setVisibleCount] = useState(galleryBatchSize);
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const completeGalleryItems = useMemo(
     () => buildCompleteGalleryItems(categories),
     [categories],
@@ -72,6 +76,8 @@ export default function CompleteGallery({
       (item) => item.categorySlug === activeCategory
     );
   }, [activeCategory, completeGalleryItems]);
+  const visibleItems = filteredItems.slice(0, visibleCount);
+  const hasMoreItems = visibleCount < filteredItems.length;
 
   const activeIndex = activeItemId
     ? filteredItems.findIndex((item) => item.id === activeItemId)
@@ -87,6 +93,35 @@ export default function CompleteGallery({
     if (activeIndex < 0 || activeIndex >= filteredItems.length - 1) return;
     setActiveItemId(filteredItems[activeIndex + 1].id);
   };
+
+  useEffect(() => {
+    setVisibleCount(galleryBatchSize);
+  }, [activeCategory]);
+
+  useEffect(() => {
+    const node = loadMoreRef.current;
+
+    if (!node || !hasMoreItems) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setVisibleCount((count) =>
+            Math.min(count + galleryBatchSize, filteredItems.length),
+          );
+        }
+      },
+      {
+        rootMargin: "500px 0px",
+      },
+    );
+
+    observer.observe(node);
+
+    return () => observer.disconnect();
+  }, [filteredItems.length, hasMoreItems]);
 
   return (
     <section className="bg-background py-12 sm:py-16 lg:py-12">
@@ -162,7 +197,7 @@ export default function CompleteGallery({
             </div>
           ) : null}
 
-          {filteredItems.map((item, index) => (
+          {visibleItems.map((item, index) => (
             <button
               key={item.id}
               type="button"
@@ -196,6 +231,20 @@ export default function CompleteGallery({
             </button>
           ))}
         </div>
+
+        {filteredItems.length > 0 ? (
+          <div ref={loadMoreRef} className="mt-10 flex justify-center">
+            {hasMoreItems ? (
+              <span className="inline-flex items-center rounded-full border border-gray-200 bg-white px-5 py-2 text-sm font-semibold text-gray-600 shadow-sm">
+                Loading more photos...
+              </span>
+            ) : (
+              <span className="inline-flex items-center rounded-full border border-gray-200 bg-white px-5 py-2 text-sm font-semibold text-gray-500 shadow-sm">
+                You have reached the end
+              </span>
+            )}
+          </div>
+        ) : null}
       </Container>
 
       <AlbumLightbox
