@@ -82,7 +82,7 @@ export default function AnniversaryIntro() {
 
             <AnniversaryNumber />
             <AnniversaryDecorations />
-            <p className={styles.hashtag}>#5thSurulereAt50 &nbsp;&middot;&nbsp; Sure &amp; Stedfast</p>
+            <p className={styles.hashtag}>#5thSurulereAt50 &nbsp;&middot;&nbsp; Sure &amp; Steadfast</p>
             <SkipIntroButton onSkip={dismiss} />
           </div>
         </motion.section>

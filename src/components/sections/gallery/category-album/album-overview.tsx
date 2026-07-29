@@ -62,6 +62,10 @@ const sponsors = [
     name: "Nigerian Red Cross Society",
     logo: "/gallery/Nigerian-Red-Cross-Society-Official-LOGO_0.png.webp",
   },
+    {
+    name: "Advantage health Africa",
+    logo: "/gallery/aha.png",
+  },
 ];
 
 const sponsorSequence = [...sponsors, ...sponsors, ...sponsors];
@@ -72,15 +76,15 @@ export function OutreachSponsorsMarquee() {
       <Container>
         <div className="mb-8 text-center">
           <span className="text-xs font-bold uppercase tracking-[0.22em] text-secondary">
-            Outreach Partners
+            Outreach Partner
           </span>
           <h2 className="mt-2 text-2xl font-black text-primary uppercase">
-            Sponsored and Powered By
+            and Sponsors
           </h2>
         </div>
       </Container>
 
-      <div className="border-y border-slate-100 py-8">
+      <div className="border-y border-slate-100 dark:border-slate-800 py-8">
         <div className="outreach-marquee flex w-max items-center">
           {[0, 1].map((groupIndex) => (
             <div
@@ -100,7 +104,7 @@ export function OutreachSponsorsMarquee() {
                       alt={groupIndex === 0 ? sponsor.name : ""}
                       fill
                       sizes="(min-width: 640px) 224px, 192px"
-                      className="object-contain opacity-55 grayscale transition-all duration-300 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0"
+                      className="object-contain opacity-55 grayscale dark:grayscale-0 dark:opacity-100 transition-all duration-300 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0"
                     />
                   </div>
                 </div>
