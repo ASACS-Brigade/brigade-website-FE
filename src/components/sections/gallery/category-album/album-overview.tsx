@@ -1,4 +1,5 @@
 import type { GalleryCategory } from "../../../../../data/gallery";
+import Image from "next/image";
 import Container from "../../../layout/container";
 
 const overviewCopy: Record<
@@ -51,45 +52,62 @@ export default function AlbumOverview({
   );
 }
 
+// Add future sponsor logos here; the repeated marquee updates automatically.
 const sponsors = [
-  "Flour Mills of Nigeria",
-  "Nigerian Red Cross",
-  "Lagos State Health Team",
-  "All Saints Anglican Church",
-  "Community Pharmacists",
-  "Surulere Volunteers",
+  {
+    name: "Flour Mills of Nigeria",
+    logo: "/gallery/flour mills logo.jpeg",
+  },
+  {
+    name: "Nigerian Red Cross Society",
+    logo: "/gallery/Nigerian-Red-Cross-Society-Official-LOGO_0.png.webp",
+  },
 ];
+
+const sponsorSequence = [...sponsors, ...sponsors, ...sponsors];
 
 export function OutreachSponsorsMarquee() {
   return (
-    <section className="overflow-hidden bg-white py-10">
+    <section className="overflow-hidden bg-white py-12">
       <Container>
-        <div className="mb-6 text-center">
+        <div className="mb-8 text-center">
           <span className="text-xs font-bold uppercase tracking-[0.22em] text-secondary">
             Outreach Partners
           </span>
-          <h2 className="mt-2 text-2xl font-black text-primary">
-            Past Sponsors & Supporters
+          <h2 className="mt-2 text-2xl font-black text-primary uppercase">
+            Sponsored and Powered By
           </h2>
         </div>
       </Container>
 
-      <div className="outreach-marquee flex gap-4">
-        {[...sponsors, ...sponsors].map((sponsor, index) => (
-          <div
-            key={`${sponsor}-${index}`}
-            className="flex min-w-[240px] items-center gap-3 rounded-full border border-secondary/25 bg-background px-5 py-3 shadow-sm"
-          >
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-black text-secondary">
-              {sponsor
-                .split(" ")
-                .slice(0, 2)
-                .map((word) => word[0])
-                .join("")}
-            </span>
-            <span className="text-sm font-bold text-primary">{sponsor}</span>
-          </div>
-        ))}
+      <div className="border-y border-slate-100 py-8">
+        <div className="outreach-marquee flex w-max items-center">
+          {[0, 1].map((groupIndex) => (
+            <div
+              key={groupIndex}
+              aria-hidden={groupIndex === 1}
+              className="flex shrink-0 items-center gap-16 px-8 sm:gap-24 sm:px-12 lg:gap-32 lg:px-16"
+            >
+              {sponsorSequence.map((sponsor, sponsorIndex) => (
+                <div
+                  key={`${groupIndex}-${sponsor.name}-${sponsorIndex}`}
+                  title={sponsor.name}
+                  className="flex h-20 w-48 shrink-0 items-center justify-center sm:w-56"
+                >
+                  <div className="relative h-16 w-full">
+                    <Image
+                      src={sponsor.logo}
+                      alt={groupIndex === 0 ? sponsor.name : ""}
+                      fill
+                      sizes="(min-width: 640px) 224px, 192px"
+                      className="object-contain opacity-55 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

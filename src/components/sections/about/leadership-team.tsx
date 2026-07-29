@@ -3,113 +3,99 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import { UserRound, X } from "lucide-react";
+import { FaLinkedinIn } from "react-icons/fa";
 
 import FadeIn from "../../layout/fade-in";
 import Container from "../../layout/container";
 
 type Person = {
-  image: string;
+  image?: string;
   name: string;
   role: string;
   bio?: string;
+  externalUrl?: string;
 };
 
 const leaders: Person[] = [
   {
-    image: "/images/avatar2.jpg",
-    name: "Barr. Rex O.",
+    name: "Barr. Rex Ofoneme.",
     role: "Boys Captain",
   },
   {
-    image: "/about/biblestud.jpeg",
-    name: "Lady Maria E.",
+    name: "Lady Maria Ezema",
     role: "Girls Captain",
   },
   {
-    image: "/team/ekenepic.png",
-    name: "Lt. Norah H.",
+    name: "Lt. Norah Hamilton",
     role: "Secretary",
   },
   {
     image: "/team/ekenepic.png",
-    name: "Lt. Ekene O.",
+    name: "Lt. Ekene Onaeku.",
     role: "Company Fin. Secretary",
   },
   {
-    image: "/images/avatar2.jpg",
-    name: "Lt. Susan U.",
+    name: "Lt. Susan Utomi",
     role: "Welfare Officer",
   },
 ];
 
-const activeLeaders: Person[] = [
+const activeOfficers: Person[] = [
   {
-    image: "/images/avatar2.jpg",
-    name: "Lt. Prince D.",
+    name: "Lt. Prince Duru.",
     role: "Officer",
   },
   {
-    image: "/about/biblestud.jpeg",
-    name: "Lt. Victor N.",
+    name: "Lt. Raymond C.",
+    role: "8th Surulere Captain",
+  },
+  {
+    name: "Lt. Chukwunonso Oramadika",
+    role: "12th Surulere Captain",
+  },
+  {
+    name: "Lt. Victor Nwankwo.",
     role: "Battalion Asst. Secretary",
   },
   {
-    image: "/images/avatar2.jpg",
     name: "Lt. Samuel A.",
     role: "Asst. Welfare Officer",
   },
   {
-    image: "/team/ekenepic.png",
-    name: "Lt. Joy H.",
+    name: "Lt. Joy Ariyo.",
     role: "Inventory",
   },
   {
-    image: "/images/avatar2.jpg",
     name: "WO. Obinna I.",
     role: "Warrant Officer",
   },
   {
-    image: "/images/avatar2.jpg",
     name: "Lt. Uloma U.",
     role: "Officer",
   },
   {
-    image: "/images/avatar2.jpg",
-    name: "WO. Osita O.",
+    name: "WO. Osita Ogada",
     role: "Band Leader",
   },
   {
-    image: "/images/avatar2.jpg",
     name: "NCO. Michelle U.",
     role: "Asst. Company Secretary",
   },
   {
-    image: "/images/avatar2.jpg",
-    name: "WO. Emeka A.",
+    name: "WO. Emeka Anyawu",
     role: "Program Coord.",
   },
   {
-    image: "/images/avatar2.jpg",
-    name: "WO. Ifeanyi I.",
+    name: "WO. Ifeanyi Ikeh",
     role: "PRO",
   },
 ];
 
 const activeMembers: Person[] = [
   {
-    image: "/images/avatar2.jpg",
-    name: "NCO Michael U.",
-    role: "Asst. Orchestra leader",
-  },
-  {
-    image: "/images/avatar2.jpg",
-    name: "NCO Ugwum I.",
-    role: "Asst. Band leader",
-  },
-  {
-    image: "/about/biblestud.jpeg",
+    // image: "/about/biblestud.jpeg",
     name: "Brigader Favour O.",
-    role: "Secretaire",
+    role: "secretariat",
   },
 ];
 
@@ -121,10 +107,10 @@ const groups = [
     people: leaders,
   },
   {
-    id: "active-leaders",
-    label: "Active Leaders",
+    id: "active-officers",
+    label: "Active Officers",
     description: "Officers, warrant officers and NCOs serving weekly company life.",
-    people: activeLeaders,
+    people: activeOfficers,
   },
   {
     id: "active-members",
@@ -164,7 +150,7 @@ export default function LeadershipTeam() {
               Leadership & Members
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-muted md:text-base">
-              Browse the people serving across leadership, active leaders and
+              Browse the people serving across leadership, active officers and
               active members of the company.
             </p>
           </div>
@@ -203,26 +189,42 @@ export default function LeadershipTeam() {
             {activeGroup.people.map((person) => (
               <FadeIn key={`${activeGroup.id}-${person.name}`}>
                 <article className="overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-secondary/60 hover:shadow-lg hover:shadow-slate-900/10 dark:hover:shadow-black/30">
-                  <div className="relative aspect-square bg-primary/10">
-                    <Image
-                      src={person.image}
-                      alt={person.name}
-                      fill
-                      className="object-cover"
-                      sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 90vw"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setSelectedPerson(person)}
-                      aria-label={`Open ${person.name} profile`}
-                      className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-card text-primary shadow-lg transition hover:bg-secondary hover:text-white"
-                    >
-                      <UserRound size={18} />
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedPerson(person)}
+                    aria-label={`Open ${person.name} profile`}
+                    className="relative block aspect-square w-full cursor-pointer bg-primary/10"
+                  >
+                    {person.image ? (
+                      <Image
+                        src={person.image}
+                        alt={person.name}
+                        fill
+                        className="object-cover"
+                        sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 90vw"
+                      />
+                    ) : (
+                      <span className="absolute inset-0 flex items-center justify-center text-primary/55">
+                        <UserRound aria-hidden="true" size={72} strokeWidth={1.4} />
+                      </span>
+                    )}
+                  </button>
 
                   <div className="p-4 text-center">
-                    <h3 className="font-bold text-primary">{person.name}</h3>
+                    <div className="flex items-center justify-center gap-2">
+                      <h3 className="font-bold text-primary">{person.name}</h3>
+                      {person.externalUrl ? (
+                        <a
+                          href={person.externalUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`Open ${person.name} external profile`}
+                          className="text-primary transition hover:text-secondary"
+                        >
+                          <FaLinkedinIn aria-hidden="true" size={17} />
+                        </a>
+                      ) : null}
+                    </div>
                     <p className="mt-1 text-sm text-muted">{person.role}</p>
                   </div>
                 </article>
@@ -242,12 +244,19 @@ export default function LeadershipTeam() {
             onClick={(event) => event.stopPropagation()}
           >
             <div className="relative h-72 bg-primary/10">
-              <Image
-                src={selectedPerson.image}
-                alt={selectedPerson.name}
-                fill
-                className="object-cover"
-              />
+              {selectedPerson.image ? (
+                <Image
+                  src={selectedPerson.image}
+                  alt={selectedPerson.name}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 640px) 32rem, 100vw"
+                />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center text-primary/55">
+                  <UserRound aria-hidden="true" size={96} strokeWidth={1.2} />
+                </div>
+              )}
               <button
                 type="button"
                 onClick={() => setSelectedPerson(null)}
@@ -259,16 +268,24 @@ export default function LeadershipTeam() {
             </div>
 
             <div className="p-6">
-              <div className="mb-4 flex items-center gap-3">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-white">
-                  <UserRound size={20} />
-                </span>
+              <div className="mb-4 flex items-start justify-between gap-3">
                 <div>
                   <h3 className="text-2xl font-bold">{selectedPerson.name}</h3>
                   <p className="text-sm font-semibold text-secondary">
                     {selectedPerson.role}
                   </p>
                 </div>
+                {selectedPerson.externalUrl ? (
+                  <a
+                    href={selectedPerson.externalUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Open ${selectedPerson.name} external profile`}
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border text-primary transition hover:border-secondary hover:text-secondary"
+                  >
+                    <FaLinkedinIn aria-hidden="true" size={18} />
+                  </a>
+                ) : null}
               </div>
               <p className="leading-7 text-muted">
                 {getBio(selectedPerson, activeGroup.label)}
