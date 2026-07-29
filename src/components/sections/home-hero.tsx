@@ -112,7 +112,7 @@ export default function HomeHero() {
               transition
               hover:border-secondary
               hover:bg-white
-              hover:text-primary
+              hover:text-heading
               focus:outline-none
               focus:ring-2
               focus:ring-white

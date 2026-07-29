@@ -96,7 +96,7 @@ export default function ArticleCard({
 
         <Link
           href={articleHref}
-          className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-secondary transition hover:text-primary"
+          className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-secondary transition hover:text-heading"
         >
           Read More
           <ArrowUpRight size={15} />

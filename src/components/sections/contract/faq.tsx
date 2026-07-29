@@ -32,7 +32,7 @@ export default function Faq() {
   return (
     <FadeIn>
       <div className="rounded-xl border border-border bg-background p-6 shadow-sm">
-        <h2 className="text-base font-bold text-primary mb-5">
+        <h2 className="text-base font-bold text-heading mb-5">
           Frequently Asked Questions
         </h2>
 
@@ -44,7 +44,7 @@ export default function Faq() {
                 className="w-full flex items-center justify-between gap-4 py-3.5 text-left group"
                 aria-expanded={open === i}
               >
-                <span className="text-sm font-medium text-foreground group-hover:text-primary transition">
+                <span className="text-sm font-medium text-foreground group-hover:text-heading transition">
                   {faq.q}
                 </span>
                 <ChevronDown

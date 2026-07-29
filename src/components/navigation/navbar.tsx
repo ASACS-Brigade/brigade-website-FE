@@ -78,7 +78,7 @@ export default function Navbar() {
       <header className="sticky top-0 z-[999] border-b border-border bg-card text-foreground shadow-sm shadow-black/5">
         <Container className="max-[384px]:px-2.5">
           <div className="flex h-20 items-center justify-between">
-            <Link href="/" onClick={closeMenu} className="flex min-w-0 items-center gap-2 text-primary max-[384px]:gap-1 sm:gap-3">
+            <Link href="/" onClick={closeMenu} className="flex min-w-0 items-center gap-2 text-heading max-[384px]:gap-1 sm:gap-3">
               <span className="shrink-0">
                 <Image
                   src="/images/bb-Logo.png"
@@ -165,7 +165,7 @@ export default function Navbar() {
                             active && "bg-primary/5",
                           )}
                         >
-                          <span className={cn("block text-sm font-bold text-primary", active && "text-secondary")}>{item.label}</span>
+                          <span className={cn("block text-sm font-bold text-heading", active && "text-secondary")}>{item.label}</span>
                           <span className="mt-1 block text-xs leading-5 text-muted">{item.description}</span>
                         </Link>
                       );

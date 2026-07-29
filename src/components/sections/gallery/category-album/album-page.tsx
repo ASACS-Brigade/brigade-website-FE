@@ -8,7 +8,8 @@ import CtaBanner from "../../../shared/ctaBanner";
 import AlbumGallery from "./album-gallery";
 import AlbumHero from "./album-hero";
 import AlbumLightbox from "./album-lightbox";
-import AlbumOverview, { OutreachSponsorsMarquee } from "./album-overview";
+import AlbumOverview from "./album-overview";
+import OutreachSponsorsMarquee from "../../../shared/outreach-sponsors-marquee";
 import AlbumStats from "./album-stats";
 import AlbumYears from "./album-years";
 

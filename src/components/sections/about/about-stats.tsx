@@ -81,7 +81,7 @@ export default function AboutStats() {
               md:text-4xl
               text-xl
               font-bold
-              text-primary
+              text-heading
               "
             >
               Growing Together

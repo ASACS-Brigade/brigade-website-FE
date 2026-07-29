@@ -35,7 +35,7 @@ export default function ContactInfo() {
   return (
     <FadeIn>
       <div className="rounded-xl border border-border bg-background p-6 shadow-sm">
-        <h2 className="text-base font-bold text-primary mb-5">
+        <h2 className="text-base font-bold text-heading mb-5">
           Contact Information
         </h2>
 

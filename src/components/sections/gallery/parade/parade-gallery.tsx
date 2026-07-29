@@ -140,7 +140,7 @@ export default function ParadeGallery({ year, images }: ParadeGalleryProps) {
               Parade Gallery
             </span>
 
-            <h2 className="mt-6 text-3xl font-black text-primary md:text-5xl">
+            <h2 className="mt-6 text-3xl font-black text-heading md:text-5xl">
               {year} Parade Gallery
             </h2>
 
@@ -229,7 +229,7 @@ export default function ParadeGallery({ year, images }: ParadeGalleryProps) {
                         title="Expand image"
                         aria-label="Expand image"
                         onClick={() => openLightbox(index)}
-                        className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-primary hover:bg-secondary hover:text-white transition-all duration-200 shadow-lg"
+                        className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-heading hover:bg-secondary hover:text-white transition-all duration-200 shadow-lg"
                       >
                         <Expand size={20} />
                       </button>
@@ -478,7 +478,7 @@ export default function ParadeGallery({ year, images }: ParadeGalleryProps) {
 //             text-4xl
 //             md:text-6xl
 //             font-black
-//             text-primary
+//             text-heading
 //             "
 //           >
 //             {year} Parade Gallery
@@ -630,7 +630,7 @@ export default function ParadeGallery({ year, images }: ParadeGalleryProps) {
 
 //                     bg-white
 
-//                     text-primary
+//                     text-heading
 //                     "
 //                   >
 //                     <Expand size={18} />

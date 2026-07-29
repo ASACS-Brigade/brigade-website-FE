@@ -98,7 +98,7 @@ export default function AlbumGallery({
               event.stopPropagation();
               openLightbox(index);
             }}
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-primary shadow-lg transition-all duration-200 hover:bg-secondary hover:text-white"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-heading shadow-lg transition-all duration-200 hover:bg-secondary hover:text-white"
           >
             <Expand size={20} />
           </button>
@@ -189,7 +189,7 @@ export default function AlbumGallery({
                 <span className="text-sm font-semibold uppercase tracking-[0.18em] text-secondary">
                   {year}
                 </span>
-                <h3 className="mt-3 text-2xl font-bold text-primary">
+                <h3 className="mt-3 text-2xl font-bold text-heading">
                   {albumTitle} Moment {index + 1}
                 </h3>
                 <p className="mt-3 text-sm leading-6 text-muted">
@@ -239,7 +239,7 @@ export default function AlbumGallery({
                 <span className="text-xs font-semibold uppercase tracking-[0.18em] text-secondary">
                   {year}
                 </span>
-                <h3 className="mt-2 text-lg font-bold text-primary">
+                <h3 className="mt-2 text-lg font-bold text-heading">
                   {albumTitle} {index + 1}
                 </h3>
               </div>
@@ -278,7 +278,7 @@ export default function AlbumGallery({
           <div className="rounded-2xl border border-dashed border-border bg-card p-8 text-center md:p-14">
             <CalendarDays size={54} className="mx-auto text-secondary" />
 
-            <h2 className="mt-6 text-3xl font-bold text-primary md:text-5xl">
+            <h2 className="mt-6 text-3xl font-bold text-heading md:text-5xl">
               {year} Gallery
             </h2>
 
@@ -310,7 +310,7 @@ export default function AlbumGallery({
             {albumTitle} Gallery
           </span>
 
-          <h2 className="mt-5 text-3xl font-bold leading-tight text-primary sm:text-4xl md:text-5xl">
+          <h2 className="mt-5 text-3xl font-bold leading-tight text-heading sm:text-4xl md:text-5xl">
             {year} {albumTitle}
           </h2>
 

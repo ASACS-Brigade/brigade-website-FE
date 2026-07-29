@@ -49,7 +49,7 @@ export default function NotFoundState() {
                 404
               </span>
 
-              <span className="not-found-pop absolute bottom-2 left-8 z-20 rounded-full border border-white/60 bg-white/90 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-primary shadow-lg dark:bg-card/90 dark:text-foreground sm:bottom-6">
+              <span className="not-found-pop absolute bottom-2 left-8 z-20 rounded-full border border-white/60 bg-white/90 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-heading shadow-lg dark:bg-card/90 dark:text-foreground sm:bottom-6">
                 Route missing
               </span>
 
@@ -63,7 +63,7 @@ export default function NotFoundState() {
                 Page Not Found
               </span>
 
-              <h1 className="mt-6 text-4xl font-black leading-tight text-primary sm:text-5xl md:text-6xl">
+              <h1 className="mt-6 text-4xl font-black leading-tight text-heading sm:text-5xl md:text-6xl">
                 This page has marched off route.
               </h1>
 

@@ -90,7 +90,7 @@ export default function AboutPreview() {
                 mt-5
                 text-xl
                 font-bold
-                text-primary
+                text-heading
                 md:text-5xl
                 "
               >

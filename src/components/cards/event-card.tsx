@@ -100,7 +100,7 @@ export default function EventCard({
             font-semibold
             text-[15px]
             leading-tight
-            text-primary
+            text-heading
             dark:text-white
             "
           >

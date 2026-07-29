@@ -17,7 +17,7 @@ export default function AnniversaryContent() {
       <h1 className={styles.headline}>
         5th Surulere
         <br />
-        Company Turns 50
+        Company <br/><span className="font-extralight italic">Turns</span> 50
       </h1>
       <p className={styles.supportingText}>
         Celebrating 50 Years of Faith,

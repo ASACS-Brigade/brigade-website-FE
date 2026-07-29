@@ -156,7 +156,7 @@ export default function EventCalendar({
                 className={[
                   "relative flex h-9 items-center justify-center rounded-lg text-sm transition duration-200 focus:outline-none focus:ring-2 focus:ring-secondary",
                   hasEvent
-                    ? "font-semibold text-primary hover:-translate-y-0.5 hover:bg-secondary/15"
+                    ? "font-semibold text-heading hover:-translate-y-0.5 hover:bg-secondary/15"
                     : "cursor-default text-muted/50",
                   isToday ? "ring-1 ring-primary/30" : "",
                   isSelected ? "bg-primary text-white hover:bg-primary" : "",
@@ -177,7 +177,7 @@ export default function EventCalendar({
         </div>
 
         <div className="border-t border-border bg-background/80 p-4">
-          <h3 className="text-sm font-bold text-primary">
+          <h3 className="text-sm font-bold text-heading">
             {selectedEvents.length > 0 ? "Selected Date" : "This Month"}
           </h3>
 

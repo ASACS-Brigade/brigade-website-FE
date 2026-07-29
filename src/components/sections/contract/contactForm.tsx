@@ -115,7 +115,7 @@ export default function ContactForm() {
   return (
     <FadeIn>
       <div className="rounded-xl border border-border bg-background p-6 sm:p-8 shadow-sm">
-        <h2 className="text-lg font-bold text-primary mb-6">Get In Touch</h2>
+        <h2 className="text-lg font-bold text-heading mb-6">Get In Touch</h2>
 
         <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
           {/* Full Name */}

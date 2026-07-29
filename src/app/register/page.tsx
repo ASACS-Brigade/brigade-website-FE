@@ -98,7 +98,7 @@ export default function RegisterPage() {
               className="rounded-2xl border border-border bg-card p-5 shadow-sm sm:p-8"
             >
               <div className="grid gap-5 md:grid-cols-2">
-                <label className="grid gap-2 text-sm font-bold text-primary">
+                <label className="grid gap-2 text-sm font-bold text-heading">
                   Child / Member Name
                   <input
                     name="childName"
@@ -110,7 +110,7 @@ export default function RegisterPage() {
                   />
                 </label>
 
-                <label className="grid gap-2 text-sm font-bold text-primary">
+                <label className="grid gap-2 text-sm font-bold text-heading">
                   Parent / Guardian Name
                   <input
                     name="parentName"
@@ -122,7 +122,7 @@ export default function RegisterPage() {
                   />
                 </label>
 
-                <label className="grid gap-2 text-sm font-bold text-primary">
+                <label className="grid gap-2 text-sm font-bold text-heading">
                   Email Address
                   <input
                     name="parentEmail"
@@ -135,7 +135,7 @@ export default function RegisterPage() {
                   />
                 </label>
 
-                <label className="grid gap-2 text-sm font-bold text-primary">
+                <label className="grid gap-2 text-sm font-bold text-heading">
                   Phone Number
                   <input
                     name="parentPhone"
@@ -147,7 +147,7 @@ export default function RegisterPage() {
                   />
                 </label>
 
-                <label className="grid gap-2 text-sm font-bold text-primary md:col-span-2">
+                <label className="grid gap-2 text-sm font-bold text-heading md:col-span-2">
                   Age Group / Section
                   <select
                     name="ageGroup"
@@ -165,7 +165,7 @@ export default function RegisterPage() {
                   </select>
                 </label>
 
-                <label className="grid gap-2 text-sm font-bold text-primary md:col-span-2">
+                <label className="grid gap-2 text-sm font-bold text-heading md:col-span-2">
                   Message
                   <textarea
                     name="message"

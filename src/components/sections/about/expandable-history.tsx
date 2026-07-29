@@ -104,7 +104,7 @@ export default function ExpandableHistory({
                     <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">
                       {milestone.year}
                     </p>
-                    <h3 className="mt-1 font-bold text-primary">{milestone.title}</h3>
+                    <h3 className="mt-1 font-bold text-heading">{milestone.title}</h3>
                     <p className="mt-1 text-sm leading-6 text-muted">
                       {milestone.description}
                     </p>
@@ -120,7 +120,7 @@ export default function ExpandableHistory({
             aria-controls={contentId}
             disabled={collapsing}
             onClick={showLess}
-            className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-lg border border-secondary/40 px-4 py-2 text-sm font-bold text-primary outline-none transition hover:border-secondary hover:text-secondary focus-visible:ring-2 focus-visible:ring-secondary disabled:cursor-wait disabled:opacity-70"
+            className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-lg border border-secondary/40 px-4 py-2 text-sm font-bold text-heading outline-none transition hover:border-secondary hover:text-secondary focus-visible:ring-2 focus-visible:ring-secondary disabled:cursor-wait disabled:opacity-70"
           >
             Show less
             <ChevronRight aria-hidden="true" className="h-4 w-4 rotate-90" />
@@ -133,7 +133,7 @@ export default function ExpandableHistory({
           aria-expanded="false"
           aria-controls={contentId}
           onClick={() => setExpanded(true)}
-          className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-secondary/40 px-4 py-2 text-sm font-bold text-primary outline-none transition hover:border-secondary hover:text-secondary focus-visible:ring-2 focus-visible:ring-secondary"
+          className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-secondary/40 px-4 py-2 text-sm font-bold text-heading outline-none transition hover:border-secondary hover:text-secondary focus-visible:ring-2 focus-visible:ring-secondary"
         >
           Read more
           <ChevronRight aria-hidden="true" className="h-4 w-4" />

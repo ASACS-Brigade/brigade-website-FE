@@ -49,7 +49,7 @@ export default function UpcomingEvents({
         <FadeIn>
           <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <h2 className="text-xl font-bold text-primary sm:text-2xl">
+              <h2 className="text-xl font-bold text-heading sm:text-2xl">
                 {isFiltered ? "Events On Selected Date" : "Upcoming Events"}
               </h2>
               <p className="mt-1 text-sm text-muted">
@@ -63,7 +63,7 @@ export default function UpcomingEvents({
               <button
                 type="button"
                 onClick={onClearSelected}
-                className="inline-flex min-h-10 items-center justify-center gap-2 self-start rounded-lg border border-border bg-card px-4 py-2 text-sm font-semibold text-primary transition hover:border-secondary hover:text-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-background sm:self-auto"
+                className="inline-flex min-h-10 items-center justify-center gap-2 self-start rounded-lg border border-border bg-card px-4 py-2 text-sm font-semibold text-heading transition hover:border-secondary hover:text-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-background sm:self-auto"
               >
                 <X size={15} />
                 Show All
@@ -137,7 +137,7 @@ export default function UpcomingEvents({
                 type="button"
                 onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
                 disabled={currentPage === 1}
-                className="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-border px-4 text-sm font-semibold text-primary transition hover:border-secondary hover:text-secondary disabled:cursor-not-allowed disabled:opacity-45"
+                className="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-border px-4 text-sm font-semibold text-heading transition hover:border-secondary hover:text-secondary disabled:cursor-not-allowed disabled:opacity-45"
               >
                 <ArrowLeft size={15} />
                 Previous
@@ -152,7 +152,7 @@ export default function UpcomingEvents({
                     className={`h-10 min-w-10 rounded-lg px-3 text-sm font-bold transition ${
                       currentPage === page
                         ? "bg-secondary text-white"
-                        : "border border-border text-primary hover:border-secondary hover:text-secondary"
+                        : "border border-border text-heading hover:border-secondary hover:text-secondary"
                     }`}
                   >
                     {page}
@@ -166,7 +166,7 @@ export default function UpcomingEvents({
                   setCurrentPage((page) => Math.min(totalPages, page + 1))
                 }
                 disabled={currentPage === totalPages}
-                className="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-border px-4 text-sm font-semibold text-primary transition hover:border-secondary hover:text-secondary disabled:cursor-not-allowed disabled:opacity-45"
+                className="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-border px-4 text-sm font-semibold text-heading transition hover:border-secondary hover:text-secondary disabled:cursor-not-allowed disabled:opacity-45"
               >
                 Next
                 <ArrowRight size={15} />

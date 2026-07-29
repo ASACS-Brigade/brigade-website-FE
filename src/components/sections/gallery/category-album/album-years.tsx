@@ -105,7 +105,7 @@ export default function AlbumYears({
                   <span className="text-sm font-semibold uppercase tracking-[0.18em] text-secondary">
                     Ceremony Year
                   </span>
-                  <h3 className="mt-2 text-4xl font-black text-primary">{item.year}</h3>
+                  <h3 className="mt-2 text-4xl font-black text-heading">{item.year}</h3>
                   <p className="mt-2 text-base font-semibold text-foreground">{item.title}</p>
                   <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
                     {item.description}
@@ -282,7 +282,7 @@ export default function AlbumYears({
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary text-secondary">
               <Medal size={26} />
             </div>
-            <h3 className="mt-5 text-4xl font-black text-primary">{item.year}</h3>
+            <h3 className="mt-5 text-4xl font-black text-heading">{item.year}</h3>
             <p className="mt-2 font-semibold text-foreground">{item.title}</p>
             <YearCount item={item} />
           </motion.button>
@@ -313,7 +313,7 @@ export default function AlbumYears({
             Browse By Year
           </span>
 
-          <h2 className="mt-5 text-3xl font-bold leading-tight text-primary sm:text-4xl md:text-5xl">
+          <h2 className="mt-5 text-3xl font-bold leading-tight text-heading sm:text-4xl md:text-5xl">
             Explore {album.shortTitle} Moments By Year
           </h2>
 

@@ -17,7 +17,7 @@ export default function GalleryPreview({ images = [] }: { images?: string[] }) {
 
           <div>
 
-            <h2 className="text-2xl font-bold text-primary">
+            <h2 className="text-2xl font-bold text-heading">
               Gallery Highlights
             </h2>
 
@@ -33,7 +33,7 @@ export default function GalleryPreview({ images = [] }: { images?: string[] }) {
             hidden lg:block
             text-sm
             font-medium
-            text-primary
+            text-heading
             hoverLink
             "
           >
@@ -46,7 +46,7 @@ export default function GalleryPreview({ images = [] }: { images?: string[] }) {
             block lg:hidden
             text-xs
             font-medium
-            text-primary
+            text-heading
             hoverLink
             "
           >

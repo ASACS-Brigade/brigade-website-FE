@@ -171,7 +171,7 @@ export default function CalendarModal({
               </span>
               <h2
                 id="event-calendar-modal-title"
-                className="mt-1 truncate text-2xl font-bold text-primary sm:text-3xl"
+                className="mt-1 truncate text-2xl font-bold text-heading sm:text-3xl"
               >
                 {MONTHS[month]} {year}
               </h2>
@@ -181,7 +181,7 @@ export default function CalendarModal({
               <button
                 type="button"
                 onClick={prev}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-background text-primary transition hover:border-secondary hover:text-secondary focus:outline-none focus:ring-2 focus:ring-secondary sm:h-10 sm:w-10"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-background text-heading transition hover:border-secondary hover:text-secondary focus:outline-none focus:ring-2 focus:ring-secondary sm:h-10 sm:w-10"
                 aria-label="Previous month"
               >
                 <ChevronLeft size={18} />
@@ -190,7 +190,7 @@ export default function CalendarModal({
               <button
                 type="button"
                 onClick={next}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-background text-primary transition hover:border-secondary hover:text-secondary focus:outline-none focus:ring-2 focus:ring-secondary sm:h-10 sm:w-10"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-background text-heading transition hover:border-secondary hover:text-secondary focus:outline-none focus:ring-2 focus:ring-secondary sm:h-10 sm:w-10"
                 aria-label="Next month"
               >
                 <ChevronRight size={18} />
@@ -254,7 +254,7 @@ export default function CalendarModal({
                     className={[
                       "mb-1 inline-flex h-7 w-7 items-center justify-center rounded-md text-xs font-bold transition focus:outline-none focus:ring-2 focus:ring-secondary sm:mb-2 sm:h-8 sm:w-8 sm:rounded-lg sm:text-sm",
                       dayEvents.length > 0
-                        ? "bg-secondary/15 text-primary hover:bg-secondary hover:text-white"
+                        ? "bg-secondary/15 text-heading hover:bg-secondary hover:text-white"
                         : "text-muted hover:bg-primary/5",
                       isToday ? "ring-2 ring-secondary ring-offset-1 ring-offset-card" : "",
                       isSelected ? "bg-primary text-white" : "",
@@ -268,7 +268,7 @@ export default function CalendarModal({
                       <Link
                         key={event.id}
                         href={event.href}
-                        className="block min-w-0 rounded-md bg-primary/10 px-1.5 py-1 text-[9px] font-semibold leading-tight text-primary transition hover:bg-secondary hover:text-white sm:px-2 sm:text-[10px]"
+                        className="block min-w-0 rounded-md bg-primary/10 px-1.5 py-1 text-[9px] font-semibold leading-tight text-heading transition hover:bg-secondary hover:text-white sm:px-2 sm:text-[10px]"
                         onClick={onClose}
                         title={event.title}
                       >
@@ -291,7 +291,7 @@ export default function CalendarModal({
         </div>
 
         <aside className="min-h-0 overflow-y-auto border-t border-border bg-card p-4 sm:p-5 lg:border-l lg:border-t-0">
-          <h3 className="text-lg font-bold text-primary">
+          <h3 className="text-lg font-bold text-heading">
             {selectedEvents.length > 0
               ? eventFullDate(selectedEvents[0])
               : "Select A Date"}

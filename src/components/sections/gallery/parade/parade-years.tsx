@@ -86,7 +86,7 @@ export default function ParadeYears({
             Parade Archive
           </span>
 
-          <h2 className="mt-5 text-3xl font-bold leading-tight text-primary sm:text-4xl md:text-5xl">
+          <h2 className="mt-5 text-3xl font-bold leading-tight text-heading sm:text-4xl md:text-5xl">
             Parade Years In Formation
           </h2>
 
@@ -122,7 +122,7 @@ export default function ParadeYears({
                   <span className="text-4xl font-black">{item.year}</span>
                 </div>
 
-                <p className={`mt-4 font-semibold ${active ? "text-white" : "text-primary"}`}>
+                <p className={`mt-4 font-semibold ${active ? "text-white" : "text-heading"}`}>
                   {item.title}
                 </p>
 
@@ -172,7 +172,7 @@ export default function ParadeYears({
                 {selected.status === "available" ? "Available" : "Coming Soon"}
               </span>
 
-              <h3 className="mt-5 text-5xl font-black text-primary md:text-6xl">
+              <h3 className="mt-5 text-5xl font-black text-heading md:text-6xl">
                 {selected.year}
               </h3>
 

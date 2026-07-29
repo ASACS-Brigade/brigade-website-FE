@@ -18,7 +18,7 @@ export default function PastEvents({ events }: { events: BrigadeEvent[] }) {
         <FadeIn>
           <div className="mb-6 flex items-center justify-between gap-4">
             <div>
-              <h2 className="text-xl font-bold text-primary sm:text-2xl">
+              <h2 className="text-xl font-bold text-heading sm:text-2xl">
                 Past Events
               </h2>
               <p className="mt-1 text-sm text-muted">
@@ -28,7 +28,7 @@ export default function PastEvents({ events }: { events: BrigadeEvent[] }) {
 
             <Link
               href="/gallery"
-              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-border bg-card px-4 py-2 text-sm font-semibold text-primary transition hover:border-secondary hover:text-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-background"
+              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-border bg-card px-4 py-2 text-sm font-semibold text-heading transition hover:border-secondary hover:text-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-background"
             >
               Gallery
               <ArrowRight size={15} />
@@ -61,7 +61,7 @@ export default function PastEvents({ events }: { events: BrigadeEvent[] }) {
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/88 via-primary/20 to-transparent opacity-80 transition group-hover:opacity-95" />
 
-                <div className="absolute left-4 top-4 flex h-14 w-12 flex-col items-center justify-center rounded-lg bg-white/95 text-primary shadow-sm">
+                <div className="absolute left-4 top-4 flex h-14 w-12 flex-col items-center justify-center rounded-lg bg-white/95 text-heading shadow-sm">
                   <span className="text-[9px] font-bold uppercase tracking-widest text-secondary">
                     {eventMonth(event)}
                   </span>

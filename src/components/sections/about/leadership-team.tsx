@@ -150,7 +150,7 @@ export default function LeadershipTeam() {
             <span className="text-sm font-bold uppercase tracking-[0.22em] text-secondary">
               Company People
             </span>
-            <h2 className="mt-2 text-2xl font-bold text-primary md:text-4xl">
+            <h2 className="mt-2 text-2xl font-bold text-heading md:text-4xl">
               Leadership & Members
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-muted md:text-base">
@@ -171,7 +171,7 @@ export default function LeadershipTeam() {
                   className={`min-h-11 rounded-lg px-3 text-sm font-bold transition cursor-pointer ${
                     isActive
                       ? "bg-primary text-white shadow-sm"
-                      : "text-primary hover:bg-primary/5 dark:hover:bg-secondary/10"
+                      : "text-heading hover:bg-primary/5 dark:hover:bg-secondary/10"
                   }`}
                 >
                   {group.label}
@@ -183,7 +183,7 @@ export default function LeadershipTeam() {
 
         <div className="mt-8 rounded-2xl border border-border bg-card p-4 sm:p-5 lg:p-6">
           <div className="mb-6">
-            <h3 className="text-xl font-bold text-primary">{activeGroup.label}</h3>
+            <h3 className="text-xl font-bold text-heading">{activeGroup.label}</h3>
             <p className="mt-2 text-sm leading-6 text-muted">
               {activeGroup.description}
             </p>
@@ -208,7 +208,7 @@ export default function LeadershipTeam() {
                         sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 90vw"
                       />
                     ) : (
-                      <span className="absolute inset-0 flex items-center justify-center text-primary/55">
+                      <span className="absolute inset-0 flex items-center justify-center text-heading/55">
                         <UserRound aria-hidden="true" size={72} strokeWidth={1.4} />
                       </span>
                     )}
@@ -216,7 +216,7 @@ export default function LeadershipTeam() {
 
                   <div className="p-4 text-center">
                     <div className="flex min-w-0 items-center justify-center gap-2">
-                      <h3 className="whitespace-nowrap text-sm font-bold text-primary">
+                      <h3 className="whitespace-nowrap text-sm font-bold text-heading">
                         {person.name}
                       </h3>
                       <a
@@ -224,7 +224,7 @@ export default function LeadershipTeam() {
                         target="_blank"
                         rel="noreferrer"
                         aria-label={`View ${person.name} on LinkedIn`}
-                        className="shrink-0 text-primary transition hover:text-secondary"
+                        className="shrink-0 text-heading transition hover:text-secondary"
                       >
                         <FaLinkedinIn aria-hidden="true" size={16} />
                       </a>
@@ -257,7 +257,7 @@ export default function LeadershipTeam() {
                   sizes="(min-width: 640px) 32rem, 100vw"
                 />
               ) : (
-                <div className="absolute inset-0 flex items-center justify-center text-primary/55">
+                <div className="absolute inset-0 flex items-center justify-center text-heading/55">
                   <UserRound aria-hidden="true" size={96} strokeWidth={1.2} />
                 </div>
               )}
@@ -265,7 +265,7 @@ export default function LeadershipTeam() {
                 type="button"
                 onClick={() => setSelectedPerson(null)}
                 aria-label="Close profile"
-                className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-card text-primary shadow-lg transition hover:bg-secondary hover:text-white"
+                className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-card text-heading shadow-lg transition hover:bg-secondary hover:text-white"
               >
                 <X size={18} />
               </button>
@@ -285,7 +285,7 @@ export default function LeadershipTeam() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={`Open ${selectedPerson.name} external profile`}
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border text-primary transition hover:border-secondary hover:text-secondary"
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border text-heading transition hover:border-secondary hover:text-secondary"
                   >
                     <FaLinkedinIn aria-hidden="true" size={18} />
                   </a>

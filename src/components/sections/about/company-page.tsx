@@ -96,7 +96,7 @@ function IntroductionAndHistory({ company }: { company: CompanyPageData }) {
           <FadeIn>
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.22em] text-secondary">Our Company</p>
-              <h2 className="mt-3 text-3xl font-bold text-primary">Who We Are</h2>
+              <h2 className="mt-3 text-3xl font-bold text-heading">Who We Are</h2>
               <div className="mt-5 space-y-4 text-base leading-8 text-muted">
                 {company.introduction.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
               </div>
@@ -109,7 +109,7 @@ function IntroductionAndHistory({ company }: { company: CompanyPageData }) {
               className="scroll-mt-24 rounded-2xl border border-border bg-card p-6 sm:p-8"
             >
               <p className="text-xs font-bold uppercase tracking-[0.22em] text-secondary">Our Heritage</p>
-              <h2 className="mt-3 text-3xl font-bold text-primary">Our History</h2>
+              <h2 className="mt-3 text-3xl font-bold text-heading">Our History</h2>
               <ExpandableHistory history={company.history} />
             </div>
           </FadeIn>
@@ -154,12 +154,12 @@ function IdentityAndActivities({ company }: { company: CompanyPageData }) {
             <FadeIn>
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.22em] text-secondary">Motto &amp; Identity</p>
-                <h2 className="mt-3 text-3xl font-bold text-primary md:text-4xl">{company.motto}</h2>
+                <h2 className="mt-3 text-3xl font-bold text-heading md:text-4xl">{company.motto}</h2>
                 {company.scriptureReference ? (
                   <p className="mt-3 font-semibold text-secondary">{company.scriptureReference}</p>
                 ) : null}
                 <div className="mt-5 max-w-2xl">
-                  <h3 className="text-sm font-bold uppercase tracking-[0.14em] text-primary">
+                  <h3 className="text-sm font-bold uppercase tracking-[0.14em] text-heading">
                     How the motto shapes company life
                   </h3>
                   <p className="mt-2 text-base leading-8 text-muted">{company.identityExplanation}</p>
@@ -171,7 +171,7 @@ function IdentityAndActivities({ company }: { company: CompanyPageData }) {
           <div className="mt-10 grid gap-5 sm:grid-cols-2">
             {company.identityDetails.map((detail) => (
               <article key={detail.title} className="rounded-xl border border-border bg-card p-6">
-                <h3 className="font-bold text-primary">{detail.title}</h3>
+                <h3 className="font-bold text-heading">{detail.title}</h3>
                 <p className="mt-2 text-sm leading-7 text-muted">{detail.description}</p>
               </article>
             ))}
@@ -185,7 +185,7 @@ function IdentityAndActivities({ company }: { company: CompanyPageData }) {
         <Container>
           <div className="max-w-2xl">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-secondary">Company Life</p>
-            <h2 className="mt-3 text-3xl font-bold text-primary md:text-4xl">What We Do</h2>
+            <h2 className="mt-3 text-3xl font-bold text-heading md:text-4xl">What We Do</h2>
             <p className="mt-4 leading-7 text-muted">
               Our activities connect Christian formation with practical growth, teamwork and service.
             </p>
@@ -199,7 +199,7 @@ function IdentityAndActivities({ company }: { company: CompanyPageData }) {
                     <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary text-secondary">
                       <Icon aria-hidden="true" className="h-5 w-5" />
                     </span>
-                    <h3 className="mt-5 text-lg font-bold text-primary">{activity.title}</h3>
+                    <h3 className="mt-5 text-lg font-bold text-heading">{activity.title}</h3>
                     <p className="mt-2 text-sm leading-7 text-muted">{activity.description}</p>
                   </article>
                 </FadeIn>
@@ -239,7 +239,7 @@ function Leadership({ company }: { company: CompanyPageData }) {
               className="object-cover"
             />
           ) : (
-            <div className="flex h-full w-full items-center justify-center bg-primary/10 text-3xl font-bold text-primary" aria-hidden="true">
+            <div className="flex h-full w-full items-center justify-center bg-primary/10 text-3xl font-bold text-heading" aria-hidden="true">
               {leader.name
                 .split(" ")
                 .filter(Boolean)
@@ -250,10 +250,10 @@ function Leadership({ company }: { company: CompanyPageData }) {
           )}
         </div>
         <div className="p-4">
-          <h3 className="text-sm font-bold leading-5 text-primary">{leader.name}</h3>
+          <h3 className="text-sm font-bold leading-5 text-heading">{leader.name}</h3>
           <p className="mt-1 text-xs text-muted">{leader.role}</p>
           {leader.servicePeriod ? (
-            <p className="mt-3 inline-flex w-fit items-center gap-1.5 whitespace-nowrap rounded-full border border-secondary/30 bg-secondary/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-primary max-[384px]:gap-1 max-[384px]:px-2 max-[384px]:text-[9px] max-[384px]:tracking-normal">
+            <p className="mt-3 inline-flex w-fit items-center gap-1.5 whitespace-nowrap rounded-full border border-secondary/30 bg-secondary/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-heading max-[384px]:gap-1 max-[384px]:px-2 max-[384px]:text-[9px] max-[384px]:tracking-normal">
               <CalendarDays aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-secondary" />
               {leader.servicePeriod}
             </p>
@@ -271,7 +271,7 @@ function Leadership({ company }: { company: CompanyPageData }) {
       <Container>
         <div className="max-w-2xl">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-secondary">Serving the Company</p>
-          <h2 className="mt-3 text-3xl font-bold text-primary">Leadership Succession</h2>
+          <h2 className="mt-3 text-3xl font-bold text-heading">Leadership Succession</h2>
           <p className="mt-4 leading-7 text-muted">
             Honouring the captains who have guided the company through different seasons of service.
           </p>
@@ -279,7 +279,7 @@ function Leadership({ company }: { company: CompanyPageData }) {
 
         {currentLeaders.length ? (
           <div className="mt-9">
-            <h3 className="text-sm font-bold uppercase tracking-[0.16em] text-primary">Current Captain</h3>
+            <h3 className="text-sm font-bold uppercase tracking-[0.16em] text-heading">Current Captain</h3>
             <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {currentLeaders.map((leader) => <LeadershipCard key={leader.name} leader={leader} />)}
             </div>
@@ -288,7 +288,7 @@ function Leadership({ company }: { company: CompanyPageData }) {
 
         {pastLeaders.length ? (
           <div className="mt-10 border-t border-border pt-8">
-            <h3 className="text-sm font-bold uppercase tracking-[0.16em] text-primary">Past Captains</h3>
+            <h3 className="text-sm font-bold uppercase tracking-[0.16em] text-heading">Past Captains</h3>
             <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {pastLeaders.map((leader) => <LeadershipCard key={leader.name} leader={leader} />)}
             </div>
@@ -309,7 +309,7 @@ function CompanyAchievements({ company }: { company: CompanyPageData }) {
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-secondary">
             Our Journey
           </p>
-          <h2 className="mt-3 text-3xl font-bold text-primary md:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold text-heading md:text-4xl">
             Company Achievements
           </h2>
           <p className="mt-4 leading-7 text-muted">
@@ -331,7 +331,7 @@ function CompanyAchievements({ company }: { company: CompanyPageData }) {
                   {achievement.year}
                 </p>
               ) : null}
-              <h3 className="mt-2 text-lg font-bold text-primary">
+              <h3 className="mt-2 text-lg font-bold text-heading">
                 {achievement.title}
               </h3>
               <p className="mt-2 text-sm leading-7 text-muted">
@@ -356,7 +356,7 @@ function CompanyGalleryPreview({ company }: { company: CompanyPageData }) {
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-secondary">
               Company Life in Pictures
             </p>
-            <h2 className="mt-3 text-3xl font-bold text-primary md:text-4xl">
+            <h2 className="mt-3 text-3xl font-bold text-heading md:text-4xl">
               Photo Highlights
             </h2>
             <p className="mt-4 leading-7 text-muted">
@@ -365,7 +365,7 @@ function CompanyGalleryPreview({ company }: { company: CompanyPageData }) {
           </div>
           <Link
             href="/gallery"
-            className="inline-flex min-h-11 items-center gap-2 self-start rounded-lg font-bold text-primary outline-none transition hover:text-secondary focus-visible:ring-2 focus-visible:ring-secondary sm:self-auto"
+            className="inline-flex min-h-11 items-center gap-2 self-start rounded-lg font-bold text-heading outline-none transition hover:text-secondary focus-visible:ring-2 focus-visible:ring-secondary sm:self-auto"
           >
             View the gallery
             <ArrowRight aria-hidden="true" className="h-4 w-4" />
@@ -411,11 +411,11 @@ function RelatedCompany({ company }: { company: CompanyPageData }) {
             <Image src={related.logo} alt="" width={64} height={64} className="h-14 w-14 object-contain sm:h-16 sm:w-16" />
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Also discover</p>
-              <h2 className="mt-1 text-xl font-bold text-primary">{related.companyName}</h2>
+              <h2 className="mt-1 text-xl font-bold text-heading">{related.companyName}</h2>
               <p className="mt-1 text-sm text-muted">{related.organisationName}</p>
             </div>
           </div>
-          <ArrowRight aria-hidden="true" className="h-5 w-5 text-primary transition-transform group-hover:translate-x-1" />
+          <ArrowRight aria-hidden="true" className="h-5 w-5 text-heading transition-transform group-hover:translate-x-1" />
         </Link>
       </Container>
     </section>

@@ -38,7 +38,7 @@ export default function AboutPrograms() {
 
       <Container>
 
-        <h2 className="text-3xl font-bold text-primary">
+        <h2 className="text-3xl font-bold text-heading">
           Our Programs
         </h2>
 
@@ -86,7 +86,7 @@ export default function AboutPrograms() {
                   <h3
                     className="
                     font-bold
-                    text-primary
+                    text-heading
                     "
                   >
                     {program.title}
