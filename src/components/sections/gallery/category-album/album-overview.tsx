@@ -92,7 +92,7 @@ export function OutreachSponsorsMarquee() {
                 <div
                   key={`${groupIndex}-${sponsor.name}-${sponsorIndex}`}
                   title={sponsor.name}
-                  className="flex h-20 w-48 shrink-0 items-center justify-center sm:w-56"
+                  className="group flex h-20 w-48 shrink-0 cursor-pointer items-center justify-center rounded-lg px-3 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-50 sm:w-56"
                 >
                   <div className="relative h-16 w-full">
                     <Image
@@ -100,7 +100,7 @@ export function OutreachSponsorsMarquee() {
                       alt={groupIndex === 0 ? sponsor.name : ""}
                       fill
                       sizes="(min-width: 640px) 224px, 192px"
-                      className="object-contain opacity-55 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+                      className="object-contain opacity-55 grayscale transition-all duration-300 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0"
                     />
                   </div>
                 </div>
