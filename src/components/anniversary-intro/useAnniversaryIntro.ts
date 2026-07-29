@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export const ANNIVERSARY_SESSION_KEY = "brigade-golden-jubilee-intro-seen";
-const HOLD_DURATION_MS = 3000;
+const HOLD_DURATION_MS = 5300;
 
 export function useAnniversaryIntro() {
   const [isVisible, setIsVisible] = useState(false);
