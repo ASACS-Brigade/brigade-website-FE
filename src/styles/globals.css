@@ -39,6 +39,73 @@
   animation-play-state: paused;
 }
 
+.outreach-sponsor-card {
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.outreach-sponsor-logo {
+  filter: grayscale(1);
+  opacity: 0.55;
+  transform: scale(1);
+  transition:
+    filter 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.outreach-sponsor-card:hover,
+.outreach-sponsor-card:focus-within {
+  background-color: color-mix(in srgb, var(--color-card) 88%, var(--color-secondary) 12%);
+  transform: translateY(-4px);
+}
+
+.outreach-sponsor-card:hover .outreach-sponsor-logo,
+.outreach-sponsor-card:focus-within .outreach-sponsor-logo {
+  filter: grayscale(0);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Tailwind v4 emits hover variants behind pointer media queries. These
+   fallbacks keep existing group interactions consistent in every browser. */
+:where(.group:hover, .group:focus-within) .group-hover\:scale-105 {
+  scale: 1.05;
+}
+
+:where(.group:hover, .group:focus-within) .group-hover\:scale-110 {
+  scale: 1.1;
+}
+
+:where(.group:hover, .group:focus-within) .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+:where(.group:hover, .group:focus-within) .group-hover\:opacity-95 {
+  opacity: 0.95;
+}
+
+:where(.group:hover, .group:focus-within) .group-hover\:bg-primary {
+  background-color: var(--color-primary);
+}
+
+:where(.group:hover, .group:focus-within) .group-hover\:text-heading {
+  color: var(--color-heading);
+}
+
+:where(.group:hover, .group:focus-within) .group-hover\:text-secondary {
+  color: var(--color-secondary);
+}
+
+:where(.group:hover, .group:focus-within) .group-hover\:translate-x-1 {
+  translate: 0.25rem 0;
+}
+
+:where(.group:hover, .group:focus-within) .group-hover\:translate-y-0 {
+  translate: 0 0;
+}
+
 html {
   scroll-behavior: smooth;
   color-scheme: light;
@@ -439,10 +506,6 @@ h6 {
   color: #d4a437;
 }
 
-html.dark .text-primary {
-  color: var(--color-foreground);
-}
-
 html.dark .text-muted,
 html.dark .text-slate-500,
 html.dark .text-slate-600,
@@ -474,7 +537,7 @@ html.dark .bg-gray-200 {
   background-color: #1e293b;
 }
 
-html.dark :where(.bg-white\/90, .bg-white\/95, .bg-white\/80) :where(.text-gray-900, .text-slate-900, .text-primary) {
+html.dark :where(.bg-white\/90, .bg-white\/95, .bg-white\/80) :where(.text-gray-900, .text-slate-900, .text-heading) {
   color: #111827;
 }
 

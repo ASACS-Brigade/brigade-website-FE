@@ -109,7 +109,7 @@ function FeaturedStory({ article }: { article: BrigadeArticle }) {
 
           <Link
             href="#archive"
-            className="hidden items-center gap-2 text-sm font-bold text-secondary transition hover:text-primary sm:inline-flex"
+            className="hidden items-center gap-2 text-sm font-bold text-secondary transition hover:text-heading sm:inline-flex"
           >
             Browse Archive
             <ArrowRight size={16} />
@@ -262,7 +262,7 @@ function LatestNews({ articles }: { articles: BrigadeArticle[] }) {
           </div>
           <Link
             href="#archive"
-            className="inline-flex items-center gap-2 text-sm font-bold text-secondary transition hover:text-primary"
+            className="inline-flex items-center gap-2 text-sm font-bold text-secondary transition hover:text-heading"
           >
             More Stories
             <ArrowRight size={16} />
@@ -565,7 +565,7 @@ export default function ArticlesPageContent({
       <main className="bg-background py-20 text-foreground">
         <Container>
           <div className="rounded-2xl border border-dashed border-border bg-card p-8 text-center shadow-sm sm:p-12">
-            <h1 className="text-3xl font-black text-primary sm:text-4xl">
+            <h1 className="text-3xl font-black text-heading sm:text-4xl">
               Articles Coming Soon
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-muted">

@@ -62,7 +62,7 @@ function SectionCardContent({
       <div className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-white/35 blur-2xl" />
 
       <div className="relative flex items-start justify-between gap-4">
-        <span className="text-xs font-bold tracking-[0.2em] text-primary/40">
+        <span className="text-xs font-bold tracking-[0.2em] text-heading/40">
           SECTION {String(index + 1).padStart(2, "0")}
         </span>
         <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-secondary shadow-md shadow-primary/20">
@@ -75,7 +75,7 @@ function SectionCardContent({
           {section.name}
         </h3>
         {section.ageRange ? (
-          <p className="mt-2 text-xs font-bold uppercase tracking-[0.14em] text-primary/65">
+          <p className="mt-2 text-xs font-bold uppercase tracking-[0.14em] text-heading/65">
             {section.ageRange}
           </p>
         ) : null}

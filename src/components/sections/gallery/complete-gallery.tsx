@@ -128,7 +128,7 @@ export default function CompleteGallery({
       <Container>
          <Link
               href="/gallery"
-              className="mb-5 inline-flex items-center gap-2 text-sm font-semibold text-secondary transition hover:text-primary"
+              className="mb-5 inline-flex items-center gap-2 text-sm font-semibold text-secondary transition hover:text-heading"
             >
               <ArrowLeft size={16} />
               Back to gallery
@@ -137,7 +137,7 @@ export default function CompleteGallery({
           <div className="max-w-3xl">
             {/* <Link
               href="/gallery"
-              className="mb-5 inline-flex items-center gap-2 text-sm font-semibold text-secondary transition hover:text-primary"
+              className="mb-5 inline-flex items-center gap-2 text-sm font-semibold text-secondary transition hover:text-heading"
             >
               <ArrowLeft size={16} />
               Back to gallery

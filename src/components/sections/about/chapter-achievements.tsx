@@ -50,7 +50,7 @@ export default function ChapterAchievements() {
               Companies' Impact
             </span>
 
-            <h2 className="mt-3 text-4xl font-bold text-primary">
+            <h2 className="mt-3 text-4xl font-bold text-heading">
               Our Achievements
             </h2>
 

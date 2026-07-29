@@ -28,7 +28,7 @@ export default function FounderSpotlight() {
                 Founder Spotlight
               </span>
 
-              <h2 className="mt-4 text-4xl font-bold text-primary">
+              <h2 className="mt-4 text-4xl font-bold text-heading">
                 William Alexander Smith
               </h2>
 
@@ -52,7 +52,7 @@ export default function FounderSpotlight() {
                 border-secondary
                 pl-6
                 italic
-                text-primary
+                text-heading
                 text-lg
                 "
               >

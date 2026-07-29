@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CalendarDays, Clock3, ImageOff, MapPin } from "lucide-react";
 import Container from "../../../components/layout/container";
+import OutreachSponsorsMarquee from "../../../components/shared/outreach-sponsors-marquee";
 import { eventFullDate } from "../../../constants/events";
 import { getEventDetailData } from "../../../lib/content-api";
 
@@ -51,6 +52,8 @@ export default async function EventDetailPage({
         year: "numeric",
       })
     : null;
+  const isCommunityOutreach =
+    eventId === "community-outreach-program" || event.id === "community-outreach";
 
   return (
     <main className="bg-background text-foreground">
@@ -118,7 +121,7 @@ export default async function EventDetailPage({
         <Container>
           <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(300px,0.35fr)]">
             <article className="rounded-lg border border-border bg-card p-6 shadow-sm sm:p-8">
-              <h2 className="text-2xl font-bold text-primary">
+              <h2 className="text-2xl font-bold text-heading">
                 About The Event
               </h2>
 
@@ -130,7 +133,7 @@ export default async function EventDetailPage({
 
               {event.videoUrl ? (
                 <div className="mt-8">
-                  <h3 className="text-lg font-bold text-primary">
+                  <h3 className="text-lg font-bold text-heading">
                     Event Video
                   </h3>
                   <div className="mt-4 overflow-hidden rounded-lg border border-border bg-primary">
@@ -148,7 +151,7 @@ export default async function EventDetailPage({
             </article>
 
             <aside className="self-start rounded-lg border border-border bg-card p-6 shadow-sm">
-              <h2 className="text-xl font-bold text-primary">Quick Details</h2>
+              <h2 className="text-xl font-bold text-heading">Quick Details</h2>
               <dl className="mt-5 space-y-4 text-sm">
                 <div>
                   <dt className="font-bold text-foreground">Date</dt>
@@ -183,11 +186,13 @@ export default async function EventDetailPage({
         </Container>
       </section>
 
+      {isCommunityOutreach ? <OutreachSponsorsMarquee /> : null}
+
       <section className="pb-16 sm:pb-20">
         <Container>
           <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <h2 className="text-2xl font-bold text-primary">
+              <h2 className="text-2xl font-bold text-heading">
                 Event Pictures
               </h2>
               <p className="mt-1 text-sm text-muted">
@@ -196,7 +201,7 @@ export default async function EventDetailPage({
             </div>
             <Link
               href="/gallery"
-              className="text-sm font-bold text-secondary transition hover:text-primary"
+              className="text-sm font-bold text-secondary transition hover:text-heading"
             >
               View Full Gallery
             </Link>

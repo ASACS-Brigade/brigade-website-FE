@@ -29,7 +29,7 @@ export default function EventsPageContent({
         <Container>
           {events.length === 0 ? (
             <div className="mb-8 rounded-2xl border border-dashed border-border bg-card p-8 text-center">
-              <h2 className="text-2xl font-bold text-primary">
+              <h2 className="text-2xl font-bold text-heading">
                 Events Coming Soon
               </h2>
               <p className="mx-auto mt-3 max-w-2xl text-muted">
@@ -44,7 +44,7 @@ export default function EventsPageContent({
 
             <aside id="event-calendar" className="scroll-mt-24 lg:sticky lg:top-24">
               <div className="mb-6">
-                <h2 className="text-xl font-bold text-primary sm:text-2xl">
+                <h2 className="text-xl font-bold text-heading sm:text-2xl">
                   Event Calendar
                 </h2>
                 <p className="mt-1 text-sm text-muted">

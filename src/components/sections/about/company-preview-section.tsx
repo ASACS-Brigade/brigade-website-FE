@@ -23,7 +23,7 @@ function CompanyPreviewCard({ company }: { company: CompanyPageData }) {
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">
           {company.organisationName}
         </p>
-        <h3 className="mt-3 text-2xl font-bold text-primary">
+        <h3 className="mt-3 text-2xl font-bold text-heading">
           {company.companyName}
         </h3>
         <p className="mt-3 text-sm font-semibold text-foreground">
@@ -34,7 +34,7 @@ function CompanyPreviewCard({ company }: { company: CompanyPageData }) {
         </p>
         <Link
           href={`/about/${company.slug}`}
-          className="mt-6 inline-flex min-h-11 items-center gap-2 self-start rounded-lg text-sm font-bold text-primary outline-none transition hover:text-secondary focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4 focus-visible:ring-offset-card"
+          className="mt-6 inline-flex min-h-11 items-center gap-2 self-start rounded-lg text-sm font-bold text-heading outline-none transition hover:text-secondary focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4 focus-visible:ring-offset-card"
         >
           Explore the {company.companyName.replace("Surulere ", "")}
           <ArrowRight
@@ -56,7 +56,7 @@ export default function CompanyPreviewSection() {
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-secondary">
               One church, two companies
             </p>
-            <h2 className="mt-3 text-3xl font-bold text-primary md:text-4xl">
+            <h2 className="mt-3 text-3xl font-bold text-heading md:text-4xl">
               Meet Our Companies
             </h2>
             <p className="mt-4 leading-7 text-muted">

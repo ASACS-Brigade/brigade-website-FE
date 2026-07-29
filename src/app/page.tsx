@@ -9,6 +9,7 @@ import CtaBanner from "../components/sections/cta-banner";
 import AboutStats from "../components/sections/about/about-stats";
 import Programs from "../components/sections/programs";
 import { getArticlesData, getEventsData, getGalleryData } from "../lib/content-api";
+import OutreachSponsorsMarquee from "../components/shared/outreach-sponsors-marquee";
 
 export default async function HomePage() {
   const [
@@ -30,6 +31,8 @@ export default async function HomePage() {
 
       <Events events={upcomingEvents} />
       <Programs />
+
+      <OutreachSponsorsMarquee />
 
       <div className="w-full overflow-hidden">
         <Testimonials />

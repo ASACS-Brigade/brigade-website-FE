@@ -23,7 +23,7 @@ export default function EventsPreview({
               className="
               text-2xl
               font-bold
-              text-primary
+              text-heading
               "
             >
               Upcoming Events
@@ -46,7 +46,7 @@ export default function EventsPreview({
             hidden lg:block
             text-sm
             font-medium
-            text-primary
+            text-heading
             hoverLink
             "
           >
@@ -59,7 +59,7 @@ export default function EventsPreview({
             block lg:hidden
             text-xs
             font-medium
-            text-primary
+            text-heading
             hoverLink
             "
           >

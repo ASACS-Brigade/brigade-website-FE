@@ -34,7 +34,7 @@ export default function ArticlesPreview({
 
           <Link
             href="/articles"
-            className="hidden items-center gap-2 text-sm font-bold text-secondary transition hover:text-primary sm:inline-flex"
+            className="hidden items-center gap-2 text-sm font-bold text-secondary transition hover:text-heading sm:inline-flex"
           >
             View All
             <ArrowRight size={16} />
@@ -65,7 +65,7 @@ export default function ArticlesPreview({
 
         <Link
           href="/articles"
-          className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-secondary transition hover:text-primary sm:hidden"
+          className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-secondary transition hover:text-heading sm:hidden"
         >
           View All
           <ArrowRight size={16} />

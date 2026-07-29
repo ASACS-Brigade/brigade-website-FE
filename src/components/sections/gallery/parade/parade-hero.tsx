@@ -195,7 +195,7 @@ export default function ParadeHero() {
               backdrop-blur
               transition
               hover:bg-white
-              hover:text-primary
+              hover:text-heading
               "
             >
               Explore Gallery

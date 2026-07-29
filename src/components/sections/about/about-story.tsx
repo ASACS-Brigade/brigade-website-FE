@@ -672,7 +672,7 @@ export default function AboutStory() {
       <Container>
         <FadeIn>
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-primary mb-3">Our Story</h2>
+            <h2 className="text-3xl font-bold text-heading mb-3">Our Story</h2>
             <p className="text-muted leading-7 max-w-md mx-auto">
               Two movements, one mission — rooted in faith, shaped by discipline,
               united in service.
@@ -711,7 +711,7 @@ export default function AboutStory() {
       mt-5
       text-4xl
       font-bold
-      text-primary
+      text-heading
       md:text-5xl
       "
             >

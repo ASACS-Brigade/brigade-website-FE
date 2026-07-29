@@ -10,7 +10,7 @@ export default function FindUs() {
     <FadeIn>
       <div className="overflow-hidden rounded-xl border border-border shadow-sm">
         <div className="border-b border-border bg-background px-4 py-3">
-          <h2 className="text-base font-bold text-primary">Find Us</h2>
+          <h2 className="text-base font-bold text-heading">Find Us</h2>
           <p className="mt-0.5 text-xs text-muted">
             All Saints Anglican Church, Surulere, Lagos.
           </p>

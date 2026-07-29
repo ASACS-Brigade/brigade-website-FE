@@ -15,7 +15,7 @@ export default function FeaturedEvent({ event }: { event: BrigadeEvent }) {
   return (
     <section>
       <FadeIn>
-        <h2 className="mb-6 text-xl font-bold text-primary sm:text-2xl">
+        <h2 className="mb-6 text-xl font-bold text-heading sm:text-2xl">
           Featured Event
         </h2>
       </FadeIn>

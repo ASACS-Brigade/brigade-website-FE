@@ -50,7 +50,7 @@
 
 //       <Container>
 
-//         <h2 className="text-3xl font-bold text-primary">
+//         <h2 className="text-3xl font-bold text-heading">
 //           Our Core Values
 //         </h2>
 
@@ -153,7 +153,7 @@ export default function AboutValues() {
     <section className="py-16">
       <Container>
         <FadeIn>
-          <h2 className="text-3xl font-bold text-primary mb-8">
+          <h2 className="text-3xl font-bold text-heading mb-8">
             Our Core Values
           </h2>
         </FadeIn>

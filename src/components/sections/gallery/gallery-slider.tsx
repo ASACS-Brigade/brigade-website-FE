@@ -132,7 +132,7 @@ export default function GalleryFeaturedSlider({
           mt-3
           text-4xl
           font-bold
-          text-primary
+          text-heading
           "
         >
           Capturing Brigade Moments
