@@ -54,7 +54,7 @@ export default function MobileMenu({ open, onClose }: MobileMenuProps) {
     <div
       aria-hidden={!open}
       className={cn(
-        "fixed inset-0 z-[9999] transition-all duration-300",
+        "fixed inset-0 z-[9999] overflow-x-hidden transition-all duration-300",
         open ? "visible pointer-events-auto bg-black/50 opacity-100" : "invisible pointer-events-none bg-transparent opacity-0",
       )}
       onClick={onClose}

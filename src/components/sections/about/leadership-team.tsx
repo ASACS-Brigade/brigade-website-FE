@@ -8,6 +8,8 @@ import { FaLinkedinIn } from "react-icons/fa";
 import FadeIn from "../../layout/fade-in";
 import Container from "../../layout/container";
 
+const brigadeLinkedInUrl = "https://www.linkedin.com/company/asacsbrigade/";
+
 type Person = {
   image?: string;
   name: string;
@@ -42,19 +44,21 @@ const leaders: Person[] = [
 
 const activeOfficers: Person[] = [
   {
-    name: "Lt. Prince Duru.",
+    image: "/team/oga-prince-brigade.jpeg",
+    name: "Lt. Prince Duru",
     role: "Officer",
   },
   {
-    name: "Lt. Raymond C.",
+    image: "/team/captain-ray11.jpeg",
+    name: "Lt. Raymond Nwanye",
     role: "8th Surulere Captain",
   },
   {
-    name: "Lt. Chukwunonso Oramadika",
+    name: "Lt. Chukwunonso Oramadike",
     role: "12th Surulere Captain",
   },
   {
-    name: "Lt. Victor Nwankwo.",
+    name: "Lt. Victor Nwankwo",
     role: "Battalion Asst. Secretary",
   },
   {
@@ -62,11 +66,11 @@ const activeOfficers: Person[] = [
     role: "Asst. Welfare Officer",
   },
   {
-    name: "Lt. Joy Ariyo.",
+    name: "Lt. Joy Ariyo",
     role: "Inventory",
   },
   {
-    name: "WO. Obinna I.",
+    name: "WO. Obinna Igwe",
     role: "Warrant Officer",
   },
   {
@@ -75,7 +79,7 @@ const activeOfficers: Person[] = [
   },
   {
     name: "WO. Osita Ogada",
-    role: "Band Leader",
+    role: "Band Corps Leader",
   },
   {
     name: "NCO. Michelle U.",
@@ -94,7 +98,7 @@ const activeOfficers: Person[] = [
 const activeMembers: Person[] = [
   {
     // image: "/about/biblestud.jpeg",
-    name: "Brigader Favour O.",
+    name: "Brigader Favour Ogada",
     role: "secretariat",
   },
 ];
@@ -164,7 +168,7 @@ export default function LeadershipTeam() {
                   key={group.id}
                   type="button"
                   onClick={() => setActiveGroupId(group.id)}
-                  className={`min-h-11 rounded-lg px-3 text-sm font-bold transition ${
+                  className={`min-h-11 rounded-lg px-3 text-sm font-bold transition cursor-pointer ${
                     isActive
                       ? "bg-primary text-white shadow-sm"
                       : "text-primary hover:bg-primary/5 dark:hover:bg-secondary/10"
@@ -185,7 +189,7 @@ export default function LeadershipTeam() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {activeGroup.people.map((person) => (
               <FadeIn key={`${activeGroup.id}-${person.name}`}>
                 <article className="overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-secondary/60 hover:shadow-lg hover:shadow-slate-900/10 dark:hover:shadow-black/30">
@@ -211,19 +215,19 @@ export default function LeadershipTeam() {
                   </button>
 
                   <div className="p-4 text-center">
-                    <div className="flex items-center justify-center gap-2">
-                      <h3 className="font-bold text-primary">{person.name}</h3>
-                      {person.externalUrl ? (
-                        <a
-                          href={person.externalUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          aria-label={`Open ${person.name} external profile`}
-                          className="text-primary transition hover:text-secondary"
-                        >
-                          <FaLinkedinIn aria-hidden="true" size={17} />
-                        </a>
-                      ) : null}
+                    <div className="flex min-w-0 items-center justify-center gap-2">
+                      <h3 className="whitespace-nowrap text-sm font-bold text-primary">
+                        {person.name}
+                      </h3>
+                      <a
+                        href={person.externalUrl ?? brigadeLinkedInUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`View ${person.name} on LinkedIn`}
+                        className="shrink-0 text-primary transition hover:text-secondary"
+                      >
+                        <FaLinkedinIn aria-hidden="true" size={16} />
+                      </a>
                     </div>
                     <p className="mt-1 text-sm text-muted">{person.role}</p>
                   </div>

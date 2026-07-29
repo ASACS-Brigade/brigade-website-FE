@@ -58,7 +58,7 @@ export default function AlbumPage({ album, categorySlug }: AlbumPageProps) {
   };
 
   return (
-    <main className="bg-background text-foreground">
+    <main className="min-w-0 overflow-x-clip bg-background text-foreground">
       <AlbumHero album={album} />
       <AlbumOverview album={album} categorySlug={categorySlug} />
       {categorySlug === "outreach" ? <OutreachSponsorsMarquee /> : null}

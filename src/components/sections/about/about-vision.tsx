@@ -86,7 +86,7 @@ export default function AboutVisionMission() {
 
       <Container>
 
-        <h2 className="text-3xl font-bold text-primary mb-9">
+        <h2 className="md:text-3xl text-2xl font-bold text-primary mb-9">
           Object & Aim Of The Brigade
         </h2>
 

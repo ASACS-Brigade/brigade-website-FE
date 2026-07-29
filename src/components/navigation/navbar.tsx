@@ -107,7 +107,7 @@ export default function Navbar() {
               </span>
             </Link>
 
-            <nav aria-label="Primary navigation" className="hidden lg:flex lg:items-center lg:gap-6 xl:gap-7">
+            <nav aria-label="Primary navigation" className="hidden lg:flex lg:items-center lg:gap-4 xl:gap-5">
               <Link href="/" aria-current={pathname === "/" ? "page" : undefined} className={cn("navHover text-foreground transition", pathname === "/" && "is-active")}>
                 Home
               </Link>
@@ -123,7 +123,7 @@ export default function Navbar() {
                   }
                 }}
               >
-                <div className="flex items-center gap-0.5">
+                <div className="flex items-center">
                   <Link
                     href="/about"
                     aria-current={pathname === "/about" ? "page" : undefined}
@@ -138,7 +138,7 @@ export default function Navbar() {
                     aria-expanded={aboutOpen}
                     aria-controls="desktop-about-menu"
                     onClick={() => setAboutOpen((open) => !open)}
-                    className="flex h-8 w-7 items-center justify-center rounded-md text-foreground outline-none transition hover:bg-background hover:text-secondary focus-visible:ring-2 focus-visible:ring-secondary"
+                    className="flex h-8 w-5 items-center justify-center rounded-md text-foreground outline-none transition hover:bg-background hover:text-secondary focus-visible:ring-2 focus-visible:ring-secondary"
                   >
                     <ChevronDown aria-hidden="true" className={cn("h-4 w-4 transition-transform", aboutOpen && "rotate-180")} />
                   </button>
