@@ -6,6 +6,7 @@ import Footer from "../components/layout/footer";
 import { Providers } from "../components/layout/theme-provider";
 import ImageProtection from "../components/shared/image-protection";
 import ScrollToTop from "../components/shared/scroll-to-top";
+import AnniversaryIntro from "../components/anniversary-intro/AnniversaryIntro";
 
 export const metadata: Metadata = {
   title:
@@ -106,6 +107,8 @@ export default function RootLayout({
       <body>
 
         <Providers>
+
+          <AnniversaryIntro />
 
           <Navbar />
 
