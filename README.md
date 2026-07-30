@@ -450,7 +450,7 @@ Wait for the 60-second content revalidation window, confirm the dashboard update
 5. Commit with a Conventional Commit message and open a pull request that explains the behavior, verification, responsive impact, and deployment requirements.
 
 ## Maintainer
-The project’s maintainer should be updated to reflect the team responsible for managing, supporting and improving the platform as we advance.
+The project’s maintainer should be updated to reflect the team responsible for managing, supporting and improving the platform as we advance from 2026.
 
 Brigade Tech Team<br>
 &<br>
