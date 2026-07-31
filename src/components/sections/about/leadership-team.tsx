@@ -62,10 +62,12 @@ const activeOfficers: Person[] = [
     role: "Battalion Asst. Secretary",
   },
   {
+    image: "/team/officer-sammy.jpeg",
     name: "Lt. Samuel A.",
     role: "Asst. Welfare Officer",
   },
   {
+    image: "/team/officer-joy.jpeg",
     name: "Lt. Joy Ariyo",
     role: "Inventory",
   },
