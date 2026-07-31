@@ -271,6 +271,7 @@ export const companies: Record<CompanySlug, CompanyPageData> = {
       {
         name: "Barr. Fred Ichekwai",
         role: "Past Captain",
+        image: "/team/captain-fredi.jpeg",
         servicePeriod: "2009 – 2024",
         status: "past",
       },
