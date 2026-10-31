@@ -9,7 +9,7 @@ export default function HomeHero() {
       
     <section className="relative min-h-145 overflow-hidden md:min-h-160">
       <Image
-        src="/images/hero.jpg"
+        src="/images/hero1.jpg"
         alt="Hero"
         fill
         priority

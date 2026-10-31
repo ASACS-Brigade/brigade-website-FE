@@ -211,7 +211,7 @@ export const brigadeArticles: BrigadeArticle[] = [
     category: "Faith & Devotion",
     excerpt:
       "A devotion on humility, attention and the quiet strength of serving without needing applause.",
-    image: "/events/pic2.png",
+    image: "/events/pic2.JPG",
     author: "Chaplaincy Team",
     date: "2026-06-26",
     readTime: "3 min read",

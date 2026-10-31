@@ -23,6 +23,10 @@ const sponsors: OutreachSponsor[] = [
     name: "Advantage Health Africa",
     logo: "/gallery/aha.png",
   },
+  {
+    name: "Rite Foods Nigeria",
+    logo: "/gallery/rite-logo.svg",
+  },
 ];
 
 const sponsorSequence = [...sponsors, ...sponsors, ...sponsors];

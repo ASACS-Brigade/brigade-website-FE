@@ -85,7 +85,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "service",
-    image: "/events/pic2.png",
+    image: "/events/pic2.JPG",
     title: "Service",
     rotation: -4,
     x: 550,

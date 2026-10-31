@@ -10,7 +10,7 @@ export default function AboutHero() {
         alt="About Hero"
         fill
         priority
-        className="pointer-events-none object-cover"
+        className="pointer-events-none object-cover "
       />
 
       <div

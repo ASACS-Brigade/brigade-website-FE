@@ -15,7 +15,7 @@ export default function EventsHero({ events }: { events: BrigadeEvent[] }) {
     <>
       <section className="relative min-h-145 overflow-hidden md:min-h-160">
         <Image
-          src="/events/pic2.png"
+          src="/events/pic2.JPG"
           alt="Boys and Girls Brigade event gathering"
           fill
           priority

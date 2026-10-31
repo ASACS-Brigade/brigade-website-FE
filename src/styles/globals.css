@@ -46,8 +46,8 @@
 }
 
 .outreach-sponsor-logo {
-  filter: grayscale(1);
-  opacity: 0.55;
+  /* filter: grayscale(1);
+  opacity: 0.55; */
   transform: scale(1);
   transition:
     filter 0.3s ease,

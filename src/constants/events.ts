@@ -30,7 +30,7 @@ export const brigadeEvents: BrigadeEvent[] = [
     ],
     outcome:
       "Members left with renewed commitment to service, stronger group bonds and practical lessons they could carry into school, home and Brigade activities.",
-    galleryImages: ["/events/pic1.png", "/events/pic2.png", "/events/pic3.png"],
+    galleryImages: ["/events/pic1.png", "/events/pic2.JPG", "/events/pic3.png"],
     image: "/events/pic1.png",
     href: "/events/monthly-fellowship",
   },
@@ -48,7 +48,7 @@ export const brigadeEvents: BrigadeEvent[] = [
     ],
     outcome:
       "The outreach strengthened relationships with the community, encouraged members to serve with humility and created a visible witness of care around Surulere.",
-    galleryImages: ["/events/pic2.png", "/events/pic1.png", "/events/pic3.png"],
+    galleryImages: ["/events/pic2.JPG", "/events/pic1.png", "/events/pic3.png"],
     image: "/events/outreach2026.png",
     href: "/events/community-outreach-program",
     featured: true,
@@ -67,7 +67,7 @@ export const brigadeEvents: BrigadeEvent[] = [
     ],
     outcome:
       "Participants gained confidence, improved teamwork and learned practical leadership habits for future company activities.",
-    galleryImages: ["/events/pic3.png", "/events/pic1.png", "/events/pic2.png"],
+    galleryImages: ["/events/pic3.png", "/events/pic1.png", "/events/pic2.JPG"],
     image: "/events/pic3.png",
     href: "/events/leadership-training",
   },
@@ -85,7 +85,7 @@ export const brigadeEvents: BrigadeEvent[] = [
     ],
     outcome:
       "Parents and leaders left with clearer expectations, shared priorities and stronger communication for upcoming Brigade programs.",
-    galleryImages: ["/events/pic1.png", "/events/pic3.png", "/events/pic2.png"],
+    galleryImages: ["/events/pic1.png", "/events/pic3.png", "/events/pic2.JPG"],
     image: "/events/pic1.png",
     href: "/events/parents-leaders-forum",
   },
@@ -103,8 +103,8 @@ export const brigadeEvents: BrigadeEvent[] = [
     ],
     outcome:
       "The project improved the immediate environment, built teamwork among members and reminded everyone that service is a core part of Brigade life.",
-    galleryImages: ["/events/pic2.png", "/events/pic3.png", "/events/pic1.png"],
-    image: "/events/pic2.png",
+    galleryImages: ["/events/pic2.JPG", "/events/pic3.png", "/events/pic1.png"],
+    image: "/events/pic2.JPG",
     href: "/events/service-project",
   },
   {
@@ -121,7 +121,7 @@ export const brigadeEvents: BrigadeEvent[] = [
     ],
     outcome:
       "The event improved scripture familiarity, built confidence among younger members and created a joyful atmosphere of healthy competition.",
-    galleryImages: ["/events/pic3.png", "/events/pic2.png", "/events/pic1.png"],
+    galleryImages: ["/events/pic3.png", "/events/pic2.JPG", "/events/pic1.png"],
     image: "/events/pic3.png",
     href: "/events/bible-quiz",
   },
@@ -139,7 +139,7 @@ export const brigadeEvents: BrigadeEvent[] = [
     ],
     outcome:
       "Members displayed stronger parade discipline, improved confidence and a deeper appreciation for Brigade tradition.",
-    galleryImages: ["/events/pic1.png", "/events/pic2.png", "/events/pic3.png"],
+    galleryImages: ["/events/pic1.png", "/events/pic2.JPG", "/events/pic3.png"],
     image: "/events/pic1.png",
     href: "/events/march-past",
   },

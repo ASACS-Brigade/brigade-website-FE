@@ -24,14 +24,14 @@ const paradeImages: Record<string, string[]> = {
     "/gallery/gallery1.png",
     "/images/hero.jpeg",
     "/events/pic1.png",
-    "/events/pic2.png",
+    "/events/pic2.JPG",
     "/events/pic3.png",
     "/about/biblestud.jpeg",
   ],
   "2024": [
     "/images/hero.jpeg",
     "/gallery/gallery1.png",
-    "/events/pic2.png",
+    "/events/pic2.JPG",
     "/about/william-A-Smith.jpg",
   ],
   "2023": [

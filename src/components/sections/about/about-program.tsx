@@ -19,7 +19,7 @@ const programs = [
       "Reaching out and making a positive impact.",
   },
   {
-    image: "/events/pic2.png",
+    image: "/events/pic2.JPG",
     title: "Camps & Retreats",
     description:
       "Building skills, friendships and memories.",

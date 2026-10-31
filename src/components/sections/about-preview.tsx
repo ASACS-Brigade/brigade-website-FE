@@ -3,11 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import {
-  ShieldCheck,
-  Users,
-  HeartHandshake,
-} from "lucide-react";
+import { ShieldCheck, Users, HeartHandshake } from "lucide-react";
 
 import FadeIn from "../layout/fade-in";
 import Container from "../layout/container";
@@ -16,20 +12,17 @@ const highlights = [
   {
     icon: ShieldCheck,
     title: "Faith",
-    description:
-      "Rooted in Christian values and Biblical principles.",
+    description: "Rooted in Christian values and Biblical principles.",
   },
   {
     icon: Users,
     title: "Leadership",
-    description:
-      "Developing confident and disciplined young leaders.",
+    description: "Developing confident and disciplined young leaders.",
   },
   {
     icon: HeartHandshake,
     title: "Service",
-    description:
-      "Impacting communities through outreach and service.",
+    description: "Impacting communities through outreach and service.",
   },
 ];
 
@@ -53,7 +46,6 @@ export default function AboutPreview() {
       />
 
       <Container className="relative z-10">
-
         <div
           className="
           grid
@@ -65,9 +57,7 @@ export default function AboutPreview() {
           {/* Left Content */}
 
           <FadeIn>
-
             <div>
-
               <span
                 className="
                 inline-flex
@@ -94,8 +84,7 @@ export default function AboutPreview() {
                 md:text-5xl
                 "
               >
-                A Family, A Mission,
-                A Future
+                A Family, A Mission, A Future
               </h2>
 
               <p
@@ -107,12 +96,9 @@ export default function AboutPreview() {
                 md:text-base text-sm
                 "
               >
-                The Boys & Girls Brigade,
-                Surulere Company exists to raise
-                boys and girls who are grounded
-                in faith, equipped for leadership,
-                and committed to serving God,
-                their communities and the world.
+                The Boys & Girls Brigade, Surulere Company exists to raise boys
+                and girls who are grounded in faith, equipped for leadership,
+                and committed to serving God, their communities and the world.
               </p>
 
               {/* Highlights */}
@@ -148,14 +134,10 @@ export default function AboutPreview() {
                         bg-secondary/10
                         "
                       >
-                        <Icon
-                          size={24}
-                          className="text-secondary"
-                        />
+                        <Icon size={24} className="text-secondary" />
                       </div>
 
                       <div>
-
                         <h3
                           className="
                           font-semibold
@@ -174,9 +156,7 @@ export default function AboutPreview() {
                         >
                           {item.description}
                         </p>
-
                       </div>
-
                     </div>
                   );
                 })}
@@ -232,17 +212,13 @@ export default function AboutPreview() {
                 >
                   Contact Us
                 </Link>
-
               </div>
-
             </div>
-
           </FadeIn>
 
           {/* Right Image */}
 
           <FadeIn>
-
             <div
               className="
               relative
@@ -252,7 +228,6 @@ export default function AboutPreview() {
               max-w-[550px]
               "
             >
-
               {/* Decorative Background */}
 
               <div
@@ -277,10 +252,22 @@ export default function AboutPreview() {
                 "
               >
                 <Image
-                  src="/events/pic2.png"
-                  alt="Boys and Girls Brigade"
+                  src="/events/hosting-d-flag.jpg"
+                  alt=""
                   fill
-                  className="object-cover"
+                  aria-hidden="true"
+                  sizes="(min-width: 1024px) 550px, 100vw"
+                  className="scale-110 object-cover object-center blur-xl"
+                />
+
+                <div className="absolute inset-0 bg-black/45" />
+
+                <Image
+                  src="/events/hosting-d-flag.jpg"
+                  alt="A Brigade officer raising the flag"
+                  fill
+                  sizes="(min-width: 1024px) 550px, 100vw"
+                  className="z-10 object-contain p-3 sm:p-4"
                 />
               </div>
 
@@ -291,6 +278,7 @@ export default function AboutPreview() {
                 absolute
                 left-6
                 top-6
+                z-20
                 rounded-2xl
                 bg-white
                 p-4
@@ -316,15 +304,10 @@ export default function AboutPreview() {
                 >
                   Active Members
                 </p>
-
               </div>
-
             </div>
-
           </FadeIn>
-
         </div>
-
       </Container>
     </section>
   );

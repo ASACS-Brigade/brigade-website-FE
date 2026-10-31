@@ -74,6 +74,8 @@ export default function Footer() {
 
               <a
                 href="https://www.linkedin.com/company/asacsbrigade/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="
                 h-8
                 w-8
@@ -93,6 +95,8 @@ export default function Footer() {
 
               <a
                 href="https://www.instagram.com/bbgb.asacs/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="
                 h-8
                 w-8
@@ -111,7 +115,9 @@ export default function Footer() {
               </a>
 
               <a
-                href="#"
+                href="https://www.youtube.com/@asacsbrigade"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="
                 h-8
                 w-8
@@ -130,7 +136,9 @@ export default function Footer() {
               </a>
 
   <a
-                href="#"
+                href="https://www.facebook.com/share/1LDgeeC2Lk/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="
                 h-8
                 w-8

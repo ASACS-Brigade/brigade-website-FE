@@ -42,7 +42,7 @@ const sharedImages = {
   study: "/about/biblestud.jpeg",
   founder: "/about/william-A-Smith.jpg",
   eventOne: "/gallery/outreach2025.jpg",
-  eventTwo: "/events/pic2.png",
+  eventTwo: "/events/pic2.JPG",
   eventThree: "/events/pic3.png",
 };
 

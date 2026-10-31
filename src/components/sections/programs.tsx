@@ -9,39 +9,39 @@ import curveDotLine from "../../../public/images/curveDotLine.png";
 const cards = [
   {
     bg: "#F2FAFC",
-    rotate: -8,
-    image: "/events/pic1.png",
+    rotate: -4,
+    image: "/events/pic1.JPG",
     title: "Weekly Meetings",
     description:
       "Every Saturday at 4pm, we gather for fellowship, worship, and inspiring Christian teaching. It's where every member finds connection, spiritual growth, and community support.",
   },
   {
     bg: "#73E9DB",
-    rotate: 6,
-    image: "/events/pic2.png",
+    rotate: 3,
+    image: "/events/orchestra.jpg",
     title: "Orchestra & Band Corps Rehearsals",
     description:
       "Saturday afternoons at 2pm, kids and young adults come together to play, learn, and rehearse. From beginners to seasoned musicians, everyone finds their voice in harmony.",
   },
   {
     bg: "#BAE3F4",
-    rotate: -7,
-    image: "/events/pic3.png",
+    rotate: -3,
+    image: "/events/hols-class.jpg",
     title: "Holiday Music Classes",
     description:
       "Master the art of music reading and instrument playing. Our specialized classes teach foundational skills, music theory, and practical techniques that build confident musicians.",
   },
   {
     bg: "#F8F2FC",
-    rotate: 9,
-    image: "/events/pic2.png",
+    rotate: 4,
+    image: "/events/parade-drill.jpg",
     title: "Monthly Parade Drills",
     description:
       "Building discipline, precision, and coordination through structured monthly training sessions. These drills strengthen our collective unity and individual excellence.",
   },
   {
     bg: "#F2FAFC",
-    rotate: -12,
+    rotate: -5,
     image: "/images/hero.jpg",
     title: "Joint Enrolment & Rededication Services",
     description:
@@ -49,7 +49,7 @@ const cards = [
   },
   {
     bg: "#73E9DB",
-    rotate: 10,
+    rotate: 5,
     image: "/events/pic1.png",
     title: "Parade Night",
     description:
@@ -133,11 +133,11 @@ function Card({
         top-1/2
         -translate-x-1/2
         -translate-y-1/2
-        flex flex-col justify-between
+        flex flex-col gap-4
         rounded-4xl
-        p-6 sm:p-7 md:p-8
-        w-[min(90vw,420px)]
-        min-h-120 sm:min-h-130 md:min-h-135
+        p-5 sm:p-6
+        w-[min(88vw,390px)]
+        h-[clamp(480px,70vh,540px)]
         shadow-[0_40px_120px_rgba(0,0,0,.22)]
         border border-white/30
         overflow-hidden
@@ -150,26 +150,27 @@ function Card({
 
       {/* Title */}
       <div className="relative z-10">
-        <h3 className="text-[1.4rem] sm:text-[1.6rem] md:text-[1.9rem] font-bold text-[#141416] leading-tight">
+        <h3 className="text-lg font-bold leading-tight text-[#141416] sm:text-xl md:text-2xl">
           {card.title}
         </h3>
       </div>
 
       {/* Description */}
-      <p className="relative z-10 text-[1.17rem] sm:text-[1.2rem] md:text-[1.5rem] font-medium text-[#141416] tracking-tight">
+      <p className="relative z-10 text-sm font-medium leading-relaxed text-[#141416] sm:text-[0.95rem] md:text-base">
         {card.description}
       </p>
 
       {/* Image */}
-      <div className="relative z-10 flex justify-end">
+      <div className="relative z-10 mt-auto h-[clamp(175px,23vh,220px)] w-full shrink-0 overflow-hidden rounded-2xl border border-white/60 bg-white/30 shadow-[0_18px_45px_rgba(14,42,71,0.18)] md:h-[360px]">
         <Image
           src={card.image}
           alt={card.title}
-          width={180}
-          height={180}
+          fill
+          sizes="(max-width: 640px) 82vw, 360px"
           priority={index < 2}
-          className="h-[140px] w-[140px] sm:h-[160px] sm:w-[160px] md:h-[180px] md:w-[180px] object-contain"
+          className="object-cover object-center contrast-[1.08] saturate-[1.08]"
         />
+        <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
       </div>
     </motion.div>
   );
