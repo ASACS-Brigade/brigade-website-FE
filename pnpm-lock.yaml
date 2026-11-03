@@ -35,6 +35,9 @@ importers:
       '@radix-ui/react-tabs':
         specifier: ^1.1.13
         version: 1.1.15(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@swc/helpers':
+        specifier: 0.5.23
+        version: 0.5.23
       '@tailwindcss/postcss':
         specifier: ^4.3.0
         version: 4.3.1
@@ -77,6 +80,9 @@ importers:
       tailwindcss:
         specifier: ^4.3.0
         version: 4.3.1
+      tslib:
+        specifier: 2.8.1
+        version: 2.8.1
       zod:
         specifier: ^4.6.6
         version: 4.6.6
